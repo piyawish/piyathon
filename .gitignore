@@ -162,3 +162,4 @@ cython_debug/
 #.idea/
 
 *.code-workspace
+tmp/
