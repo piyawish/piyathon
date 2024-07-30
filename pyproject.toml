@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "piyathon"
+version = "0.1.0"
+description = "A language-localized superset of Python with a transpiler to standard Python"
+authors = [{ name = "Piyawish Piyawat", email = "piyawishone@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+classifiers = [
+	"Programming Language :: Python :: 3.12",
+	"License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+	"Operating System :: OS Independent",
+]
+dependencies = ["antlr4-python3-runtime"]
+
+[project.urls]
+"Homepage" = "https://github.com/piyawish/piyathon"
+"Bug Tracker" = "https://github.com/piyawish/piyathon/issues"
+
+[project.scripts]
+piyathon = "piyathon.cli:main"
+p2p = "piyathon.p2p:main"
+
+[tool.hatch.build.targets.wheel]
+include = ["src/piyathon/**"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/piyathon/**"]
+
+[tool.hatch.metadata]
+dynamic = ["version"]

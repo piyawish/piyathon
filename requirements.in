@@ -1,0 +1,9 @@
+pip-tools
+black
+pylint
+pylance
+autopep8
+flake8
+wheel
+hatch
+twine
