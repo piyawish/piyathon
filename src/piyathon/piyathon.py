@@ -1,37 +1,56 @@
 import sys
-import ast
-from keywords import THAI_TO_PYTHON
+from piyathon_translator import PiyathonTranslator
 
 
-class ThaiKeywordTransformer(ast.NodeTransformer):
-    def visit_Name(self, node):
-        if node.id in THAI_TO_PYTHON:
-            return ast.Name(id=THAI_TO_PYTHON[node.id], ctx=node.ctx)
-        return node
+def print_usage():
+    print(
+        """
+Piyathon: A Python to Thai programming language translator
+Copyright (c) 2024, Piyawish Piyawat
+
+Usage: python piyathon.py <piyathon_source_file>
+"""
+    )
 
 
-def execute_piyathon(code):
-    tree = ast.parse(code)
-    transformed_tree = ThaiKeywordTransformer().visit(tree)
-    # pylint: disable=exec-used
-    exec(compile(transformed_tree, filename="<ast>", mode="exec"), globals())
+def main():
+    if len(sys.argv) != 2:
+        print_usage()
+        sys.exit(1)
+
+    source_file = sys.argv[1]
+
+    if not source_file.endswith(".pi"):
+        print("Error: The source file must have a .pi extension")
+        print_usage()
+        sys.exit(1)
+
+    try:
+        with open(source_file, "r", encoding="utf-8") as file:
+            piyathon_code = file.read()
+    except FileNotFoundError:
+        print(f"Error: Input file '{source_file}' not found.")
+        sys.exit(1)
+    except IOError:
+        print(f"Error: Unable to read input file '{source_file}'.")
+        sys.exit(1)
+
+    translator = PiyathonTranslator()
+    python_code = translator.transform_to_python(piyathon_code)
+
+    if python_code is None:
+        print("Execution aborted due to errors in the Piyathon input file.")
+        sys.exit(1)
+
+    # Create a new namespace for execution
+    namespace = {"__name__": "__main__"}
+
+    try:
+        exec(python_code, namespace)  # pylint: disable=exec-used
+    except Exception as e:  # pylint: disable=broad-except
+        print(f"Error during execution: {e}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python piyathon.py <piyathon_file>")
-        sys.exit(1)
-
-    piyathon_file = sys.argv[1]
-
-    try:
-        with open(piyathon_file, "r", encoding="utf-8") as file:
-            piyathon_code = file.read()
-    except FileNotFoundError:
-        print(f"Error: File '{piyathon_file}' not found.")
-        sys.exit(1)
-    except IOError:
-        print(f"Error: Unable to read file '{piyathon_file}'.")
-        sys.exit(1)
-
-    execute_piyathon(piyathon_code)
+    main()
