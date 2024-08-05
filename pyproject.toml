@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "piyathon"
 version = "0.1.0"
-description = "A language-localized superset of Python with a transpiler to standard Python"
+description = "A language-localized superset of Python with a bi-directional transformer to standard Python"
 authors = [{ name = "Piyawish Piyawat", email = "piyawishone@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.12"
@@ -22,7 +22,7 @@ dependencies = []
 "Bug Tracker" = "https://github.com/piyawish/piyathon/issues"
 
 [project.scripts]
-piyathon = "piyathon.cli:main"
+piyathon = "piyathon.piyathon:main"
 p2p = "piyathon.p2p:main"
 
 [tool.hatch.build.targets.wheel]
@@ -33,3 +33,6 @@ include = ["src/piyathon/**"]
 
 [tool.hatch.metadata]
 dynamic = ["version"]
+
+[tool.hatch.build]
+include = ["src/piyathon/**/*.py"]
