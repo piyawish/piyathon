@@ -1,2 +1,9 @@
+[MASTER]
+# Enable loading of arbitrary C extensions.
+unsafe-load-any-extension=yes
+
 [MESSAGES CONTROL]
 disable=non-ascii-file-name,non-ascii-module-import,non-ascii-name
+
+[TYPECHECK]
+generated-members=turtle.*
