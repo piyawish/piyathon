@@ -4,15 +4,15 @@ build-backend = "hatchling.build"
 
 [project]
 name = "piyathon"
-version = "0.1.0"
+version = "0.3.12.4"
 description = "A language-localized superset of Python with a bi-directional transformer to standard Python"
 authors = [{ name = "Piyawish Piyawat", email = "piyawishone@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.12"
-license = { file = "LICENSE" }
+license = { text = "MIT" }
 classifiers = [
 	"Programming Language :: Python :: 3.12",
-	"License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+	"License :: OSI Approved :: MIT License",
 	"Operating System :: OS Independent",
 ]
 dependencies = []
