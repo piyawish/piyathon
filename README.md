@@ -10,12 +10,6 @@ This approach makes programming more accessible to Thai speakers, particularly b
 
 Piyathon requires Python 3.12. It can be installed using the following command:
 
-`pip install piyathon`
-
-## How Piyathon works
-
-To understand how Piyathon works, refer to the image below:
-
-![How Piyathon Works](docs/how_it_works-m.png)
-
-This diagram illustrates the token-based translation approach employed by Piyathon to convert between standard Python and Piyathon code. By using Thai keywords and function names, Piyathon provides a Thai language interface while maintaining full compatibility with Python's syntax and features.
+```bash
+pip install piyathon
+```
