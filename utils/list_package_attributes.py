@@ -1,55 +1,51 @@
 # Copyright (c) 2024 Piyawish Piyawat
 # Licensed under the MIT License
 
-import importlib
-import inspect
 import sys
+import inspect
+import importlib
+import pyperclip
 
 
 def list_package_attributes(package_name):
     try:
-        # Dynamically import the package
         package = importlib.import_module(package_name)
     except ImportError:
-        print(f"Package '{package_name}' not found.")
+        print(f"Error: Package '{package_name}' not found.")
         return
 
-    # Get all public attributes of the package
-    attributes = [attr for attr in dir(package) if not attr.startswith("_")]
+    attributes = dir(package)
 
-    # Filter classes
-    classes = [attr for attr in attributes if inspect.isclass(getattr(package, attr))]
+    # Filter and sort classes
+    classes = sorted(
+        [attr for attr in attributes if inspect.isclass(getattr(package, attr))]
+    )
 
-    # Filter methods
-    methods = [attr for attr in attributes if inspect.ismethod(getattr(package, attr))]
+    # Filter and sort methods
+    methods = sorted(
+        [attr for attr in attributes if inspect.ismethod(getattr(package, attr))]
+    )
 
-    # Filter functions
-    functions = [
-        attr for attr in attributes if inspect.isfunction(getattr(package, attr))
-    ]
+    # Filter and sort functions
+    functions = sorted(
+        [attr for attr in attributes if inspect.isfunction(getattr(package, attr))]
+    )
 
-    # Filter constants (assuming constants are uppercase)
-    constants = [attr for attr in attributes if attr.isupper()]
+    # Filter and sort constants (assuming constants are uppercase)
+    constants = sorted([attr for attr in attributes if attr.isupper()])
 
-    if len(classes) > 0:
-        print(f"\nClasses in {package_name} package:")
-        for cls in classes:
-            print(f"  {cls}")
+    library_dict = {
+        "__name__": "",
+        "classes": {cls: "" for cls in classes},
+        "methods": {mtd: "" for mtd in methods},
+        "functions": {func: "" for func in functions},
+        "constants": {const: "" for const in constants},
+    }
 
-    if len(methods) > 0:
-        print(f"\nMethods in {package_name} package:")
-        for mtd in methods:
-            print(f"  {mtd}")
-
-    if len(functions) > 0:
-        print(f"\nFunctions in {package_name} package:")
-        for func in functions:
-            print(f"  {func}")
-
-    if len(constants) > 0:
-        print(f"\nConstants in {package_name} package:")
-        for const in constants:
-            print(f"  {const}")
+    output = f"{package_name} = {library_dict}"
+    print(output)
+    pyperclip.copy(output)
+    print("\nThe output has been copied to the clipboard.")
 
 
 if __name__ == "__main__":
