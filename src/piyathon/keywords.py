@@ -1,3 +1,6 @@
+# Copyright (c) 2024 Piyawish Piyawat
+# Licensed under the MIT License
+
 PYTHON_KEYWORDS = {
     "and": "และ",
     "as": "เป็น",

@@ -1,3 +1,6 @@
+# Copyright (c) 2024 Piyawish Piyawat
+# Licensed under the MIT License
+
 import sys
 import os
 from piyathon_translator import PiyathonTranslator

@@ -1,3 +1,6 @@
+# Copyright (c) 2024 Piyawish Piyawat
+# Licensed under the MIT License
+
 # เต่า/__init__.py
 
 import turtle
