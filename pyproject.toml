@@ -4,9 +4,9 @@ build-backend = "hatchling.build"
 
 [project]
 name = "piyathon"
-version = "0.3.12.5"
+version = "0.3.12.6"
 description = "A Thai language-localized superset of Python with a bi-directional transformer to standard Python"
-authors = [{ name = "Piyawish Piyawat", email = "tp@piyawatana.com" }]
+authors = [{ name = "Piyawish Piyawat", email = "contact@piyawatana.com" }]
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }

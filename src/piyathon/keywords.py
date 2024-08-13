@@ -39,7 +39,7 @@ PYTHON_KEYWORDS = {
     "yield": "ให้",
 }
 
-PYTHON_BUILTIN_FUNCTIONS_TO_THAI = {
+PYTHON_BUILTIN_FUNCTIONS = {
     "abs": "ค่าสัมบูรณ์",
     "aiter": "อิเทอเรเตอร์อะซิงค์",
     "all": "ทั้งหมด",
@@ -152,7 +152,7 @@ SPECIAL_BUILTIN_VARIABLES = {
 
 PY_TO_THAI = {
     **PYTHON_KEYWORDS,
-    **PYTHON_BUILTIN_FUNCTIONS_TO_THAI,
+    **PYTHON_BUILTIN_FUNCTIONS,
     **SPECIAL_BUILTIN_VARIABLES,
 }
 
@@ -160,4 +160,4 @@ THAI_TO_PY = {v: k for k, v in PY_TO_THAI.items()}
 
 # clean up
 del PYTHON_KEYWORDS
-del PYTHON_BUILTIN_FUNCTIONS_TO_THAI
+del PYTHON_BUILTIN_FUNCTIONS
