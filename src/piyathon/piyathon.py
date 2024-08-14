@@ -2,6 +2,7 @@
 # Licensed under the MIT License
 
 import sys
+import os
 from .piyathon_translator import PiyathonTranslator
 from . import __version__
 
@@ -47,8 +48,11 @@ def main():
         print("Execution aborted due to errors in the Piyathon input file.")
         sys.exit(1)
 
-    # Inject piyathon/Lib into sys.path
-    sys.path.insert(0, "piyathon/Lib")
+    # Get the absolute path to the current file's directory and append 'Lib'
+    lib_path = os.path.join(os.path.dirname(__file__), "Lib")
+
+    # Inject the absolute path into sys.path
+    sys.path.insert(0, lib_path)
 
     # Create a new namespace for execution
     namespace = {"__name__": "__main__"}

@@ -20,7 +20,7 @@ class PiyathonTranslator:
             print(f"Syntax error in the input code: {e}")
             return False
 
-    def transform_to_thai(self, code):
+    def transform_to_piyathon(self, code):
         if not self.check_syntax(code):
             return None
 

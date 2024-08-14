@@ -20,30 +20,30 @@ def test_check_syntax_invalid_code(translator):
     assert translator.check_syntax(invalid_code) is False
 
 
-def test_transform_to_thai_valid_code(translator):
+def test_transform_to_piyathon_valid_code(translator):
     python_code = "print('Hello, world!')"
     piyathon_code = "พิมพ์('Hello, world!')"
-    assert translator.transform_to_thai(python_code) == piyathon_code
+    assert translator.transform_to_piyathon(python_code) == piyathon_code
 
 
-def test_transform_to_thai_invalid_code(translator):
+def test_transform_to_piyathon_invalid_code(translator):
     invalid_code = "print('Hello, world!'"
-    assert translator.transform_to_thai(invalid_code) is None
+    assert translator.transform_to_piyathon(invalid_code) is None
 
 
-def test_transform_to_thai_keywords(translator):
+def test_transform_to_piyathon_keywords(translator):
     python_code = "for i in range(10): print(i)"
     piyathon_code = "สำหรับ i ใน ช่วง(10): พิมพ์(i)"
-    assert translator.transform_to_thai(python_code) == piyathon_code
+    assert translator.transform_to_piyathon(python_code) == piyathon_code
 
 
-def test_transform_to_thai_handle_from_import(translator):
+def test_transform_to_piyathon_handle_from_import(translator):
     python_code = "from math import sqrt"
     piyathon_code = "จาก math นำเข้า sqrt"
-    assert translator.transform_to_thai(python_code) == piyathon_code
+    assert translator.transform_to_piyathon(python_code) == piyathon_code
 
 
-def test_transform_to_thai_handle_else_elif(translator):
+def test_transform_to_piyathon_handle_else_elif(translator):
     python_code = """
 if x > 0:
     print('positive')
@@ -58,10 +58,10 @@ else: print('zero')
     พิมพ์('negative')
 อื่น: พิมพ์('zero')
 """
-    assert translator.transform_to_thai(python_code) == piyathon_code
+    assert translator.transform_to_piyathon(python_code) == piyathon_code
 
 
-def test_transform_to_thai_handle_for_in(translator):
+def test_transform_to_piyathon_handle_for_in(translator):
     python_code = "for i in range(10): print(i)"
     piyathon_code = "สำหรับ i ใน ช่วง(10): พิมพ์(i)"
-    assert translator.transform_to_thai(python_code) == piyathon_code
+    assert translator.transform_to_piyathon(python_code) == piyathon_code
