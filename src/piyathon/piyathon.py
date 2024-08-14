@@ -47,6 +47,9 @@ def main():
         print("Execution aborted due to errors in the Piyathon input file.")
         sys.exit(1)
 
+    # Inject piyathon/Lib into sys.path
+    sys.path.insert(0, "piyathon/Lib")
+
     # Create a new namespace for execution
     namespace = {"__name__": "__main__"}
 
