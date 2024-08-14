@@ -4,7 +4,6 @@ build-backend = "hatchling.build"
 
 [project]
 name = "piyathon"
-version = "0.3.12.6"
 description = "A Thai language-localized superset of Python with a bi-directional transformer to standard Python"
 authors = [{ name = "Piyawish Piyawat", email = "contact@piyawatana.com" }]
 readme = "README.md"
@@ -16,6 +15,7 @@ classifiers = [
 	"Operating System :: OS Independent",
 ]
 dependencies = []
+dynamic = ["version"]
 
 [project.urls]
 "Homepage" = "https://github.com/piyawish/piyathon"
@@ -31,8 +31,14 @@ include = ["src/piyathon/**"]
 [tool.hatch.build.targets.sdist]
 include = ["src/piyathon/**"]
 
-[tool.hatch.metadata]
-dynamic = ["version"]
+[tool.hatch.version]
+path = "src/piyathon/__init__.py"
 
 [tool.hatch.build]
 include = ["src/piyathon/**/*.py"]
+packages = ["src/piyathon"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra"
+testpaths = ["tests"]

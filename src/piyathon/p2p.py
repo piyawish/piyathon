@@ -3,7 +3,7 @@
 
 import sys
 import os
-from piyathon_translator import PiyathonTranslator
+from .piyathon_translator import PiyathonTranslator
 
 
 def print_usage():
@@ -11,14 +11,14 @@ def print_usage():
     print("Source and destination files must have different extensions (.py or .pi)")
 
 
-def main():
+def parse_arguments():
     if len(sys.argv) != 3:
         print_usage()
         sys.exit(1)
+    return sys.argv[1], sys.argv[2]
 
-    source_file = sys.argv[1]
-    destination_file = sys.argv[2]
 
+def validate_extensions(source_file, destination_file):
     source_ext = os.path.splitext(source_file)[1]
     dest_ext = os.path.splitext(destination_file)[1]
 
@@ -34,9 +34,11 @@ def main():
         print_usage()
         sys.exit(1)
 
+
+def read_source_file(source_file):
     try:
         with open(source_file, "r", encoding="utf-8") as file:
-            source_code = file.read()
+            return file.read()
     except FileNotFoundError:
         print(f"Error: Input file '{source_file}' not found.")
         sys.exit(1)
@@ -44,6 +46,8 @@ def main():
         print(f"Error: Unable to read input file '{source_file}'.")
         sys.exit(1)
 
+
+def translate_code(source_code, source_ext, dest_ext):
     translator = PiyathonTranslator()
 
     if source_ext == ".py" and dest_ext == ".pi":
@@ -64,6 +68,10 @@ def main():
             print("Translation aborted due to errors in the Piyathon input file.")
         sys.exit(1)
 
+    return translated_code, translation_type
+
+
+def write_translated_code(destination_file, translated_code, translation_type):
     try:
         with open(destination_file, "w", encoding="utf-8") as file:
             file.write(translated_code)
@@ -72,6 +80,18 @@ def main():
     except IOError:
         print(f"Error: Unable to write to output file '{destination_file}'.")
         sys.exit(1)
+
+
+def main():
+    source_file, destination_file = parse_arguments()
+    validate_extensions(source_file, destination_file)
+    source_code = read_source_file(source_file)
+    source_ext = os.path.splitext(source_file)[1]
+    dest_ext = os.path.splitext(destination_file)[1]
+    translated_code, translation_type = translate_code(
+        source_code, source_ext, dest_ext
+    )
+    write_translated_code(destination_file, translated_code, translation_type)
 
 
 if __name__ == "__main__":

@@ -8,3 +8,4 @@ wheel
 hatch
 twine
 pyperclip
+pytest

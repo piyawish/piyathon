@@ -2,14 +2,16 @@
 # Licensed under the MIT License
 
 import sys
-from piyathon_translator import PiyathonTranslator
+from .piyathon_translator import PiyathonTranslator
+from . import __version__
 
 
 def print_usage():
     print(
-        """
-Piyathon: A Python to Thai programming language translator
+        f"""
+Piyathon {__version__}
 Copyright (c) 2024, Piyawish Piyawat
+Licensed under the MIT License
 
 Usage: python piyathon.py <piyathon_source_file>
 """

@@ -4,7 +4,7 @@
 import ast
 import tokenize
 from io import StringIO
-from keywords import PY_TO_THAI, THAI_TO_PY
+from .keywords import PY_TO_THAI, THAI_TO_PY
 
 
 class PiyathonTranslator:
