@@ -1,10 +1,10 @@
 # Piyathon
 
-Piyathon is a Thai language-localized superset of Python that uses Thai keywords and function names. It employs a token-based translation approach to convert between standard Python and Piyathon code. This method allows Piyathon to maintain full compatibility with Python's syntax and features while providing a Thai language interface.
+Piyathon is a Thai language-localized superset of Python that uses Thai keywords and function names. It employs a sophisticated translation approach combining tokenization and Abstract Syntax Tree (AST) manipulation to convert between standard Python and Piyathon code. This process involves tokenizing the source code, generating an AST, transforming the AST by translating Thai keywords and function names to their English equivalents (or vice versa), and finally generating code in the target language. This method ensures full compatibility with Python's syntax and features while providing a Thai language interface.
 
-The project includes tools for bidirectional translation between Python and Piyathon, as well as a simple interpreter for directly executing Piyathon code. By leveraging the existing Python interpreter instead of building a new one from scratch, Piyathon offers an efficient solution for Thai speakers to learn and use Python concepts.
+The project includes tools for bidirectional translation between Python and Piyathon, as well as a custom interpreter for directly executing Piyathon code. This interpreter leverages the existing Python ecosystem, translating Piyathon to Python on-the-fly before execution. Piyathon also provides Thai translations for built-in functions, constants, and error messages, and supports Thai characters in variable names, function names, and comments.
 
-This approach makes programming more accessible to Thai speakers, particularly beginners, by reducing language barriers while still allowing them to transition to standard Python seamlessly.
+By reducing language barriers, Piyathon makes programming more accessible to Thai speakers, particularly beginners, while still allowing seamless transition to standard Python. It also enables experienced programmers to write Python code using Thai, potentially increasing productivity and code readability for Thai-speaking development teams.
 
 ## Installation
 
@@ -16,8 +16,16 @@ pip install piyathon
 
 # ปิยะธอน
 
-ภาษาปิยะธอนเป็นภาษาที่พัฒนาต่อยอดจากไพธอนโดยใช้คำสำคัญและชื่อฟังก์ชันเป็นภาษาไทย ภาษานี้ใช้วิธีการแปลแบบอิงโทเค็นเพื่อแปลงระหว่างโค้ดไพธอนมาตรฐานและโค้ดปิยะธอน วิธีนี้ช่วยให้ภาษาปิยะธอนสามารถคงความเข้ากันได้อย่างสมบูรณ์กับไวยากรณ์และคุณสมบัติของไพธอน ในขณะที่เพิ่มความสามารถให้ใช้ภาษาไทยในตัวภาษาปิยะธอน
+ปิยะธอนเป็นภาษาโปรแกรมที่พัฒนาต่อยอดจากไพธอน โดยใช้คำสำคัญและชื่อฟังก์ชันเป็นภาษาไทย ปิยะธอนใช้วิธีการแปลภาษาที่ซับซ้อน โดยผสมผสานการแยกโทเคน (tokenization) และการจัดการต้นไม้ไวยากรณ์เชิงนามธรรม (Abstract Syntax Tree หรือ AST) เพื่อแปลงระหว่างโค้ดไพธอนมาตรฐานและโค้ดปิยะธอน กระบวนการนี้ประกอบด้วยการแยกโค้ดต้นฉบับเป็นโทเคน การสร้าง AST การแปลง AST โดยแปลคำสำคัญและชื่อฟังก์ชันภาษาไทยเป็นภาษาอังกฤษ (หรือในทางกลับกัน) และสุดท้ายคือการสร้างโค้ดในภาษาเป้าหมาย วิธีการนี้ช่วยให้ปิยะธอนสามารถทำงานร่วมกับไวยากรณ์และคุณสมบัติของไพธอนได้อย่างสมบูรณ์ ในขณะที่ให้อินเทอร์เฟซเป็นภาษาไทย
 
-โครงการนี้มีเครื่องมือสำหรับการแปลสองทิศทางระหว่างไพธอนและปิยะธอน รวมทั้งตัวแปลโปรแกรมอย่างง่ายสำหรับการเรียกใช้โค้ดปิยะธอนโดยตรง ด้วยการใช้ประโยชน์จากตัวแปลโปรแกรมไพธอนที่มีอยู่แล้วแทนที่จะสร้างใหม่ตั้งแต่ต้น ปิยะธอนจึงนำเสนอวิธีแก้ปัญหาที่มีประสิทธิภาพสำหรับคนไทยในการเรียนรู้และใช้แนวคิดของไพธอน
+โครงการนี้มีเครื่องมือสำหรับการแปลสองทิศทางระหว่างไพธอนและปิยะธอน รวมถึงตัวแปลภาษาที่สามารถรันโค้ดปิยะธอนได้โดยตรง ตัวแปลภาษานี้ใช้ประโยชน์จากระบบนิเวศของไพธอนที่มีอยู่แล้ว โดยแปลงปิยะธอนเป็นไพธอนแบบทันทีก่อนการประมวลผล นอกจากนี้ ปิยะธอนยังมีการแปลฟังก์ชันในตัว ค่าคงที่ และข้อความแสดงข้อผิดพลาดเป็นภาษาไทย และรองรับการใช้ตัวอักษรภาษาไทยในชื่อตัวแปร ชื่อฟังก์ชัน และคำอธิบายในโค้ด
 
-แนวทางนี้ทำให้การเขียนโปรแกรมเข้าถึงได้ง่ายขึ้นสำหรับชาวไทย โดยเฉพาะผู้เริ่มต้น ด้วยการลดอุปสรรคด้านภาษา ในขณะเดียวกันก็ยังคงช่วยให้ผู้เรียนรู้ภาษานี้สามารถเปลี่ยนไปใช้ไพธอนมาตรฐานได้อย่างราบรื่นในภายหลังอีกด้วย
+ด้วยการลดอุปสรรคทางภาษา ปิยะธอนช่วยให้การเขียนโปรแกรมเข้าถึงได้ง่ายขึ้นสำหรับผู้ใช้ภาษาไทย โดยเฉพาะผู้เริ่มต้น ในขณะเดียวกันก็ยังเอื้อให้สามารถเปลี่ยนไปใช้ไพธอนมาตรฐานได้อย่างราบรื่น นอกจากนี้ ยังช่วยให้โปรแกรมเมอร์ที่มีประสบการณ์สามารถเขียนโค้ดไพธอนโดยใช้ภาษาไทยได้ ซึ่งอาจช่วยเพิ่มประสิทธิภาพและความสามารถในการอ่านโค้ดสำหรับทีมพัฒนาที่ใช้ภาษาไทย
+
+## การติดตั้ง
+
+ปิยะธอนต้องการ Python 3.12 สามารถติดตั้งได้โดยใช้คำสั่งต่อไปนี้:
+
+```bash
+pip install piyathon
+```
