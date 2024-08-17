@@ -26,13 +26,13 @@ piyathon = "piyathon.piyathon:main"
 p2p = "piyathon.p2p:main"
 
 [tool.hatch.build.targets.wheel]
-include = ["src/piyathon/**"]
+include = ["piyathon/**"]
 
 [tool.hatch.build.targets.sdist]
-include = ["src/piyathon/**"]
+include = ["piyathon/**"]
 
 [tool.hatch.version]
-path = "src/piyathon/__init__.py"
+path = "piyathon/__init__.py"
 
 [tool.hatch.build]
 include = ["piyathon/**"]
