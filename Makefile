@@ -3,6 +3,8 @@ update_pip:
 	pip-compile -v requirements.in
 	pip-sync
 
-gen_grammar:
-	antlr4 -Dlanguage=Python3 -visitor -listener -o src/piyathon/grammar/generated/ -Xexact-output-dir src/piyathon/grammar/PiyathonLexer.g4
-	antlr4 -Dlanguage=Python3 -visitor -listener -o src/piyathon/grammar/generated/ -Xexact-output-dir src/piyathon/grammar/PiyathonParser.g4
+c2p:
+	code2prompt . -o c2p.md --tokens
+	code2prompt src -o c2p-src.md --tokens
+	code2prompt utils -o c2p-utils.md --tokens
+	code2prompt tests -o c2p-tests.md --tokens

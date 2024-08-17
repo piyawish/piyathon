@@ -35,8 +35,7 @@ include = ["src/piyathon/**"]
 path = "src/piyathon/__init__.py"
 
 [tool.hatch.build]
-include = ["src/piyathon/**/*.py"]
-packages = ["src/piyathon"]
+include = ["piyathon/**"]
 
 [tool.pytest.ini_options]
 minversion = "6.0"
