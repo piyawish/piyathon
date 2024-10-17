@@ -3,19 +3,18 @@
 
 import sys
 import os
+import argparse
 from .piyathon_translator import PiyathonTranslator
 
 
-def print_usage():
-    print("Usage: python p2p.py <source_file> <destination_file>")
-    print("Source and destination files must have different extensions (.py or .pi)")
-
-
 def parse_arguments():
-    if len(sys.argv) != 3:
-        print_usage()
-        sys.exit(1)
-    return sys.argv[1], sys.argv[2]
+    parser = argparse.ArgumentParser(
+        description="Translate between Python and Piyathon files",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument("source_file", help="Source file (.py or .pi)")
+    parser.add_argument("destination_file", help="Destination file (.py or .pi)")
+    return parser.parse_args()
 
 
 def validate_extensions(source_file, destination_file):
@@ -26,12 +25,10 @@ def validate_extensions(source_file, destination_file):
         print(
             "Error: Source and destination files must have different extensions (.py or .pi)"
         )
-        print_usage()
         sys.exit(1)
 
     if source_ext not in [".py", ".pi"] or dest_ext not in [".py", ".pi"]:
         print("Error: Both files must have either .py or .pi extensions")
-        print_usage()
         sys.exit(1)
 
 
@@ -58,7 +55,6 @@ def translate_code(source_code, source_ext, dest_ext):
         translation_type = "Piyathon to Python"
     else:
         print("Error: Invalid file extension combination")
-        print_usage()
         sys.exit(1)
 
     if translated_code is None:
@@ -83,15 +79,15 @@ def write_translated_code(destination_file, translated_code, translation_type):
 
 
 def main():
-    source_file, destination_file = parse_arguments()
-    validate_extensions(source_file, destination_file)
-    source_code = read_source_file(source_file)
-    source_ext = os.path.splitext(source_file)[1]
-    dest_ext = os.path.splitext(destination_file)[1]
+    args = parse_arguments()
+    validate_extensions(args.source_file, args.destination_file)
+    source_code = read_source_file(args.source_file)
+    source_ext = os.path.splitext(args.source_file)[1]
+    dest_ext = os.path.splitext(args.destination_file)[1]
     translated_code, translation_type = translate_code(
         source_code, source_ext, dest_ext
     )
-    write_translated_code(destination_file, translated_code, translation_type)
+    write_translated_code(args.destination_file, translated_code, translation_type)
 
 
 if __name__ == "__main__":

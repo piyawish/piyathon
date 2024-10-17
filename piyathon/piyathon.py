@@ -3,32 +3,31 @@
 
 import sys
 import os
+import argparse
 from .piyathon_translator import PiyathonTranslator
 from . import __version__
 
 
-def print_usage():
-    print(
-        f"""
-Piyathon {__version__}
-Copyright (c) 2024, Piyawish Piyawat
-Licensed under the MIT License
-
-Usage: python piyathon.py <piyathon_source_file>
-"""
+def parse_arguments():
+    parser = argparse.ArgumentParser(
+        description=f"Piyathon {__version__}\n"
+        "Copyright (c) 2024, Piyawish Piyawat\n"
+        "Licensed under the MIT License",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
+    parser.add_argument("source_file", help="Piyathon source file (.pi)")
+    parser.add_argument(
+        "-v", "--version", action="version", version=f"Piyathon {__version__}"
+    )
+    return parser.parse_args()
 
 
 def main():
-    if len(sys.argv) != 2:
-        print_usage()
-        sys.exit(1)
-
-    source_file = sys.argv[1]
+    args = parse_arguments()
+    source_file = args.source_file
 
     if not source_file.endswith(".pi"):
         print("Error: The source file must have a .pi extension")
-        print_usage()
         sys.exit(1)
 
     try:
