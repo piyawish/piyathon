@@ -123,3 +123,20 @@ def nested_func(x):
     return None
 """
     assert translator.piyathon_to_python(piyathon_code) == expected_python
+
+
+def test_from_import_translation(translator):
+    # piyathon_code = "จาก math นำเข้า sqrt"
+    # python_code = "from math import sqrt"
+
+    piyathon_code = "จาก math นำเข้า sqrt, sin, cos, tan, pi, floor, ceil, log, exp"
+    python_code = "from math import sqrt, sin, cos, tan, pi, floor, ceil, log, exp"
+
+    translated_python_code = translator.piyathon_to_python(piyathon_code)
+    print()
+    print(translated_python_code)
+    assert translated_python_code == python_code
+
+    translated_piyathon_code = translator.python_to_piyathon(python_code)
+    print(translated_piyathon_code)
+    assert translated_piyathon_code == piyathon_code
