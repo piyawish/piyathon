@@ -32,24 +32,24 @@ def test_translation_consistency(pi_file, py_file):
 
     translator = PiyathonTranslator()
 
-    # Translate .pi to Python
-    translated_py_code = translator.transform_to_python(original_pi_code)
+    # Translate .pi to .py
+    translated_py_code = translator.piyathon_to_python(original_pi_code)
 
-    # Translate the resulting Python code back to .pi
-    translated_pi_code = translator.transform_to_piyathon(translated_py_code)
-
-    # Translate the original Python code to .pi
-    translated_back_pi_code = translator.transform_to_piyathon(original_py_code)
-
-    # Translate the resulting .pi code back to Python
-    translated_back_py_code = translator.transform_to_python(translated_back_pi_code)
+    # Translate the resulting .py back to .pi
+    translated_pi_code = translator.python_to_piyathon(translated_py_code)
 
     # Assert that the final .pi code matches the original .pi code
     assert (
-        original_pi_code.strip() == translated_pi_code.strip()
+        original_pi_code == translated_pi_code
     ), f"The .pi code translation is not consistent for {pi_file}."
 
-    # Assert that the final Python code matches the original Python code
+    # Translate .py to .pi
+    translated_back_pi_code = translator.python_to_piyathon(original_py_code)
+
+    # Translate the resulting .pi back to .py
+    translated_back_py_code = translator.piyathon_to_python(translated_back_pi_code)
+
+    # Assert that the final .py code matches the original .pycode
     assert (
-        original_py_code.strip() == translated_back_py_code.strip()
+        original_py_code == translated_back_py_code
     ), f"The Python code translation is not consistent for {py_file}."
