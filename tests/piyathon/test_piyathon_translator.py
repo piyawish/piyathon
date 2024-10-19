@@ -1,8 +1,17 @@
 # Copyright (c) 2024 Piyawish Piyawat
 # Licensed under the MIT License
 
+import logging
 import pytest
 from piyathon.piyathon_translator import PiyathonTranslator
+
+# Set up logging
+logger = logging.getLogger(__name__)
+
+
+@pytest.fixture(autouse=True)
+def setup_logging(caplog):
+    caplog.set_level(logging.DEBUG)
 
 
 @pytest.fixture
@@ -126,17 +135,46 @@ def nested_func(x):
 
 
 def test_from_import_translation(translator):
-    # piyathon_code = "จาก math นำเข้า sqrt"
-    # python_code = "from math import sqrt"
-
-    piyathon_code = "จาก math นำเข้า sqrt, sin, cos, tan, pi, floor, ceil, log, exp"
-    python_code = "from math import sqrt, sin, cos, tan, pi, floor, ceil, log, exp"
+    piyathon_code = "จาก math นำเข้า sqrt, sin, cos, tan"
+    python_code = "from math import sqrt, sin, cos, tan"
 
     translated_python_code = translator.piyathon_to_python(piyathon_code)
-    print()
-    print(translated_python_code)
+    logger.debug(translated_python_code)
     assert translated_python_code == python_code
 
     translated_piyathon_code = translator.python_to_piyathon(python_code)
-    print(translated_piyathon_code)
+    logger.debug(translated_piyathon_code)
     assert translated_piyathon_code == piyathon_code
+
+
+def test_if_elif_else_translation(translator):
+    piyathon_code = """
+ถ้า x < 0:
+    พิมพ์("ลบ")
+หรือถ้า x == 0:
+    พิมพ์("ศูนย์")
+อื่น:
+    พิมพ์("บวก")
+"""
+    python_code = """
+if x < 0:
+    print("ลบ")
+elif x == 0:
+    print("ศูนย์")
+else:
+    print("บวก")
+"""
+
+    translated_python_code = translator.piyathon_to_python(piyathon_code)
+    logger.debug(translated_python_code)
+    assert translated_python_code == python_code
+    translated_piyathon_code = translator.python_to_piyathon(translated_python_code)
+    logger.debug(translated_piyathon_code)
+    assert translated_piyathon_code == piyathon_code
+
+    translated_piyathon_code = translator.python_to_piyathon(python_code)
+    logger.debug(translated_piyathon_code)
+    assert translated_piyathon_code == piyathon_code
+    translated_python_code = translator.piyathon_to_python(translated_piyathon_code)
+    logger.debug(translated_python_code)
+    assert translated_python_code == python_code

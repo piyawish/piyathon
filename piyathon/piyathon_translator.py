@@ -30,9 +30,7 @@ class PiyathonTranslator:
         while i < len(tokens):
             tok = tokens[i]
             if tok.type == tokenize.NAME and tok.string in self.py_to_thai:
-                if tok.string == "else":
-                    i = self.handle_else_elif(tokens, i, result)
-                elif tok.string == "for":
+                if tok.string == "for":
                     i = self.handle_for_in(tokens, i, result)
                 else:
                     result.append(tok._replace(string=self.py_to_thai[tok.string]))
@@ -40,19 +38,6 @@ class PiyathonTranslator:
                 result.append(tok)
             i += 1
         return tokenize.untokenize(result)
-
-    def handle_else_elif(self, tokens, i, result):
-        next_token = tokens[i + 1] if i + 1 < len(tokens) else None
-        if (
-            next_token
-            and next_token.type == tokenize.NAME
-            and next_token.string == "if"
-        ):
-            result.append(tokens[i]._replace(string=self.py_to_thai["elif"]))
-            i += 1  # Skip the 'if' in 'elif'
-        else:
-            result.append(tokens[i]._replace(string=self.py_to_thai["else"]))
-        return i
 
     def handle_for_in(self, tokens, i, result):
         result.append(tokens[i]._replace(string=self.py_to_thai["for"]))
@@ -76,9 +61,7 @@ class PiyathonTranslator:
         while i < len(tokens):
             tok = tokens[i]
             if tok.type == tokenize.NAME and tok.string in self.thai_to_py:
-                if tok.string == self.py_to_thai["else"]:
-                    i = self.handle_thai_else_elif(tokens, i, result)
-                elif tok.string == self.py_to_thai["for"]:
+                if tok.string == self.py_to_thai["for"]:
                     i = self.handle_thai_for_in(tokens, i, result)
                 else:
                     result.append(tok._replace(string=self.thai_to_py[tok.string]))
@@ -86,19 +69,6 @@ class PiyathonTranslator:
                 result.append(tok)
             i += 1
         return tokenize.untokenize(result)
-
-    def handle_thai_else_elif(self, tokens, i, result):
-        next_token = tokens[i + 1] if i + 1 < len(tokens) else None
-        if (
-            next_token
-            and next_token.type == tokenize.NAME
-            and next_token.string == self.py_to_thai["if"]
-        ):
-            result.append(tokens[i]._replace(string="elif"))
-            i += 1  # Skip the 'if' in 'elif'
-        else:
-            result.append(tokens[i]._replace(string="else"))
-        return i
 
     def handle_thai_for_in(self, tokens, i, result):
         result.append(tokens[i]._replace(string="for"))
