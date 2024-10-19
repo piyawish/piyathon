@@ -20,7 +20,7 @@ class PiyathonTranslator:
             print(f"Syntax error in the input code: {e}")
             return False
 
-    def transform_to_piyathon(self, code):
+    def python_to_piyathon(self, code):
         if not self.check_syntax(code):
             return None
 
@@ -76,7 +76,7 @@ class PiyathonTranslator:
             result.append(tokens[i]._replace(string=self.py_to_thai["in"]))
         return i
 
-    def transform_to_python(self, code):
+    def piyathon_to_python(self, code):
         try:
             tokens = list(tokenize.generate_tokens(StringIO(code).readline))
         except (tokenize.TokenError, IndentationError) as e:

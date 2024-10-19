@@ -4,13 +4,7 @@
 import sys
 from unittest.mock import patch, mock_open
 import pytest
-from piyathon.piyathon import main, print_usage
-
-
-def test_print_usage(capsys):
-    print_usage()
-    captured = capsys.readouterr()
-    assert "Usage: python piyathon.py <piyathon_source_file>" in captured.out
+from piyathon.piyathon import main
 
 
 def test_no_arguments(capsys):
@@ -19,9 +13,9 @@ def test_no_arguments(capsys):
         with pytest.raises(SystemExit) as e:
             main()
         assert e.type == SystemExit
-        assert e.value.code == 1
+        assert e.value.code == 2
         captured = capsys.readouterr()
-        assert "Usage: python piyathon.py <piyathon_source_file>" in captured.out
+        assert "required" in captured.err
 
 
 def test_invalid_extension(capsys):

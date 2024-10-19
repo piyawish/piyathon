@@ -41,7 +41,7 @@ def main():
         sys.exit(1)
 
     translator = PiyathonTranslator()
-    python_code = translator.transform_to_python(piyathon_code)
+    python_code = translator.piyathon_to_python(piyathon_code)
 
     if python_code is None:
         print("Execution aborted due to errors in the Piyathon input file.")
