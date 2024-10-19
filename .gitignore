@@ -164,5 +164,5 @@ cython_debug/
 *.code-workspace
 tmp/
 .DS_Store
-!src/piyathon/Lib/
 c2p*
+!tests/piyathon/Lib
