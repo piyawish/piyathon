@@ -150,14 +150,15 @@ SPECIAL_BUILTIN_VARIABLES = {
     "__all__": "__ทั้งหมด__",
 }
 
-PY_TO_THAI = {
+PY_TO_PI = {
     **PYTHON_KEYWORDS,
     **PYTHON_BUILTIN_FUNCTIONS,
     **SPECIAL_BUILTIN_VARIABLES,
 }
 
-THAI_TO_PY = {v: k for k, v in PY_TO_THAI.items()}
+PI_TO_PY = {v: k for k, v in PY_TO_PI.items()}
 
 # clean up
 del PYTHON_KEYWORDS
 del PYTHON_BUILTIN_FUNCTIONS
+del SPECIAL_BUILTIN_VARIABLES
