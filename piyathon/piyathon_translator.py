@@ -20,36 +20,27 @@ class PiyathonTranslator:
             print(f"Syntax error in the input code: {e}")
             return False
 
-    def python_to_piyathon(self, code):
-        if not self.check_syntax(code):
-            return None
-
-        tokens = list(tokenize.generate_tokens(StringIO(code).readline))
-        result = []
-        i = 0
-        while i < len(tokens):
-            tok = tokens[i]
-            if tok.type == tokenize.NAME and tok.string in self.py_to_thai:
-                result.append(tok._replace(string=self.py_to_thai[tok.string]))
-            else:
-                result.append(tok)
-            i += 1
-        return tokenize.untokenize(result)
-
-    def piyathon_to_python(self, code):
+    def translate(self, code, translation_dict):
         try:
             tokens = list(tokenize.generate_tokens(StringIO(code).readline))
         except (tokenize.TokenError, IndentationError) as e:
-            print(f"Error tokenizing Piyathon code: {e}")
+            print(f"Error tokenizing code: {e}")
             return None
 
-        result = []
-        i = 0
-        while i < len(tokens):
-            tok = tokens[i]
-            if tok.type == tokenize.NAME and tok.string in self.thai_to_py:
-                result.append(tok._replace(string=self.thai_to_py[tok.string]))
-            else:
-                result.append(tok)
-            i += 1
+        result = [
+            (
+                tok._replace(string=translation_dict.get(tok.string, tok.string))
+                if tok.type == tokenize.NAME
+                else tok
+            )
+            for tok in tokens
+        ]
         return tokenize.untokenize(result)
+
+    def python_to_piyathon(self, code):
+        if not self.check_syntax(code):
+            return None
+        return self.translate(code, self.py_to_thai)
+
+    def piyathon_to_python(self, code):
+        return self.translate(code, self.thai_to_py)
