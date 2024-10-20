@@ -67,13 +67,6 @@ def test_function_name_in_thai(translator):
     assert translator.piyathon_to_python(piyathon_code) == expected_python
 
 
-@pytest.mark.skip(reason="Not implemented yet")
-def test_syntax_error_detection(translator):
-    piyathon_code_with_error = "ถ้า x > 0\n    พิมพ์(x)  # Missing colon"
-    with pytest.raises(SyntaxError):
-        translator.piyathon_to_python(piyathon_code_with_error)
-
-
 def test_complex_code_translation(translator):
     piyathon_code = """
 นิยาม fibonacci(n):
@@ -96,22 +89,6 @@ def test_complex_code_translation(translator):
         .replace("พิมพ์", "print")
     )
     assert translator.piyathon_to_python(piyathon_code) == expected_python
-
-
-@pytest.mark.skip(reason="Not implemented yet")
-def test_error_line_number(translator):
-    piyathon_code_with_error = """
-นิยาม test():
-    x = 10
-    y = 20
-    ถ้า x > y  # Missing colon
-        คืนค่า x
-    อื่น:
-        คืนค่า y
-"""
-    with pytest.raises(SyntaxError) as excinfo:
-        translator.piyathon_to_python(piyathon_code_with_error)
-    assert excinfo.value.lineno == 5  # The error should be on line 5
 
 
 def test_nested_structures(translator):
