@@ -178,3 +178,26 @@ else:
     translated_python_code = translator.piyathon_to_python(translated_piyathon_code)
     logger.debug(translated_python_code)
     assert translated_python_code == python_code
+
+
+def test_for_in_translation(translator):
+    piyathon_code = """
+สำหรับ ตัว ใน [1, 2, 3, 4, 5]:
+    พิมพ์(f"ค่าปัจจุบัน: {ตัว}")
+"""
+    python_code = """
+for ตัว in [1, 2, 3, 4, 5]:
+    print(f"ค่าปัจจุบัน: {ตัว}")
+"""
+
+    # Test Piyathon to Python translation
+    translated_python = translator.piyathon_to_python(piyathon_code)
+    assert translated_python == python_code
+
+    # Test Python to Piyathon translation
+    translated_piyathon = translator.python_to_piyathon(python_code)
+    assert translated_piyathon == piyathon_code
+
+    # Log the translations for debugging
+    logger.debug("Piyathon to Python:\n%s", translated_python)
+    logger.debug("Python to Piyathon:\n%s", translated_piyathon)

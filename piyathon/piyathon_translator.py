@@ -30,24 +30,11 @@ class PiyathonTranslator:
         while i < len(tokens):
             tok = tokens[i]
             if tok.type == tokenize.NAME and tok.string in self.py_to_thai:
-                if tok.string == "for":
-                    i = self.handle_for_in(tokens, i, result)
-                else:
-                    result.append(tok._replace(string=self.py_to_thai[tok.string]))
+                result.append(tok._replace(string=self.py_to_thai[tok.string]))
             else:
                 result.append(tok)
             i += 1
         return tokenize.untokenize(result)
-
-    def handle_for_in(self, tokens, i, result):
-        result.append(tokens[i]._replace(string=self.py_to_thai["for"]))
-        i += 1
-        while i < len(tokens) and tokens[i].string != "in":
-            result.append(tokens[i])
-            i += 1
-        if i < len(tokens) and tokens[i].string == "in":
-            result.append(tokens[i]._replace(string=self.py_to_thai["in"]))
-        return i
 
     def piyathon_to_python(self, code):
         try:
@@ -61,21 +48,8 @@ class PiyathonTranslator:
         while i < len(tokens):
             tok = tokens[i]
             if tok.type == tokenize.NAME and tok.string in self.thai_to_py:
-                if tok.string == self.py_to_thai["for"]:
-                    i = self.handle_thai_for_in(tokens, i, result)
-                else:
-                    result.append(tok._replace(string=self.thai_to_py[tok.string]))
+                result.append(tok._replace(string=self.thai_to_py[tok.string]))
             else:
                 result.append(tok)
             i += 1
         return tokenize.untokenize(result)
-
-    def handle_thai_for_in(self, tokens, i, result):
-        result.append(tokens[i]._replace(string="for"))
-        i += 1
-        while i < len(tokens) and tokens[i].string != self.py_to_thai["in"]:
-            result.append(tokens[i])
-            i += 1
-        if i < len(tokens) and tokens[i].string == self.py_to_thai["in"]:
-            result.append(tokens[i]._replace(string="in"))
-        return i
