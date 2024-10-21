@@ -26,7 +26,7 @@ PYTHON_KEYWORDS = {
     "is": "คือ",
     "lambda": "แลมบ์ดา",
     "nonlocal": "นอกเขต",
-    "None": "ไม่มี",
+    "None": "ไม่มีค่า",
     "not": "ไม่",
     "or": "หรือ",
     "pass": "ผ่าน",
@@ -34,7 +34,7 @@ PYTHON_KEYWORDS = {
     "return": "คืนค่า",
     "True": "จริง",
     "try": "ลอง",
-    "while": "ขณะ",
+    "while": "ขณะที่",
     "with": "ด้วย",
     "yield": "ให้",
 }
