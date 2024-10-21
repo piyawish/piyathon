@@ -1,17 +1,8 @@
 # Copyright (c) 2024 Piyawish Piyawat
 # Licensed under the MIT License
 
-import logging
 import pytest
 from piyathon.piyathon_translator import PiyathonTranslator
-
-# Set up logging
-logger = logging.getLogger(__name__)
-
-
-@pytest.fixture(autouse=True)
-def setup_logging(caplog):
-    caplog.set_level(logging.DEBUG)
 
 
 @pytest.fixture
@@ -111,20 +102,20 @@ def nested_func(x):
     assert translator.piyathon_to_python(piyathon_code) == expected_python
 
 
-def test_from_import_translation(translator):
+def test_from_import_translation(translator, test_logger):
     piyathon_code = "จาก math นำเข้า sqrt, sin, cos, tan"
     python_code = "from math import sqrt, sin, cos, tan"
 
     translated_python_code = translator.piyathon_to_python(piyathon_code)
-    logger.debug(translated_python_code)
+    test_logger.debug(translated_python_code)
     assert translated_python_code == python_code
 
     translated_piyathon_code = translator.python_to_piyathon(python_code)
-    logger.debug(translated_piyathon_code)
+    test_logger.debug(translated_piyathon_code)
     assert translated_piyathon_code == piyathon_code
 
 
-def test_if_elif_else_translation(translator):
+def test_if_elif_else_translation(translator, test_logger):
     piyathon_code = """
 ถ้า x < 0:
     พิมพ์("ลบ")
@@ -143,21 +134,21 @@ else:
 """
 
     translated_python_code = translator.piyathon_to_python(piyathon_code)
-    logger.debug(translated_python_code)
+    test_logger.debug(translated_python_code)
     assert translated_python_code == python_code
     translated_piyathon_code = translator.python_to_piyathon(translated_python_code)
-    logger.debug(translated_piyathon_code)
+    test_logger.debug(translated_piyathon_code)
     assert translated_piyathon_code == piyathon_code
 
     translated_piyathon_code = translator.python_to_piyathon(python_code)
-    logger.debug(translated_piyathon_code)
+    test_logger.debug(translated_piyathon_code)
     assert translated_piyathon_code == piyathon_code
     translated_python_code = translator.piyathon_to_python(translated_piyathon_code)
-    logger.debug(translated_python_code)
+    test_logger.debug(translated_python_code)
     assert translated_python_code == python_code
 
 
-def test_for_in_translation(translator):
+def test_for_in_translation(translator, test_logger):
     piyathon_code = """
 สำหรับ ตัว ใน [1, 2, 3, 4, 5]:
     พิมพ์(f"ค่าปัจจุบัน: {ตัว}")
@@ -176,5 +167,5 @@ for ตัว in [1, 2, 3, 4, 5]:
     assert translated_piyathon == piyathon_code
 
     # Log the translations for debugging
-    logger.debug("Piyathon to Python:\n%s", translated_python)
-    logger.debug("Python to Piyathon:\n%s", translated_piyathon)
+    test_logger.debug("Piyathon to Python:\n%s", translated_python)
+    test_logger.debug("Python to Piyathon:\n%s", translated_piyathon)
