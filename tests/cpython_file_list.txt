@@ -683,6 +683,7 @@
 ../cpython/Lib/test/tf_inherit_check.py
 ../cpython/Lib/test/test_fcntl.py
 ../cpython/Lib/test/test_free_threading/test_list.py
+../cpython/Lib/test/test_free_threading/test_gc.py
 ../cpython/Lib/test/test_free_threading/test_type.py
 ../cpython/Lib/test/test_free_threading/__init__.py
 ../cpython/Lib/test/test_free_threading/test_str.py
@@ -788,6 +789,7 @@
 ../cpython/Lib/test/test_ctypes/test_callbacks.py
 ../cpython/Lib/test/test_ctypes/test_unicode.py
 ../cpython/Lib/test/test_ctypes/test_structures.py
+../cpython/Lib/test/test_ctypes/test_c_simple_type_meta.py
 ../cpython/Lib/test/test_ctypes/test_structunion.py
 ../cpython/Lib/test/test_ctypes/test_cast.py
 ../cpython/Lib/test/test_ctypes/test_generated_structs.py
@@ -998,6 +1000,12 @@
 ../cpython/Lib/test/test_unittest/test_result.py
 ../cpython/Lib/test/test_unittest/support.py
 ../cpython/Lib/test/test_unittest/test_loader.py
+../cpython/Lib/test/test_unittest/namespace_test_pkg/noop/test_noop.py
+../cpython/Lib/test/test_unittest/namespace_test_pkg/noop/no2/__init__.py
+../cpython/Lib/test/test_unittest/namespace_test_pkg/noop/no2/test_no2.py
+../cpython/Lib/test/test_unittest/namespace_test_pkg/test_foo.py
+../cpython/Lib/test/test_unittest/namespace_test_pkg/bar/__init__.py
+../cpython/Lib/test/test_unittest/namespace_test_pkg/bar/test_bar.py
 ../cpython/Lib/test/test_unittest/test_async_case.py
 ../cpython/Lib/test/test_unittest/test_skipping.py
 ../cpython/Lib/test/test_unittest/test_setups.py
@@ -1236,6 +1244,7 @@
 ../cpython/Lib/test/test_capi/test_time.py
 ../cpython/Lib/test/test_capi/test_structmembers.py
 ../cpython/Lib/test/test_capi/test_opt.py
+../cpython/Lib/test/test_capi/test_type.py
 ../cpython/Lib/test/test_capi/test_abstract.py
 ../cpython/Lib/test/test_capi/check_config.py
 ../cpython/Lib/test/test_capi/test_run.py
@@ -1875,7 +1884,6 @@
 ../cpython/Lib/datetime.py
 ../cpython/Lib/_android_support.py
 ../cpython/Lib/collections/__init__.py
-../cpython/Lib/collections/abc.py
 ../cpython/Lib/_pydecimal.py
 ../cpython/Lib/ntpath.py
 ../cpython/Lib/tokenize.py

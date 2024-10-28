@@ -165,4 +165,5 @@ cython_debug/
 tmp/
 .DS_Store
 c2p*
-!tests/piyathon/Lib
+!tests/piyathon/Lib/
+tests/translated/

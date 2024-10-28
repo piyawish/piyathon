@@ -1,6 +1,7 @@
 # Copyright (c) 2024 Piyawish Piyawat
 # Licensed under the MIT License
 
+from pathlib import Path
 import pytest
 from piyathon.piyathon_translator import PiyathonTranslator
 
@@ -34,6 +35,16 @@ def test_translation_consistency(py_file, test_logger):
 
     # Translate .py to .pi
     translated_pi_code = translator.python_to_piyathon(original_py_code)
+
+    # Create the target directory structure
+    translated_dir = Path("tests") / "translated"
+    # Remove "../" from the path and get just the cpython part onwards
+    clean_path = Path(py_file.replace("../", ""))
+    target_pi_file = translated_dir / clean_path.with_suffix(".pi")
+    target_pi_file.parent.mkdir(parents=True, exist_ok=True)
+
+    # Save the translated Piyathon code
+    target_pi_file.write_text(translated_pi_code, encoding="utf-8")
 
     # Translate .pi to .py
     translated_py_code = translator.piyathon_to_python(translated_pi_code)

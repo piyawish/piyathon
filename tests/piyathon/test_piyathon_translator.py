@@ -119,7 +119,7 @@ def test_if_elif_else_translation(translator, test_logger):
     piyathon_code = """
 ถ้า x < 0:
     พิมพ์("ลบ")
-หรือถ้า x == 0:
+อื่นถ้า x == 0:
     พิมพ์("ศูนย์")
 อื่น:
     พิมพ์("บวก")

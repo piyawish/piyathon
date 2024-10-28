@@ -48,10 +48,10 @@ def translate_code(source_code, source_ext, dest_ext):
     translator = PiyathonTranslator()
 
     if source_ext == ".py" and dest_ext == ".pi":
-        translated_code = translator.transform_to_piyathon(source_code)
+        translated_code = translator.python_to_piyathon(source_code)
         translation_type = "Python to Piyathon"
     elif source_ext == ".pi" and dest_ext == ".py":
-        translated_code = translator.transform_to_python(source_code)
+        translated_code = translator.piyathon_to_python(source_code)
         translation_type = "Piyathon to Python"
     else:
         print("Error: Invalid file extension combination")

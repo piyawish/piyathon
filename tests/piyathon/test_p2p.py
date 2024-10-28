@@ -67,3 +67,40 @@ def test_file_read_error(capsys):
             assert e.value.code == 1
             captured = capsys.readouterr()
             assert "Error: Unable to read input file 'source.pi'." in captured.out
+
+
+def test_bidirectional_translation(tmp_path, capsys):
+    # Create temporary files
+    source_py = tmp_path / "p2p.py"
+    intermediate_pi = tmp_path / "p2p.pi"
+    final_py = tmp_path / "p2p_final.py"
+
+    # Copy original p2p.py content to temp file
+    with open("piyathon/p2p.py", "r", encoding="utf-8") as f:
+        original_content = f.read()
+    source_py.write_text(original_content, encoding="utf-8")
+
+    # Python -> Piyathon
+    test_args = ["p2p.py", str(source_py), str(intermediate_pi)]
+    with patch.object(sys, "argv", test_args):
+        main()
+    captured = capsys.readouterr()
+    assert "Python to Piyathon translation completed." in captured.out
+    assert intermediate_pi.exists()
+
+    # Piyathon -> Python
+    test_args = ["p2p.py", str(intermediate_pi), str(final_py)]
+    with patch.object(sys, "argv", test_args):
+        main()
+    captured = capsys.readouterr()
+    assert "Piyathon to Python translation completed." in captured.out
+    assert final_py.exists()
+
+    # Compare original and final Python code
+    final_content = final_py.read_text(encoding="utf-8")
+    assert original_content == final_content
+
+    # Verify files exist before cleanup
+    assert source_py.exists()
+    assert intermediate_pi.exists()
+    assert final_py.exists()

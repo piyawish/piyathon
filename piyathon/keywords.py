@@ -12,7 +12,7 @@ PYTHON_KEYWORDS = {
     "continue": "ทำต่อ",
     "def": "นิยาม",
     "del": "ลบ",
-    "elif": "หรือถ้า",
+    "elif": "อื่นถ้า",
     "else": "อื่น",
     "except": "ยกเว้น",
     "False": "เท็จ",
