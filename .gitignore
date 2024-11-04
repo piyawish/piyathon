@@ -167,3 +167,4 @@ tmp/
 c2p*
 !tests/piyathon/Lib/
 tests/translated/
+tests/cpython_file_list.txt

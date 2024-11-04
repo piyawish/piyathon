@@ -4,7 +4,5 @@ update_pip:
 	pip-sync
 
 test:
-	pytest tests
-
-list_python_files:
 	find ../cpython -name "*.py" > tests/cpython_file_list.txt
+	pytest tests
