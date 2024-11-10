@@ -14,6 +14,28 @@ Piyathon requires Python 3.12. It can be installed using the following command:
 pip install piyathon
 ```
 
+### VS Code Extension
+
+To get syntax highlighting and language support in Visual Studio Code:
+
+1. Open VS Code
+2. Go to the Extensions view (Ctrl+Shift+X or Cmd+Shift+X on macOS)
+3. Search for "Piyathon"
+4. Click Install on the "Piyathon" extension
+
+Alternatively, you can install it by running this command in VS Code's Quick Open (Ctrl+P or Cmd+P on macOS):
+
+```bash
+ext install piyawish.piyathon-vscode
+```
+
+The extension provides:
+
+- Syntax highlighting for .pi files
+- Thai keyword support
+- Code formatting
+- Smart indentation
+
 # ปิยะทอน
 
 ปิยะทอนเป็นภาษาโปรแกรมที่พัฒนาต่อยอดจากไพธอน โดยใช้คำสำคัญและชื่อฟังก์ชันเป็นภาษาไทย ปิยะทอนใช้วิธีการแปลภาษาที่ซับซ้อน โดยผสมผสานการแยกโทเคน (tokenization) และการจัดการต้นไม้ไวยากรณ์เชิงนามธรรม (Abstract Syntax Tree หรือ AST) เพื่อแปลงระหว่างโค้ดไพธอนมาตรฐานและโค้ดปิยะทอน กระบวนการนี้ประกอบด้วยการแยกโค้ดต้นฉบับเป็นโทเคน การสร้าง AST การแปลง AST โดยแปลคำสำคัญและชื่อฟังก์ชันภาษาไทยเป็นภาษาอังกฤษ (หรือในทางกลับกัน) และสุดท้ายคือการสร้างโค้ดในภาษาเป้าหมาย วิธีการนี้ช่วยให้ปิยะทอนสามารถทำงานร่วมกับไวยากรณ์และคุณสมบัติของไพธอนได้อย่างสมบูรณ์ ในขณะที่ให้อินเทอร์เฟซเป็นภาษาไทย
@@ -29,3 +51,25 @@ pip install piyathon
 ```bash
 pip install piyathon
 ```
+
+### ส่วนขยาย VS Code
+
+วิธีติดตั้งส่วนขยายสำหรับ Visual Studio Code เพื่อรองรับการเขียนโค้ดปิยะทอน:
+
+1. เปิด VS Code
+2. ไปที่มุมมองส่วนขยาย (กด Ctrl+Shift+X หรือ Cmd+Shift+X บน macOS)
+3. ค้นหา "Piyathon"
+4. คลิกติดตั้งที่ส่วนขยาย "Piyathon"
+
+หรือติดตั้งโดยรันคำสั่งนี้ใน Quick Open ของ VS Code (กด Ctrl+P หรือ Cmd+P บน macOS):
+
+```bash
+ext install piyawish.piyathon-vscode
+```
+
+ส่วนขยายนี้มีคุณสมบัติดังนี้:
+
+- ไฮไลท์ไวยากรณ์สำหรับไฟล์ .pi
+- รองรับคำสำคัญภาษาไทย
+- การจัดรูปแบบโค้ด
+- การเยื้องอัตโนมัติ
