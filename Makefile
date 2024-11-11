@@ -1,5 +1,5 @@
 update_pip:
-	rm requirements.txt
+	-rm requirements.txt
 	pip-compile -v requirements.in
 	pip-sync
 

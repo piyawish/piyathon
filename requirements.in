@@ -1,4 +1,6 @@
 pip-tools
+
+# dev
 black
 pylint
 pylance
@@ -7,5 +9,19 @@ flake8
 wheel
 hatch
 twine
-pyperclip
 pytest
+
+# utils
+pyperclip
+
+# docs
+sphinx
+sphinx-sitemap
+sphinx-intl
+sphinx-autobuild
+sphinxext-opengraph
+myst-parser
+rstcheck[sphinx]
+doc8
+esbonio
+furo
