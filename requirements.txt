@@ -81,7 +81,7 @@ h11==0.14.0
     #   uvicorn
 hatch==1.13.0
     # via -r requirements.in
-hatchling==1.26.1
+hatchling==1.26.3
     # via hatch
 httpcore==1.0.6
     # via httpx
@@ -319,7 +319,7 @@ virtualenv==20.27.1
     # via hatch
 watchfiles==0.24.0
     # via sphinx-autobuild
-websockets==14.0
+websockets==14.1
     # via sphinx-autobuild
 wheel==0.45.0
     # via
