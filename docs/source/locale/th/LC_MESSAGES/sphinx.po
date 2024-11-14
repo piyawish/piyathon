@@ -1,0 +1,15 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "On this page"
+msgstr "ในหน้านี้"
+
+msgid "Next"
+msgstr "หน้าต่อไป"
+
+msgid "Previous"
+msgstr "หน้าก่อน"
+
+msgid "Search"
+msgstr "ค้นหา"

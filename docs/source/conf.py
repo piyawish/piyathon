@@ -33,6 +33,9 @@ myst_enable_extensions = [
 templates_path = ["_templates"]
 exclude_patterns = []
 
+locale_dirs = ["locale/"]
+gettext_compact = False
+gettext_uuid = True
 language = "th"
 
 # -- Options for HTML output -------------------------------------------------
@@ -51,58 +54,3 @@ html_copy_source = False
 html_theme_options = {
     "sidebar_hide_name": True,
 }
-
-# # Configure search settings
-# html_search_language = "th"
-# html_search_options = {"type": "default", "dict": None}
-
-
-# # Add custom search tokenizer
-# def thai_tokenizer(content):
-#     return word_tokenize(content, engine="newmm")
-
-
-# def setup(app):
-#     if hasattr(app, "add_search_language"):
-#         # Register the tokenizer as a class
-#         class ThaiSearchLanguage:
-#             lang = "th"
-#             language_name = "Thai"
-#             js_splitter_code = """
-#             function(str) {
-#                 // Simple word boundary split for Thai
-#                 return str.split(/[\\s\\u0E00-\\u0E7F]+/).filter(function(w) { return w.length > 0; });
-#             }
-#             """
-#             js_stemmer_rawcode = """
-#             var JSX={};
-#             (function(j){
-#                 j.stemmer=function(word){
-#                     return word;
-#                 }
-#             })(JSX);
-#             """
-
-#             def __init__(self, options):
-#                 self.options = options
-
-#             def split(self, s):
-#                 return thai_tokenizer(s)
-
-#             def word_context(self, word):
-#                 return word
-
-#             @staticmethod
-#             def word_filter(word):
-#                 # Filter out words that are too short or contain non-Thai characters
-#                 if len(word) < 2:
-#                     return False
-#                 # Check if the word contains at least one Thai character
-#                 return any("\u0E00" <= c <= "\u0E7F" for c in word)
-
-#             @staticmethod
-#             def stem(word):
-#                 # Thai doesn't use stemming, return the word as-is
-#                 return word
-
-#         app.add_search_language(ThaiSearchLanguage)
