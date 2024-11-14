@@ -57,3 +57,18 @@ h3 {
 .toc-tree {
   font-family: var(--font-family);
 }
+
+/* Hide search box */
+.search-field {
+  display: none !important;
+}
+
+/* Hide the entire search area if needed */
+.sidebar-search-container {
+  display: none !important;
+}
+
+/* Hide search in mobile view */
+.mobile-search {
+  display: none !important;
+}

@@ -1,17 +1,12 @@
 # ยินดีต้อนรับสู่ปิยะทอน
 
-ปิยะทอน (Piyathon) คือภาษาโปรแกรมมิ่งที่ต่อยอดจากไพทอน (Python) โดยใช้คำสั่งภาษาไทย ช่วยให้ผู้เริ่มต้นเขียนโปรแกรมชาวไทยสามารถเรียนรู้การเขียนโปรแกรมได้ง่ายขึ้น
+ปิยะทอน (Piyathon) คือภาษาโปรแกรมมิ่งที่ต่อยอดจากไพทอน (Python) โดยใช้คำสั่งภาษาไทย เพื่อช่วยให้ผู้เริ่มต้นเขียนโปรแกรมชาวไทยสามารถเรียนรู้การเขียนโปรแกรมได้ง่ายขึ้น
 
 ## เกี่ยวกับปิยะทอน
 
-ปิยะทอนใช้โครงสร้างและฟีเจอร์เดียวกับไพทอนทุกประการ เพียงแค่เปลี่ยนคำสำคัญเป็นภาษาไทย คุณสามารถอ้างอิงเอกสารประกอบของไพทอนได้โดยตรงที่:
+ภาษาปิยะทอนใช้โครงสร้างและความสามารถต่างๆ เช่นเดียวกับภาษาไพทอนทุกประการ เพียงแค่เปลี่ยนคำสำคัญเป็นภาษาไทยเท่านั้น ดังนั้นคุณสามารถเขียนโปรแกรมด้วยภาษาปิยะทอนได้เพียงแทนที่คำสำคัญภาษาอังกฤษด้วยคำสำคัญภาษาไทยตามตารางการแปลในบทเรียน [การย้ายจากไพทอน](tutorial/migration.md)
 
-- [ภาษาไพทอน](https://docs.python.org/3/reference/)
-- [ไลบรารีมาตรฐาน](https://docs.python.org/3/library/)
-
-เพียงแค่แทนที่คำสำคัญภาษาอังกฤษด้วยคำสำคัญภาษาไทยตามตารางการแปลในบทเรียน [การย้ายจากไพทอน](tutorial/migration.md)
-
-เปรียบเทียบระหว่างไพทอนและปิยะทอน:
+ปิยะทอนยังมีเครื่องมือในการแปลงโปรแกรมระหว่างภาษาปิยะทอนและภาษาไพทอนอัตโนมัติอีกด้วย
 
 ```python
 # ไพทอน (Python)
@@ -21,63 +16,54 @@ for i in range(5):
 
 ```python
 # ปิยะทอน (Piyathon)
-สำหรับ i ใน ช่วง(5):
-    พิมพ์(f"สวัสดี {i}")
+สำหรับ ก ใน ช่วง(5):
+    พิมพ์(f"สวัสดี {ก}")
 ```
-
-## การเริ่มต้น
 
 ```{toctree}
 ---
 maxdepth: 2
+hidden: true
 ---
+self
 getting_started/index
-getting_started/installation
-getting_started/first_steps
-getting_started/configuration
-```
-
-## บทเรียน
-
-```{toctree}
----
-maxdepth: 2
----
 tutorial/index
-tutorial/basics
-tutorial/intermediate
-tutorial/advanced
-tutorial/migration
-tutorial/keywords
-```
-
-## ตัวอย่าง
-
-```{toctree}
----
-maxdepth: 2
----
 examples/index
-examples/basic_examples
-examples/real_world
-examples/cookbook
-```
-
-## ชุมชน
-
-```{toctree}
----
-maxdepth: 2
----
 community/index
-community/contributing
-community/governance
-community/resources
+
 ```
+
+## เนื้อหา
+
+### เริ่มต้นกับปิยะทอน
+
+- [การติดตั้งปิยะทอน](getting_started/installation.md)
+- [ก้าวแรกกับปิยะทอน](getting_started/first_steps.md)
+- [การตั้งค่าสภาพแวดล้อมการพัฒนา](getting_started/configuration.md)
+
+### บทเรียนปิยะทอน
+
+- [พื้นฐานปิยะทอน](tutorial/basics.md)
+- [บทเรียนขั้นกลาง](tutorial/intermediate.md)
+- [บทเรียนขั้นสูง](tutorial/advanced.md)
+- [การย้ายจากไพทอนมาปิยะทอน](tutorial/migration.md)
+- [คำสำคัญและฟังก์ชันพื้นฐาน](tutorial/keywords.md)
+
+### ตัวอย่าง
+
+- [ตัวอย่างพื้นฐาน](examples/basic_examples.md)
+- [การใช้งานจริง](examples/real_world.md)
+- [แนวทางและเทคนิค](examples/cookbook.md)
+
+### ชุมชน
+
+- [การมีส่วนร่วม](community/contributing.md)
+- [การกำกับดูแล](community/governance.md)
+- [ทรัพยากร](community/resources.md)
 
 ## การสนับสนุน
 
-ปิยะทอนเป็นโครงการโอเพนซอร์ส คุณสามารถมีส่วนร่วมได้ที่ [GitHub repository](https://github.com/piyawish/piyathon)
+ปิยะทอนเป็นโครงการโอเพนซอร์ส โดยใช้สัญญาอนุญาติแบบเอ็มไอที (MIT License) คุณสามารถมีส่วนร่วมในการพัฒนาได้ที่ [GitHub repository](https://github.com/piyawish/piyathon)
 
 ## การติดต่อ
 

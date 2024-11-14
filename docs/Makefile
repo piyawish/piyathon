@@ -19,7 +19,7 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-livehtml: clean
+livehtml:
 	sphinx-autobuild source/ build/html \
 		--host localhost \
 		--watch source/ \

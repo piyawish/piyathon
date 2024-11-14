@@ -144,7 +144,7 @@ myst-parser==4.0.0
     # via -r requirements.in
 nh3==0.2.18
     # via readme-renderer
-numpy==1.26.4
+numpy==2.1.3
     # via pylance
 packaging==24.2
     # via
@@ -200,7 +200,7 @@ pygments==2.18.0
     #   readme-renderer
     #   rich
     #   sphinx
-pylance==0.19.1
+pylance==0.19.2
     # via -r requirements.in
 pylint==3.3.1
     # via -r requirements.in
@@ -214,12 +214,15 @@ pyspellchecker==0.8.1
     # via esbonio
 pytest==8.3.3
     # via -r requirements.in
+pythainlp==5.0.4
+    # via -r requirements.in
 pyyaml==6.0.2
     # via myst-parser
 readme-renderer==44.0
     # via twine
 requests==2.32.3
     # via
+    #   pythainlp
     #   requests-toolbelt
     #   sphinx
     #   twine

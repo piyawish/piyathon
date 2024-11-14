@@ -30,8 +30,11 @@
 
 ## แนวทางการพัฒนา
 
-สามารถอ่านรายละเอียดเพิ่มเติมได้ที่:
-
-- [การมีส่วนร่วม](contributing.md)
-- [การกำกับดูแล](governance.md)
-- [ทรัพยากร](resources.md)
+```{toctree}
+---
+maxdepth: 2
+---
+contributing
+governance
+resources
+```
