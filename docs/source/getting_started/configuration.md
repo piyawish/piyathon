@@ -4,15 +4,19 @@
 
 ## การตั้งค่า IDE
 
+Integrated Development Environment (IDE) ที่ใช้งานได้ดีกับการเขียนภาษาปิยะทอนคือ Visual Studio Code ส่วน IDE อื่นๆ ที่ใช้เขียนภาษาไพทอนได้ควรจะสามารถใช้งานได้เช่นเดียวกันเพราะปิยะทอนพัฒนาบนพื้นฐานของภาษาไพทอน และตัวปิยะทอนเองคือไลบรารีของภาษาไพทอน
+
 ### Visual Studio Code (แนะนำ)
 
-1. ติดตั้ง VS Code จาก [code.visualstudio.com](https://code.visualstudio.com)
+1. ติดตั้ง Visual Studio Code จาก [code.visualstudio.com](https://code.visualstudio.com)
 
-2. ติดตั้งส่วนขยายที่จำเป็น:
+1. ติดตั้งส่วนขยาย (extensions) ที่จำเป็น:
    - "Piyathon" - ส่วนขยายหลักสำหรับปิยะทอน
-   - "Python" - สำหรับการรันโค้ดไพทอนพื้นฐาน
+   - "Python" - สำหรับการรันโค้ดไพทอนพื้นฐาน (จะติดตั้งอัตโนมัติเมื่อติดตั้งส่วนขยาย Piyathon)
 
-3. ตั้งค่าในไฟล์ `settings.json`:
+<!--
+
+1. ตั้งค่าในไฟล์ `settings.json`:
 
 ```json
 {
@@ -156,3 +160,5 @@ include = '\.pi$'
 ### ปัญหา: การ Import ไม่ทำงาน
 ตรวจสอบให้แน่ใจว่าได้ตั้งค่า PYTHONPATH ถูกต้อง และไฟล์ `__init__.pi` อยู่ในตำแหน่งที่ถูกต้อง
 ```
+
+-->

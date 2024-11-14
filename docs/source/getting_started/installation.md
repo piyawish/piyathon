@@ -7,9 +7,11 @@
 - ระบบปฏิบัติการ: Windows 10+, macOS 10.14+, หรือ Linux (kernel 3.10+)
 - พื้นที่ดิสก์ว่าง: อย่างน้อย 100 MB
 - หน่วยความจำ (RAM): อย่างน้อย 512 MB
-- ไพทอน: เวอร์ชัน 3.8 ขึ้นไป
+- ไพทอน: เวอร์ชัน 3.12 ขึ้นไป
 
 ## การติดตั้งตัวแปลภาษาปิยะทอน
+
+ปิยะทอนทำงานบนตัวแปลภาษาไพทอนอีกชั้นหนึ่ง ดังนั้นคุณต้องติดตั้งไพทอนให้เรียบร้อยก่อนแล้วจึงจะติดตั้งปิยะทอนต่อได้
 
 ### วิธีที่ 1: ติดตั้งผ่าน pip
 
@@ -20,7 +22,7 @@ pip install piyathon
 ### วิธีที่ 2: ติดตั้งจากซอร์สโค้ด
 
 ```bash
-git clone https://github.com/your-repo/piyathon
+git clone https://github.com/piyawish/piyathon
 cd piyathon
 pip install -e .
 ```
@@ -45,16 +47,16 @@ pip install piyathon
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-2. ติดตั้งไพทอน:
+1. ติดตั้งไพทอน:
 
 ```bash
 brew install python
 ```
 
-3. ติดตั้งปิยะทอน:
+1. ติดตั้งปิยะทอน:
 
 ```bash
-pip3 install piyathon
+pip install piyathon
 ```
 
 ### Linux (Ubuntu/Debian)
@@ -65,35 +67,35 @@ sudo apt update
 sudo apt install python3 python3-pip
 
 # ติดตั้งปิยะทอน
-pip3 install piyathon
+pip install piyathon
 ```
 
 ## การทดสอบการติดตั้ง
 
 1. เปิดเทอร์มินัลหรือ Command Prompt
-2. รันคำสั่ง:
+1. รันคำสั่ง:
 
 ```bash
 piyathon --version
 ```
 
-3. ทดสอบการทำงาน:
+1. ทดสอบการทำงาน:
 
 ```python
-# สร้างไฟล์ test.pit
+# สร้างไฟล์ test.pi
 พิมพ์("สวัสดีชาวโลก")
 ```
 
-4. รันโปรแกรม:
+1. รันโปรแกรม:
 
 ```bash
-piyathon test.pit
+piyathon test.pi
 ```
 
 ## ข้อควรระวัง
 
 ```{warning}
-ตรวจสอบให้แน่ใจว่าคุณติดตั้งไพทอนเวอร์ชันที่ถูกต้อง (3.8+) ก่อนติดตั้งปิยะทอน
+ตรวจสอบให้แน่ใจว่าคุณติดตั้งไพทอนเวอร์ชันที่ถูกต้อง (3.12+) ก่อนติดตั้งปิยะทอน
 ```
 
 ## การแก้ปัญหาที่พบบ่อย

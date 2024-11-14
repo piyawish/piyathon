@@ -1,0 +1,79 @@
+/* Import IBM Plex Sans Thai font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap");
+
+/* Apply Thai font to all elements */
+:root {
+  --font-family: "IBM Plex Sans Thai", system-ui, -apple-system,
+    sans-serif;
+}
+
+/* Headers styling */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Main title styling */
+h1 {
+  font-size: 2.5em;
+  color: #1a365d;
+  margin-bottom: 1em;
+}
+
+/* Section headers styling */
+h2 {
+  font-size: 1.8em;
+  color: #2b5b84;
+  margin-top: 1.5em;
+}
+
+/* Subsection headers styling */
+h3 {
+  font-size: 1.4em;
+  color: #2d3748;
+}
+
+/* Hide theme toggle button */
+.theme-toggle-container {
+  display: none;
+}
+
+/* Sidebar styling */
+.sidebar-tree {
+  font-family: var(--font-family);
+}
+
+/* Navigation styling */
+.toc-tree {
+  font-family: var(--font-family);
+}
+
+/* Hide search box */
+.search-field {
+  display: none !important;
+}
+
+/* Hide the entire search area if needed */
+.sidebar-search-container {
+  display: none !important;
+}
+
+/* Hide search in mobile view */
+.mobile-search {
+  display: none !important;
+}
+
+/* Hide both "Made with" text and Furo link */
+.left-details {
+  font-size: 0 !important; /* This hides all text */
+}
+
+.left-details .copyright {
+  font-size: 1rem; /* Restore font size for copyright only */
+}
