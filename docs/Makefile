@@ -24,3 +24,6 @@ livehtml:
 		--host localhost \
 		--watch source/ \
 		--port 8000
+
+upload_all:
+	gsutil -m -o "GSUtil:parallel_process_count=1" -o "Boto:parallel_thread_count=4" cp -r build/html/* gs://www.piyathon.org
