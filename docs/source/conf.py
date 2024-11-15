@@ -62,5 +62,7 @@ html_theme_options = {
     "sidebar_hide_name": True,
 }
 
+html_extra_path = ["robots.txt"]
+
 html_baseurl = "https://www.piyathon.org/"
 sitemap_url_scheme = "{link}"
