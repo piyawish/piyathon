@@ -29,6 +29,7 @@ release = "0.0.1"
 
 extensions = [
     "myst_parser",
+    "sphinx_sitemap",
 ]
 
 # Configure MyST-Parser
@@ -60,3 +61,6 @@ html_copy_source = False
 html_theme_options = {
     "sidebar_hide_name": True,
 }
+
+html_baseurl = "https://www.piyathon.org/"
+sitemap_url_scheme = "{link}"
