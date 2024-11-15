@@ -40,7 +40,7 @@
 | return         | คืนค่า            |
 | True           | จริง              |
 | try            | ลอง              |
-| while          | ขณะที่            |
+| while          | ขณะ             |
 | with           | ด้วย              |
 | yield          | ให้               |
 

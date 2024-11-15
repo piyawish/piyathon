@@ -81,7 +81,7 @@ piyathon --version
 
 1. ทดสอบการทำงาน:
 
-```python
+```piyathon
 # สร้างไฟล์ test.pi
 พิมพ์("สวัสดีชาวโลก")
 ```

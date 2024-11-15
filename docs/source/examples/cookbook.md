@@ -6,7 +6,7 @@
 
 ### การอ่านไฟล์แบบประหยัดหน่วยความจำ
 
-```python
+```piyathon
 นิยาม อ่านไฟล์ใหญ่(ชื่อไฟล์):
     """อ่านไฟล์ทีละบรรทัดเพื่อประหยัดหน่วยความจำ"""
     ด้วย เปิด(ชื่อไฟล์, 'r', encoding='utf-8') เป็น ไฟล์:
@@ -16,7 +16,7 @@
 
 ### การจัดกลุ่มข้อมูล
 
-```python
+```piyathon
 จาก itertools นำเข้า groupby
 จาก operator นำเข้า itemgetter
 
@@ -36,7 +36,7 @@
 
 ### การแคชข้อมูล
 
-```python
+```piyathon
 จาก functools นำเข้า lru_cache
 
 @lru_cache(maxsize=128)
@@ -55,7 +55,7 @@
 
 ### การสร้าง Context Manager
 
-```python
+```piyathon
 จาก contextlib นำเข้า contextmanager
 
 @contextmanager
@@ -74,7 +74,7 @@
 
 ### การจัดการข้อผิดพลาดหลายประเภท
 
-```python
+```piyathon
 นิยาม ทำงานที่อาจผิดพลาด():
     """จัดการข้อผิดพลาดหลายประเภท"""
     ลอง:
@@ -96,7 +96,7 @@
 
 ### การหาไฟล์ทั้งหมดในโฟลเดอร์
 
-```python
+```piyathon
 จาก pathlib นำเข้า Path
 
 นิยาม หาไฟล์(โฟลเดอร์, นามสกุล="*"):
@@ -112,7 +112,7 @@
 
 ### การประมวลผลไฟล์ CSV แบบ Streaming
 
-```python
+```piyathon
 นำเข้า csv
 จาก itertools นำเข้า islice
 
@@ -131,7 +131,7 @@
 
 ### การวัดเวลาทำงาน
 
-```python
+```piyathon
 จาก time นำเข้า perf_counter
 จาก functools นำเข้า wraps
 
@@ -155,7 +155,7 @@
 
 ### การจัดการเขตเวลา
 
-```python
+```piyathon
 จาก datetime นำเข้า datetime
 จาก zoneinfo นำเข้า ZoneInfo
 
@@ -173,7 +173,7 @@
 
 ### การใช้ Generator
 
-```python
+```piyathon
 นิยาม อ่านทีละบรรทัด(ไฟล์):
     """Generator สำหรับอ่านไฟล์ทีละบรรทัด"""
     ด้วย เปิด(ไฟล์, 'r', encoding='utf-8') เป็น f:
@@ -187,7 +187,7 @@
 
 ### การทำงานแบบขนาน
 
-```python
+```piyathon
 จาก concurrent.futures นำเข้า ThreadPoolExecutor, ProcessPoolExecutor
 
 นิยาม ประมวลผลขนาน(ข้อมูล, func, ประเภท='thread', max_workers=4):
@@ -211,7 +211,7 @@
 
 ### การเขียนเทสต์
 
-```python
+```piyathon
 จาก unittest นำเข้า TestCase, main
 จาก unittest.mock นำเข้า Mock, patch
 

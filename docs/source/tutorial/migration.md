@@ -67,7 +67,7 @@ def calculate_area(width, height):
     return width * height
 ```
 
-```python
+```piyathon
 # Piyathon
 นิยาม คำนวณพื้นที่(ความกว้าง, ความสูง):
     ถ้า ความกว้าง <= 0 หรือ ความสูง <= 0:
@@ -86,7 +86,7 @@ for num in numbers:
         sum += num
 ```
 
-```python
+```piyathon
 # Piyathon
 ตัวเลข = [1, 2, 3, 4, 5]
 ผลรวม = 0
@@ -108,7 +108,7 @@ class Student:
         return f"My name is {self.name}"
 ```
 
-```python
+```piyathon
 # Piyathon
 ชั้น นักเรียน:
     นิยาม __เริ่มต้น__(ตัว, ชื่อ, อายุ):

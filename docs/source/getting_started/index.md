@@ -30,7 +30,7 @@
 
 เปรียบเทียบการเขียนโปรแกรมระหว่างไพทอนและปิยะทอน:
 
-```python
+```piyathon
 # ไพทอน (Python)
 def calculate_area(width, height):
     return width * height
@@ -39,7 +39,7 @@ result = calculate_area(5, 3)
 print(f"Area is: {result}")
 ```
 
-```python
+```piyathon
 # ปิยะทอน (Piyathon)
 นิยาม คำนวณพื้นที่(ความกว้าง, ความสูง):
     คืนค่า ความกว้าง * ความสูง

@@ -36,7 +36,7 @@ PYTHON_KEYWORDS = {
     "return": "คืนค่า",
     "True": "จริง",
     "try": "ลอง",
-    "while": "ขณะที่",
+    "while": "ขณะ",
     "with": "ด้วย",
     "yield": "ให้",
 }
@@ -115,7 +115,7 @@ PYTHON_BUILTIN_FUNCTIONS = {
     "__import__": "__นำเข้า__",
 }
 
-SPECIAL_BUILTIN_VARIABLES = {
+PYTHON_SPECIAL_BUILTIN_VARIABLES = {
     "__name__": "__ชื่อ__",
     "__doc__": "__เอกสาร__",
     "__file__": "__ไฟล์__",
@@ -155,12 +155,7 @@ SPECIAL_BUILTIN_VARIABLES = {
 PY_TO_PI = {
     **PYTHON_KEYWORDS,
     **PYTHON_BUILTIN_FUNCTIONS,
-    **SPECIAL_BUILTIN_VARIABLES,
+    **PYTHON_SPECIAL_BUILTIN_VARIABLES,
 }
 
 PI_TO_PY = {v: k for k, v in PY_TO_PI.items()}
-
-# clean up
-del PYTHON_KEYWORDS
-del PYTHON_BUILTIN_FUNCTIONS
-del SPECIAL_BUILTIN_VARIABLES

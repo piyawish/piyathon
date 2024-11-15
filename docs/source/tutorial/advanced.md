@@ -6,7 +6,7 @@
 
 ### เดคอเรเตอร์พื้นฐาน
 
-```python
+```piyathon
 # สร้างเดคอเรเตอร์
 นิยาม จับเวลา(ฟังก์ชัน):
     นิยาม ห่อหุ้ม(*args, **kwargs):
@@ -28,7 +28,7 @@
 
 ### เดคอเรเตอร์ที่รับพารามิเตอร์
 
-```python
+```piyathon
 นิยาม ทำซ้ำ(จำนวนครั้ง):
     นิยาม เดคอเรเตอร์(ฟังก์ชัน):
         นิยาม ห่อหุ้ม(*args, **kwargs):
@@ -51,7 +51,7 @@
 
 ### การสร้างเมตาคลาส
 
-```python
+```piyathon
 ชั้น ลงทะเบียนคลาส(ชนิด):
     _คลาส = {}
 
@@ -73,7 +73,7 @@
 
 ### เจเนเรเตอร์
 
-```python
+```piyathon
 นิยาม นับเลขคู่(สูงสุด):
     ค่า = 0
     ขณะที่ ค่า < สูงสุด:
@@ -87,7 +87,7 @@
 
 ### อิเทอเรเตอร์แบบกำหนดเอง
 
-```python
+```piyathon
 ชั้น ลำดับฟิโบนัชชี:
     นิยาม __เริ่มต้น__(ตัว, จำนวน):
         ตัว.จำนวน = จำนวน
@@ -113,7 +113,7 @@ Higher-level Context Managers
 
 ### การจัดการทรัพยากร
 
-```python
+```piyathon
 จาก contextlib นำเข้า contextmanager
 
 @contextmanager
@@ -133,7 +133,7 @@ Higher-level Context Managers
 
 ### การแคชข้อมูล (Caching)
 
-```python
+```piyathon
 จาก functools นำเข้า lru_cache
 
 @lru_cache(maxsize=None)
@@ -145,7 +145,7 @@ Higher-level Context Managers
 
 ### ฟังก์ชันบางส่วน (Partial Functions)
 
-```python
+```piyathon
 จาก functools นำเข้า partial
 
 นิยาม ยกกำลัง(ฐาน, เลขชี้กำลัง):
@@ -159,7 +159,7 @@ Higher-level Context Managers
 
 ### การใช้งาน ไม่ประสาน/รอประสาน (async/await)
 
-```python
+```piyathon
 ไม่ประสาน นิยาม ดึงข้อมูล(url):
     รอประสาน asyncio.sleep(1)  # จำลองการดึงข้อมูล
     คืนค่า f"ข้อมูลจาก {url}"

@@ -1,6 +1,12 @@
+import os
+import sys
 from datetime import datetime
 
-# from pythainlp.tokenize import word_tokenize
+# # Add the docs/source directory to the Python path
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
+# Import and register the Piyathon lexer
+import piyathon_lexer  # pylint: disable=unused-import
 
 # Configuration file for the Sphinx documentation builder.
 #

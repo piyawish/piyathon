@@ -6,7 +6,7 @@
 
 ### วิเคราะห์ข้อมูลจากไฟล์ CSV
 
-```python
+```piyathon
 นำเข้า pandas เป็น พด
 นำเข้า matplotlib.pyplot เป็น พล
 
@@ -33,7 +33,7 @@
 
 ### แปลงและทำความสะอาดข้อมูล
 
-```python
+```piyathon
 นิยาม ทำความสะอาดข้อมูล(ดีเอฟ):
     # แทนที่ค่าว่าง
     ดีเอฟ = ดีเอฟ.fillna({
@@ -55,7 +55,7 @@
 
 ### เว็บเซิร์ฟเวอร์อย่างง่าย
 
-```python
+```piyathon
 จาก flask นำเข้า Flask, request, jsonify
 
 app = Flask(__name__)
@@ -80,7 +80,7 @@ app = Flask(__name__)
 
 ### บอทไลน์อย่างง่าย
 
-```python
+```piyathon
 จาก linebot นำเข้า LineBotApi, WebhookHandler
 จาก linebot.models นำเข้า MessageEvent, TextMessage, TextSendMessage
 
@@ -106,7 +106,7 @@ handler = WebhookHandler('YOUR_CHANNEL_SECRET')
 
 ### เครื่องมือจัดการไฟล์
 
-```python
+```piyathon
 จาก typer นำเข้า Typer
 จาก pathlib นำเข้า Path
 
@@ -130,7 +130,7 @@ app = Typer()
 
 ### เครื่องมือสร้างรายงาน
 
-```python
+```piyathon
 จาก jinja2 นำเข้า Template
 จาก datetime นำเข้า datetime
 
@@ -163,7 +163,7 @@ app = Typer()
 
 ### การทดสอบอัตโนมัติ
 
-```python
+```piyathon
 จาก unittest นำเข้า TestCase
 จาก myapp นำเข้า คำนวณราคา
 
@@ -216,7 +216,7 @@ jobs:
 
 1. **วิเคราะห์ข้อมูลขาย**
 
-```python
+```piyathon
 ข้อมูล = วิเคราะห์ยอดขาย('ยอดขาย.csv')
 พิมพ์(f"ยอดขายรวม: {ข้อมูล['ยอดรวม']:,.2f} บาท")
 ```
