@@ -8,11 +8,11 @@ Integrated Development Environment (IDE) ที่ใช้งานได้ด
 
 ### Visual Studio Code (แนะนำ)
 
-1. ติดตั้ง Visual Studio Code จาก [code.visualstudio.com](https://code.visualstudio.com)
+1. ติดตั้ง [Visual Studio Code](https://code.visualstudio.com)
 
 1. ติดตั้งส่วนขยาย (extensions) ที่จำเป็น:
-   - "Piyathon" - ส่วนขยายหลักสำหรับปิยะทอน
-   - "Python" - สำหรับการรันโค้ดไพทอนพื้นฐาน (จะติดตั้งอัตโนมัติเมื่อติดตั้งส่วนขยาย Piyathon)
+   - [Piyathon](https://marketplace.visualstudio.com/items?itemName=piyawish.piyathon-vscode) - ส่วนขยายหลักสำหรับปิยะทอน
+   - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) - สำหรับการรันโค้ดไพทอนพื้นฐาน (จะติดตั้งอัตโนมัติเมื่อติดตั้งส่วนขยาย Piyathon)
 
 <!--
 
