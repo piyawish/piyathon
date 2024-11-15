@@ -92,7 +92,7 @@ community/index
 
 ## การติดต่อ
 
-- เว็บไซต์: [https://piyathon.org](https://piyathon.org)
+- เว็บไซต์: [https://www.piyathon.org](https://www.piyathon.org)
 - GitHub Issues: [https://github.com/piyawish/piyathon/issues](https://github.com/piyawish/piyathon/issues)
 
 ```{note}
