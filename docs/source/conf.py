@@ -30,6 +30,7 @@ release = "0.0.1"
 extensions = [
     "myst_parser",
     "sphinx_sitemap",
+    "sphinxext.opengraph",
 ]
 
 # Configure MyST-Parser
@@ -44,6 +45,9 @@ locale_dirs = ["locale/"]
 gettext_compact = False
 gettext_uuid = True
 language = "th"
+
+opg_site_url = "https://www.piyathon.org/"
+opg_image = "https://www.piyathon.org/_static/logo.png"
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
