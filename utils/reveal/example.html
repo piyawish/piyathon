@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piyathon Examples</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github.min.css">
+    <style>
+        .comparison {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .comparison>div {
+            flex: 1;
+        }
+
+        .comparison h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            margin: 0 !important;
+        }
+
+        code {
+            padding: 10px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>Piyathon</h1>
+                <h3>Python with Thai Keywords</h3>
+            </section>
+
+            <section>
+                <h2>Basic Example</h2>
+                <div class="comparison">
+                    <div>
+                        <h3>Python</h3>
+                        <pre><code class="language-python">def hello():
+    print("Hello World")
+
+if __name__ == "__main__":
+    hello()</code></pre>
+                    </div>
+                    <div>
+                        <h3>Piyathon</h3>
+                        <pre><code class="language-piyathon">นิยาม สวัสดี():
+    พิมพ์("สวัสดีชาวโลก")
+
+ถ้า __ชื่อ__ == "__เริ่มต้น__":
+    สวัสดี()</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Control Flow</h2>
+                <div class="comparison">
+                    <div>
+                        <h3>Python</h3>
+                        <pre><code class="language-python">for i in range(5):
+    if i % 2 == 0:
+        continue
+    elif i == 3:
+        break
+    else:
+        print(i)</code></pre>
+                    </div>
+                    <div>
+                        <h3>Piyathon</h3>
+                        <pre><code class="language-piyathon">สำหรับ i ใน ช่วง(5):
+    ถ้า i % 2 == 0:
+        ทำต่อ
+    อื่นถ้า i == 3:
+        หยุด
+    อื่น:
+        พิมพ์(i)</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Functions and Classes</h2>
+                <div class="comparison">
+                    <div>
+                        <h3>Python</h3>
+                        <pre><code class="language-python">class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"</code></pre>
+                    </div>
+                    <div>
+                        <h3>Piyathon</h3>
+                        <pre><code class="language-piyathon">ชั้น สัตว์:
+    นิยาม __เริ่มต้น__(ตัวเอง, ชื่อ):
+        ตัวเอง.ชื่อ = ชื่อ
+
+    นิยาม ส่งเสียง(ตัวเอง):
+        ผ่าน
+
+ชั้น แมว(สัตว์):
+    นิยาม ส่งเสียง(ตัวเอง):
+        คืนค่า "เมี้ยว!"</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Error Handling</h2>
+                <div class="comparison">
+                    <div>
+                        <h3>Python</h3>
+                        <pre><code class="language-python">try:
+    x = predict()  # undefined function
+except NameError as e:
+    print(f"Error: {e}")
+finally:
+    print("Done")</code></pre>
+                    </div>
+                    <div>
+                        <h3>Piyathon</h3>
+                        <pre><code class="language-piyathon">ลอง:
+    x = ทำนาย()  # ฟังก์ชันที่ไม่มีอยู่จริง
+ยกเว้น NameError เป็น e:
+    พิมพ์(f"เกิดข้อผิดพลาด: {e}")
+สุดท้าย:
+    พิมพ์("เสร็จสิ้นการทำงาน")</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Built-in Functions</h2>
+                <div class="comparison">
+                    <div>
+                        <h3>Python</h3>
+                        <pre><code class="language-python">numbers = [1, 2, 3, 4, 5]
+total = sum(numbers)
+maximum = max(numbers)
+minimum = min(numbers)
+length = len(numbers)
+print(f"Sum: {total}, Max: {maximum}")
+print(f"Min: {minimum}, Length: {length}")</code></pre>
+                    </div>
+                    <div>
+                        <h3>Piyathon</h3>
+                        <pre><code class="language-piyathon">ตัวเลข = [1, 2, 3, 4, 5]
+ผลรวม = ผลรวม(ตัวเลข)
+ค่าสูงสุด = ค่าสูงสุด(ตัวเลข)
+ค่าต่ำสุด = ค่าต่ำสุด(ตัวเลข)
+ความยาว = ความยาว(ตัวเลข)
+พิมพ์(f"ผลรวม: {ผลรวม}, ค่าสูงสุด: {ค่าสูงสุด}")
+พิมพ์(f"ค่าต่ำสุด: {ค่าต่ำสุด}, ความยาว: {ความยาว}")</code></pre>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Load scripts in correct order -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+    <script src="highlight.piyathon.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/highlight.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOMContentLoaded event fired');
+
+            // Debug: Check if hljs is available
+            console.log('hljs available:', !!window.hljs);
+            console.log('Registered languages:', hljs.listLanguages());
+
+            // Initialize Reveal.js with highlight plugin
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                plugins: [RevealHighlight],
+                highlight: {
+                    highlightOnLoad: false,
+                    escapeHTML: false
+                }
+            });
+
+            // Function to highlight code blocks
+            function highlightCode() {
+                document.querySelectorAll('pre code').forEach((block) => {
+                    console.log('Processing block:', block.className);
+                    // Clear previous highlighting
+                    if (block.hasAttribute('data-highlighted')) {
+                        block.removeAttribute('data-highlighted');
+                    }
+                    // Highlight the block
+                    hljs.highlightElement(block);
+                });
+            }
+
+            // Initial highlighting
+            highlightCode();
+
+            // Re-run highlighting when slide changes
+            Reveal.on('slidechanged', function () {
+                console.log('Slide changed, re-highlighting code blocks');
+                highlightCode();
+            });
+        });
+    </script>
+</body>
+
+</html>
