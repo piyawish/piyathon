@@ -54,7 +54,7 @@ opg_image = "https://www.piyathon.org/_static/logo.png"
 
 html_theme = "furo"
 html_logo = "_static/logo.png"
-html_title = "ภาษาปิยะทอน (Piyathon Language)"
+html_title = "ภาษาปิยะธอน (Piyathon Language)"
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
 html_show_sphinx = False

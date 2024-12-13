@@ -1,17 +1,17 @@
 # การตั้งค่าสภาพแวดล้อมการพัฒนา
 
-เอกสารนี้จะแนะนำการตั้งค่าสภาพแวดล้อมการพัฒนาสำหรับปิยะทอน ทั้งการตั้งค่า IDE และเครื่องมือต่างๆ
+เอกสารนี้จะแนะนำการตั้งค่าสภาพแวดล้อมการพัฒนาสำหรับปิยะธอน ทั้งการตั้งค่า IDE และเครื่องมือต่างๆ
 
 ## การตั้งค่า IDE
 
-Integrated Development Environment (IDE) ที่ใช้งานได้ดีกับการเขียนภาษาปิยะทอนคือ Visual Studio Code ส่วน IDE อื่นๆ ที่ใช้เขียนภาษาไพทอนได้ควรจะสามารถใช้งานได้เช่นเดียวกันเพราะปิยะทอนพัฒนาบนพื้นฐานของภาษาไพทอน และตัวปิยะทอนเองคือไลบรารีของภาษาไพทอน
+Integrated Development Environment (IDE) ที่ใช้งานได้ดีกับการเขียนภาษาปิยะธอนคือ Visual Studio Code ส่วน IDE อื่นๆ ที่ใช้เขียนภาษาไพทอนได้ควรจะสามารถใช้งานได้เช่นเดียวกันเพราะปิยะธอนพัฒนาบนพื้นฐานของภาษาไพทอน และตัวปิยะธอนเองคือไลบรารีของภาษาไพทอน
 
 ### Visual Studio Code (แนะนำ)
 
 1. ติดตั้ง [Visual Studio Code](https://code.visualstudio.com)
 
 1. ติดตั้งส่วนขยาย (extensions) ที่จำเป็น:
-   - [Piyathon](https://marketplace.visualstudio.com/items?itemName=piyawish.piyathon-vscode) - ส่วนขยายหลักสำหรับปิยะทอน
+   - [Piyathon](https://marketplace.visualstudio.com/items?itemName=piyawish.piyathon-vscode) - ส่วนขยายหลักสำหรับปิยะธอน
    - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) - สำหรับการรันโค้ดไพทอนพื้นฐาน (จะติดตั้งอัตโนมัติเมื่อติดตั้งส่วนขยาย Piyathon)
 
 <!--
@@ -58,14 +58,14 @@ export PIYATHON_HOME=/usr/local/piyathon
 export PATH="$PATH:$PIYATHON_HOME/bin"
 ```
 
-## ไฟล์การตั้งค่าปิยะทอน
+## ไฟล์การตั้งค่าปิยะธอน
 
-ปิยะทอนใช้ไฟล์ `pyproject.toml` สำหรับการตั้งค่าโครงการ:
+ปิยะธอนใช้ไฟล์ `pyproject.toml` สำหรับการตั้งค่าโครงการ:
 
 ```toml
 [tool.piyathon]
 version = "0.1.0"
-description = "โครงการปิยะทอน"
+description = "โครงการปิยะธอน"
 
 [tool.piyathon.scripts]
 start = "piyathon main.pi"
@@ -78,7 +78,7 @@ pandas = "^1.3.0"
 
 ## การตั้งค่า Language Server
 
-ปิยะทอนมาพร้อมกับ Language Server ที่ช่วยในการเขียนโค้ด:
+ปิยะธอนมาพร้อมกับ Language Server ที่ช่วยในการเขียนโค้ด:
 
 1. ติดตั้ง Language Server:
 
@@ -97,7 +97,7 @@ pip install piyathon-language-server
 
 ## การตั้งค่า Linter และ Formatter
 
-### การใช้ pylint กับปิยะทอน
+### การใช้ pylint กับปิยะธอน
 
 1. ติดตั้ง pylint-piyathon:
 
@@ -115,7 +115,7 @@ load-plugins=pylint_piyathon
 disable=C0111,C0103
 ```
 
-### การใช้ black กับปิยะทอน
+### การใช้ black กับปิยะธอน
 
 1. ติดตั้ง black-piyathon:
 
