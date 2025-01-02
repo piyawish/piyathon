@@ -2,23 +2,23 @@
 
 ```{eval-rst}
 .. meta::
-  :title: ติดตั้ง VS Code เพื่อเริ่มต้นเขียนโค้ด Python กับปิยะธอน
-  :description: แนะนำขั้นตอนการตั้งค่า Visual Studio Code สำหรับการเขียนโค้ดภาษาไพทอน เรียนรู้ Basic Python Coding เรียนง่าย เป็นเร็ว ด้วยปิยะธอน เหมาะสำหรับผู้เริ่มต้น เด็ก และผู้ใหญ่
+  :title: ติดตั้ง VS Code เพื่อเริ่มต้นเขียนโค้ด Python กับภาษาปิยะธอน
+  :description: แนะนำขั้นตอนการตั้งค่า Visual Studio Code สำหรับการเขียนโค้ดภาษาไพทอน เรียนรู้ Basic Python Coding เรียนง่าย เป็นเร็ว ด้วยภาษาปิยะธอน เหมาะสำหรับผู้เริ่มต้น เด็ก และผู้ใหญ่
 ```
 
-เอกสารนี้จะแนะนำการตั้งค่าสภาพแวดล้อมการพัฒนาสำหรับปิยะธอน ทั้งการตั้งค่า IDE และเครื่องมือต่างๆ
+เอกสารนี้จะแนะนำการตั้งค่าสภาพแวดล้อมการพัฒนาสำหรับภาษาปิยะธอน ทั้งการตั้งค่า IDE และเครื่องมือต่างๆ
 
 ## การตั้งค่า IDE
 
-Integrated Development Environment (IDE) ที่ใช้งานได้ดีกับการเขียนภาษาปิยะธอนคือ Visual Studio Code ส่วน IDE อื่นๆ ที่ใช้เขียนภาษาไพทอนได้ควรจะสามารถใช้งานได้เช่นเดียวกันเพราะปิยะธอนพัฒนาบนพื้นฐานของภาษาไพทอน และตัวปิยะธอนเองคือไลบรารีของภาษาไพทอน
+Integrated Development Environment (IDE) ที่ใช้งานได้ดีกับการเขียนภาษาปิยะธอนคือ Visual Studio Code ส่วน IDE อื่นๆ ที่ใช้เขียนภาษาไพทอนได้ควรจะสามารถใช้งานได้เช่นเดียวกันเพราะภาษาปิยะธอนพัฒนาบนพื้นฐานของภาษาไพทอน และตัวภาษาปิยะธอนเองคือไลบรารีของภาษาไพทอน
 
 ### Visual Studio Code (แนะนำ)
 
 1. ติดตั้ง [Visual Studio Code](https://code.visualstudio.com)
 
 1. ติดตั้งส่วนขยาย (extensions) ที่จำเป็น:
-   - [Piyathon](https://marketplace.visualstudio.com/items?itemName=piyawish.piyathon-vscode) - ส่วนขยายหลักสำหรับปิยะธอน
-   - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) - สำหรับการรันโค้ดไพทอนพื้นฐาน (จะติดตั้งอัตโนมัติเมื่อติดตั้งส่วนขยาย Piyathon)
+   - [Piyathon](https://marketplace.visualstudio.com/items?itemName=piyawish.piyathon-vscode) - ส่วนขยายหลักสำหรับภาษาปิยะธอน
+   - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) - สำหรับการรันโค้ดภาษาไพทอนพื้นฐาน (จะติดตั้งอัตโนมัติเมื่อติดตั้งส่วนขยาย Piyathon)
 
 <!--
 
@@ -64,14 +64,14 @@ export PIYATHON_HOME=/usr/local/piyathon
 export PATH="$PATH:$PIYATHON_HOME/bin"
 ```
 
-## ไฟล์การตั้งค่าปิยะธอน
+## ไฟล์การตั้งค่าภาษาปิยะธอน
 
-ปิยะธอนใช้ไฟล์ `pyproject.toml` สำหรับการตั้งค่าโครงการ:
+ภาษาปิยะธอนใช้ไฟล์ `pyproject.toml` สำหรับการตั้งค่าโครงการ:
 
 ```toml
 [tool.piyathon]
 version = "0.1.0"
-description = "โครงการปิยะธอน"
+description = "โครงการภาษาปิยะธอน"
 
 [tool.piyathon.scripts]
 start = "piyathon main.pi"
@@ -84,7 +84,7 @@ pandas = "^1.3.0"
 
 ## การตั้งค่า Language Server
 
-ปิยะธอนมาพร้อมกับ Language Server ที่ช่วยในการเขียนโค้ด:
+ภาษาปิยะธอนมาพร้อมกับ Language Server ที่ช่วยในการเขียนโค้ด:
 
 1. ติดตั้ง Language Server:
 
@@ -103,7 +103,7 @@ pip install piyathon-language-server
 
 ## การตั้งค่า Linter และ Formatter
 
-### การใช้ pylint กับปิยะธอน
+### การใช้ pylint กับภาษาปิยะธอน
 
 1. ติดตั้ง pylint-piyathon:
 
@@ -121,7 +121,7 @@ load-plugins=pylint_piyathon
 disable=C0111,C0103
 ```
 
-### การใช้ black กับปิยะธอน
+### การใช้ black กับภาษาปิยะธอน
 
 1. ติดตั้ง black-piyathon:
 
