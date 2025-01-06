@@ -18,11 +18,11 @@ import piyathon_lexer  # pylint: disable=unused-import
 
 project = "ภาษาปิยะธอน (Piyathon)"
 # pylint: disable=redefined-builtin
-copyright = f"{datetime.now().year}, Piyawish Piyawat"
+copyright = f"{datetime.now().year}, ปิยะวิชญ์ ปิยะวัฒน์"
 # pylint: enable=redefined-builtin
 
-author = "Piyawish Piyawat"
-release = "0.0.1"
+author = "ปิยะวิชญ์ ปิยะวัฒน์"
+release = "0.1.1"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -75,3 +75,32 @@ html_extra_path = ["robots.txt"]
 
 html_baseurl = "https://www.piyathon.org/"
 sitemap_url_scheme = "{link}"
+
+
+# -- Options for PDF output --------------------------------------------------
+
+latex_engine = "xelatex"
+
+latex_elements = {
+    "preamble": r"""
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\usepackage{polyglossia}
+\setdefaultlanguage{thai}
+\setotherlanguage{english}
+
+% Enable line breaks for Thai text
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip = 0pt plus 2pt minus 1pt
+
+\setmainfont{Sarabun}
+\setsansfont{Sarabun}
+\setmonofont{Arundina Sans Mono}
+\newfontfamily\thaifonttt{Arundina Sans Mono}
+
+% Custom names for contents and chapters
+\renewcommand{\contentsname}{สารบัญ}
+\renewcommand{\chaptername}{บทที่}
+"""
+}
