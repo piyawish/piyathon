@@ -16,7 +16,7 @@ import piyathon_lexer  # pylint: disable=unused-import
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "Piyathon Documentation"
+project = "ภาษาปิยะธอน (Piyathon)"
 # pylint: disable=redefined-builtin
 copyright = f"{datetime.now().year}, Piyawish Piyawat"
 # pylint: enable=redefined-builtin
@@ -46,8 +46,13 @@ gettext_compact = False
 gettext_uuid = True
 language = "th"
 
-opg_site_url = "https://www.piyathon.org/"
-opg_image = "https://www.piyathon.org/_static/logo.png"
+ogp_site_url = "https://www.piyathon.org/"
+ogp_image = "https://www.piyathon.org/_static/piyathon-og.png"
+ogp_social_cards = {
+    "enable": True,
+    "font": "Noto Sans Thai",
+    "image": "https://www.piyathon.org/_static/piyathon-og.png",
+}
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

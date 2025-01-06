@@ -1,3 +1,6 @@
+default:
+	@echo "No default task defined"
+
 update_pip:
 	-rm requirements.txt
 	pip-compile -v requirements.in
