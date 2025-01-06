@@ -89,6 +89,8 @@ hatch==1.14.0
     # via -r requirements.in
 hatchling==1.27.0
     # via hatch
+html5validator==0.4.2
+    # via -r requirements.in
 httpcore==1.0.7
     # via httpx
 httpx==0.28.1
@@ -236,7 +238,9 @@ pythainlp==5.0.5
 python-dateutil==2.9.0.post0
     # via matplotlib
 pyyaml==6.0.2
-    # via myst-parser
+    # via
+    #   html5validator
+    #   myst-parser
 readme-renderer==44.0
     # via twine
 requests==2.32.3
