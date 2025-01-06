@@ -83,24 +83,31 @@ latex_engine = "xelatex"
 
 latex_elements = {
     "preamble": r"""
+
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{xltxtra}
 \usepackage{polyglossia}
-\setdefaultlanguage{thai}
+\setdefaultlanguage[numerals=thai]{thai}
 \setotherlanguage{english}
 
 % Enable line breaks for Thai text
 \XeTeXlinebreaklocale "th"
-\XeTeXlinebreakskip = 0pt plus 2pt minus 1pt
+% \XeTeXlinebreakskip = 0pt plus 2pt minus 1pt
 
-\setmainfont{Sarabun}
-\setsansfont{Sarabun}
-\setmonofont{Arundina Sans Mono}
 \newfontfamily\thaifonttt{Arundina Sans Mono}
+\setmainfont{Sukhumvit Set}
+\setsansfont{Prompt}
+\setmonofont{Arundina Sans Mono}
 
 % Custom names for contents and chapters
 \renewcommand{\contentsname}{สารบัญ}
 \renewcommand{\chaptername}{บทที่}
+
+\makeatletter
+\renewcommand{\sphinxVerbatimHighlightLine}[1]{\textcolor{red}{#1}}
+\fvset{fontsize=\Large}
+\renewcommand{\Verbatim}[1][1]{\small\oldVerbatim[#1]}
+\makeatother
 """
 }

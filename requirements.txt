@@ -316,7 +316,7 @@ tomlkit==0.13.2
     # via
     #   hatch
     #   pylint
-trove-classifiers==2024.10.21.16
+trove-classifiers==2025.1.6.15
     # via hatchling
 twine==6.0.1
     # via -r requirements.in
