@@ -28,6 +28,7 @@ intermediate
 advanced
 migration
 keywords
+cheatsheet
 ```
 
 ## ทรัพยากรเพิ่มเติม

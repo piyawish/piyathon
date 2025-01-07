@@ -97,6 +97,7 @@ community/index
 - [บทเรียนขั้นสูง](tutorial/advanced.md)
 - [การย้ายจากภาษาไพทอนมาภาษาปิยะธอน](tutorial/migration.md)
 - [คำสำคัญและฟังก์ชันพื้นฐาน](tutorial/keywords.md)
+- [ชีทสรุปภาษาปิยะทอน](tutorial/cheatsheet.md)
 
 ### ตัวอย่าง
 
