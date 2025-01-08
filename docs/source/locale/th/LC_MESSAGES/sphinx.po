@@ -13,3 +13,9 @@ msgstr "หน้าก่อน"
 
 msgid "Search"
 msgstr "ค้นหา"
+
+msgid "continues on next page"
+msgstr "ต่อในหน้าถัดไป"
+
+msgid "continued from previous page"
+msgstr "ต่อจากหน้าที่แล้ว"
