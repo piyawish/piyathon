@@ -19,7 +19,7 @@ attrs==24.3.0
     # via
     #   cattrs
     #   lsprotocol
-autopep8==2.3.1
+autopep8==2.3.2
     # via -r requirements.in
 babel==2.16.0
     # via
@@ -144,7 +144,7 @@ mdit-py-plugins==0.4.2
     # via myst-parser
 mdurl==0.1.2
     # via markdown-it-py
-more-itertools==10.5.0
+more-itertools==10.6.0
     # via
     #   jaraco-classes
     #   jaraco-functools
@@ -196,13 +196,13 @@ pluggy==1.5.0
     #   pytest
 ptyprocess==0.7.0
     # via pexpect
-pyarrow==18.1.0
+pyarrow==19.0.0
     # via pylance
 pycodestyle==2.12.1
     # via
     #   autopep8
     #   flake8
-pydantic==2.10.4
+pydantic==2.10.5
     # via rstcheck-core
 pydantic-core==2.27.2
     # via pydantic
@@ -210,14 +210,14 @@ pyflakes==3.2.0
     # via flake8
 pygls==1.3.1
     # via esbonio
-pygments==2.19.0
+pygments==2.19.1
     # via
     #   doc8
     #   furo
     #   readme-renderer
     #   rich
     #   sphinx
-pylance==0.21.0
+pylance==0.22.0
     # via -r requirements.in
 pylint==3.3.3
     # via -r requirements.in
@@ -314,13 +314,13 @@ starlette==0.45.2
     # via sphinx-autobuild
 stevedore==5.4.0
     # via doc8
-tomli-w==1.1.0
+tomli-w==1.2.0
     # via hatch
 tomlkit==0.13.2
     # via
     #   hatch
     #   pylint
-trove-classifiers==2025.1.6.15
+trove-classifiers==2025.1.15.22
     # via hatchling
 twine==6.0.1
     # via -r requirements.in
@@ -338,13 +338,13 @@ urllib3==2.3.0
     #   twine
 userpath==1.9.2
     # via hatch
-uv==0.5.14
+uv==0.5.21
     # via hatch
 uvicorn==0.34.0
     # via sphinx-autobuild
-virtualenv==20.28.1
+virtualenv==20.29.1
     # via hatch
-watchfiles==1.0.3
+watchfiles==1.0.4
     # via sphinx-autobuild
 websockets==14.1
     # via sphinx-autobuild
