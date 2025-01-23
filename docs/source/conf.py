@@ -109,5 +109,12 @@ latex_elements = {
 \fvset{fontsize=\Large}
 \renewcommand{\Verbatim}[1][1]{\small\oldVerbatim[#1]}
 \makeatother
-"""
+""",
+    "extrapackages": r"""
+\usepackage{draftwatermark}
+\SetWatermarkText{Draft No. 1}
+\SetWatermarkScale{0.5}
+\SetWatermarkColor[gray]{0.95}
+\SetWatermarkAngle{45}
+""",
 }
