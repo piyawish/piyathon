@@ -4,6 +4,7 @@
 # Generated module file. Do not edit directly.
 
 import random
+from abc import ABC
 
 
 # Classes
@@ -11,7 +12,7 @@ class สุ่ม(random.Random):
     pass
 
 
-class สุ่มระบบ(random.SystemRandom):
+class สุ่มระบบ(random.SystemRandom, ABC):
     pass
 
 
