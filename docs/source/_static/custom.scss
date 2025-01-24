@@ -18,7 +18,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p.rubric {
   font-family: var(--font-family);
   font-weight: 600;
   line-height: 1.5;
@@ -32,7 +33,8 @@ h1 {
 }
 
 /* Section headers styling */
-h2 {
+h2,
+p.rubric {
   font-size: 1.8em;
   color: #2b5b84;
   margin-top: 1.5em;
