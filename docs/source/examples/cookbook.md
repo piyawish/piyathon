@@ -126,7 +126,7 @@
     """ประมวลผลไฟล์ CSV ทีละส่วน"""
     ด้วย เปิด(ชื่อไฟล์, newline='', encoding='utf-8') เป็น csvfile:
         reader = csv.DictReader(csvfile)
-        ขณะที่ จริง:
+        ขณะ จริง:
             batch = รายการ(islice(reader, ขนาด_batch))
             ถ้า ไม่ batch:
                 หยุด

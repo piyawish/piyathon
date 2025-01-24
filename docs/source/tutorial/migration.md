@@ -18,7 +18,7 @@
 | elif           | อื่นถ้า            |
 | else           | อื่น              |
 | for            | สำหรับ            |
-| while          | ขณะที่            |
+| while          | ขณะ             |
 | break          | หยุด              |
 | continue       | ทำต่อ             |
 | return         | คืนค่า            |
