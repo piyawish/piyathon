@@ -112,8 +112,8 @@ latex_elements = {
 """,
     "extrapackages": r"""
 \usepackage{draftwatermark}
-\SetWatermarkText{Draft No. 1}
-\SetWatermarkScale{0.5}
+\SetWatermarkText{Piyathon 0.1.1-01}
+\SetWatermarkScale{0.3}
 \SetWatermarkColor[gray]{0.95}
 \SetWatermarkAngle{45}
 """,

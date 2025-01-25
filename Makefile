@@ -9,6 +9,8 @@ update_pip:
 test:
 	find ../cpython -name "*.py" > tests/cpython_file_list.txt
 	pytest tests
+	@rm tests/cpython_file_list.txt
+	@rm -rf tests/translated
 
 build:
 	hatch build
