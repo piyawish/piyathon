@@ -1,6 +1,24 @@
 # Copyright (c) 2024 Piyawish Piyawat
 # Licensed under the MIT License
 
+"""Script for generating translated Python module wrappers.
+
+This utility generates Python module wrappers that provide Thai language bindings
+for standard Python modules. It uses translation mappings to create modules that
+expose both Thai and English names for classes, methods, functions, and constants.
+
+Dependencies:
+    - os: For directory operations
+    - translated_list: Contains the Thai-English translation mappings
+
+Output Structure:
+    Creates Python modules in the piyathon/Lib directory with:
+    - Thai translations of all public module attributes
+    - Original English names preserved
+    - Generated __all__ list combining both Thai and English names
+    - Copyright and license information
+"""
+
 import os
 
 # Import the translated_list module
@@ -44,19 +62,42 @@ __all__ = list(set(eng_names + thai_names))
 """
 
 
-# Function to generate class translations
 def generate_classes(classes, original_module):
+    """Generate class translation assignments.
+
+    Args:
+        classes (dict): Dictionary mapping Thai class names to English class names
+        original_module (str): Name of the original Python module
+
+    Returns:
+        str: Python code defining class translations
+
+    Example:
+        >>> generate_classes({"สุ่ม": "Random"}, "random")
+        'สุ่ม = random.Random'
+    """
     return "\n".join(
         [
-            f"class {thai_name}({original_module}.{eng_name}):\n    pass\n\n"
-            for eng_name, thai_name in classes.items()
-            if not eng_name.startswith("_")
+            f"{thai_name} = {original_module}.{eng_name}"
+            for thai_name, eng_name in classes.items()
         ]
     )
 
 
-# Function to generate method translations
 def generate_methods(methods, original_module):
+    """Generate method translation assignments.
+
+    Args:
+        methods (dict): Dictionary mapping Thai method names to English method names
+        original_module (str): Name of the original Python module
+
+    Returns:
+        str: Python code defining method translations
+
+    Example:
+        >>> generate_methods({"เลือก": "choice"}, "random")
+        'เลือก = random.choice'
+    """
     return "\n".join(
         [
             f"{thai_name} = {original_module}.{eng_name}"
@@ -69,8 +110,20 @@ def generate_methods(methods, original_module):
 generate_functions = generate_methods
 
 
-# Function to generate constant translations
 def generate_constants(constants, original_module):
+    """Generate constant translation assignments.
+
+    Args:
+        constants (dict): Dictionary mapping Thai constant names to English constant names
+        original_module (str): Name of the original Python module
+
+    Returns:
+        str: Python code defining constant translations
+
+    Example:
+        >>> generate_constants({"พาย": "PI"}, "math")
+        'พาย = math.PI'
+    """
     return "\n".join(
         [
             f"{thai_name} = {original_module}.{eng_name}"
