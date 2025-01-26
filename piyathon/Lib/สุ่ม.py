@@ -3,6 +3,37 @@
 
 # Generated module file. Do not edit directly.
 
+"""
+Piyathon Random Number Generation Module (สุ่ม)
+
+This module provides Thai language bindings for Python's random module,
+offering a complete suite of random number generation tools and utilities.
+
+Core Components:
+    - สุ่ม: Main random number generator class (maps to random.Random)
+    - สุ่มระบบ: System random number generator (maps to random.SystemRandom)
+    - Various distribution functions (normal, beta, gamma, etc.)
+    - Utility functions for sampling and shuffling
+    - Mathematical constants used in distributions
+
+Key Features:
+    - Full support for all random module functionality
+    - Thai language function and class names
+    - Maintains all original Python random module behaviors
+    - Thread-safe random number generation options
+
+Integration Points:
+    - Compatible with all standard Python random module use cases
+    - Can be used interchangeably with the original random module
+    - Supports both pure Python and system random number generation
+
+Usage Examples:
+    >>> from piyathon.Lib.สุ่ม import สุ่มจำนวนเต็ม
+    >>> สุ่มจำนวนเต็ม(1, 10)  # Random integer between 1 and 10
+    >>> from piyathon.Lib.สุ่ม import สุ่ม
+    >>> gen = สุ่ม()  # Create a random number generator instance
+"""
+
 import random
 from abc import ABC
 

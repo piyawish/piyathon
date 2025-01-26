@@ -3,6 +3,51 @@
 
 # Generated module file. Do not edit directly.
 
+"""
+Piyathon Turtle Graphics Module (เต่า)
+
+This module provides Thai language bindings for Python's turtle graphics module,
+offering a complete set of turtle graphics functionality for educational and
+creative programming.
+
+Core Components:
+    Classes:
+        - เต่า: Main turtle graphics class (maps to turtle.Turtle)
+        - หน้าจอเต่า: Turtle screen management (maps to turtle.TurtleScreen)
+        - ผ้าใบ: Drawing canvas (maps to turtle.Canvas)
+        - ปากกา: Drawing pen (maps to turtle.Pen)
+        - Various supporting classes for shapes, navigation, and error handling
+
+    Functions:
+        - Movement: เดินหน้า, ถอยหลัง, ซ้าย, ขวา, etc.
+        - Drawing: วงกลม, จุด, เขียน, etc.
+        - Pen control: ลงปากกา, ยกปากกา, สีปากกา, etc.
+        - Screen management: หน้าจอ, ล้างหน้าจอ, อัปเดต, etc.
+
+Key Features:
+    - Complete turtle graphics functionality in Thai
+    - Support for both simple and complex drawing operations
+    - Event handling and animation capabilities
+    - Screen and window management utilities
+
+Integration Points:
+    - Compatible with all standard turtle module features
+    - Can be used for educational programming
+    - Supports interactive graphics applications
+
+Usage Examples:
+    >>> from piyathon.Lib.เต่า import เต่า
+    >>> t = เต่า()
+    >>> t.เดินหน้า(100)
+    >>> t.ขวา(90)
+    >>> t.วงกลม(50)
+
+Known Limitations:
+    - Performance depends on the underlying Tkinter implementation
+    - Some complex animations may require manual screen updates
+    - Limited to 2D graphics operations
+"""
+
 import turtle
 
 

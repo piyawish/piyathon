@@ -1,6 +1,36 @@
 # Copyright (c) 2024 Piyawish Piyawat
 # Licensed under the MIT License
 
+"""
+Piyathon-Python Keyword Mapping Module
+
+This module defines the bidirectional mapping between Python and Piyathon keywords,
+built-in functions, and special variables. It serves as the foundation for the
+translation system between the two languages.
+
+Core Components:
+    - PYTHON_KEYWORDS: Maps Python keywords to their Piyathon equivalents
+    - PYTHON_BUILTIN_FUNCTIONS: Maps Python built-in functions to Piyathon names
+    - PYTHON_SPECIAL_BUILTIN_VARIABLES: Maps Python special variables to Piyathon names
+    - PY_TO_PI: Combined dictionary for Python to Piyathon translation
+    - PI_TO_PY: Inverse mapping for Piyathon to Python translation
+
+Data Structure Relationships:
+    - All mappings are one-to-one between Python and Piyathon identifiers
+    - PY_TO_PI combines all three mapping dictionaries
+    - PI_TO_PY is the inverse of PY_TO_PI for reverse translation
+
+Integration Points:
+    - Used by PiyathonTranslator for code translation
+    - Referenced during tokenization and untokenization processes
+    - Supports both standard keywords and special method names
+
+Known Limitations:
+    - Only covers Python's built-in keywords and functions
+    - Does not include standard library function mappings
+    - Assumes one-to-one mapping between languages
+"""
+
 PYTHON_KEYWORDS = {
     "and": "และ",
     "as": "เป็น",

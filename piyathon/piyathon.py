@@ -1,6 +1,37 @@
 # Copyright (c) 2024 Piyawish Piyawat
 # Licensed under the MIT License
 
+"""
+Piyathon Command Line Interface and Runtime Environment
+
+This module serves as the main entry point for the Piyathon programming language,
+providing command-line interface functionality and runtime execution environment
+for Piyathon (.pi) source files.
+
+Core Functionality:
+    - Parses command line arguments for Piyathon source files
+    - Reads and validates Piyathon source code
+    - Translates Piyathon code to Python using PiyathonTranslator
+    - Sets up runtime environment with custom library path
+    - Executes translated Python code in an isolated namespace
+
+Dependencies:
+    - sys: For system-level operations and exit handling
+    - os: For path manipulation and file operations
+    - argparse: For command-line argument parsing
+    - piyathon_translator: For Piyathon to Python code translation
+
+Integration Points:
+    - Integrates with PiyathonTranslator for code translation
+    - Interfaces with custom Piyathon standard library in the Lib directory
+    - Works with the command line for file input and execution
+
+Known Limitations:
+    - Only processes single .pi files (no module imports yet)
+    - Executes in an isolated namespace with limited global scope
+    - Error handling is basic with general exception catching
+"""
+
 import sys
 import os
 import argparse
@@ -9,6 +40,19 @@ from . import __version__
 
 
 def parse_arguments():
+    """
+    Parse and validate command-line arguments for Piyathon execution.
+
+    Returns:
+        argparse.Namespace: Parsed command-line arguments containing:
+            - source_file (str): Path to the Piyathon source file (.pi)
+            - version (bool): Flag for version information display
+
+    Example:
+        >>> args = parse_arguments()
+        >>> print(args.source_file)
+        'example.pi'
+    """
     parser = argparse.ArgumentParser(
         description=f"Piyathon {__version__}\n"
         "Copyright (c) 2024, Piyawish Piyawat\n"
@@ -23,6 +67,29 @@ def parse_arguments():
 
 
 def main():
+    """
+    Main entry point for the Piyathon interpreter.
+
+    This function orchestrates the entire Piyathon execution process:
+    1. Parses command-line arguments
+    2. Validates the source file extension
+    3. Reads and processes the source file
+    4. Translates Piyathon code to Python
+    5. Sets up the runtime environment
+    6. Executes the translated code
+
+    Side Effects:
+        - Modifies sys.path to include Piyathon standard library
+        - Creates and populates a new execution namespace
+        - Writes to stdout/stderr for error reporting
+
+    Exit Codes:
+        - 0: Successful execution
+        - 1: Various error conditions (file not found, invalid extension, etc.)
+
+    Example:
+        $ python -m piyathon example.pi
+    """
     args = parse_arguments()
     source_file = args.source_file
 
