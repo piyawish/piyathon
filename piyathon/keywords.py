@@ -108,7 +108,7 @@ PYTHON_BUILTIN_FUNCTIONS = {
     "id": "รหัส",
     "input": "รับค่า",
     "int": "จำนวนเต็ม",
-    "isinstance": "เป็นอินสแตนซ์",
+    "isinstance": "เป็นชนิด",
     "issubclass": "เป็นคลาสลูก",
     "iter": "วนซ้ำ",
     "len": "ความยาว",

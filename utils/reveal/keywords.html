@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Piyathon Keywords</title>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github.min.css">
+	<style>
+		.comparison {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			gap: 20px;
+		}
+
+		.comparison>div {
+			flex: 1;
+		}
+
+		.comparison h3 {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		pre {
+			margin: 0 !important;
+		}
+
+		code {
+			padding: 10px !important;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>Piyathon Keywords</h1>
+				<h3>Python with Thai Keywords</h3>
+			</section>
+
+			<!-- Value Keywords -->
+			<section>
+				<h2>Value Keywords</h2>
+				<div class="comparison">
+					<div>
+						<h3>Python</h3>
+						<pre><code class="language-python">x = True
+y = False
+z = None
+
+def greet():
+    return "Hello"
+
+class Animal:
+    pass
+
+square = lambda x: x * x</code></pre>
+					</div>
+					<div>
+						<h3>Piyathon</h3>
+						<pre><code class="language-piyathon">x = จริง
+y = เท็จ
+z = ไม่มีค่า
+
+นิยาม ทักทาย():
+    คืนค่า "สวัสดี"
+
+ชั้น สัตว์:
+    ผ่าน
+
+สี่เหลี่ยม = แลมบ์ดา x: x * x</code></pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- Control Flow - If/Elif/Else -->
+			<section>
+				<h2>Control Flow - Conditionals</h2>
+				<div class="comparison">
+					<div>
+						<h3>Python</h3>
+						<pre><code class="language-python">if x > 0:
+    print("Positive")
+elif x < 0:
+    print("Negative")
+else:
+    print("Zero")</code></pre>
+					</div>
+					<div>
+						<h3>Piyathon</h3>
+						<pre><code class="language-piyathon">ถ้า x > 0:
+    พิมพ์("บวก")
+อื่นถ้า x < 0:
+    พิมพ์("ลบ")
+อื่น:
+    พิมพ์("ศูนย์")</code></pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- Control Flow - Loops -->
+			<section>
+				<h2>Control Flow - Loops</h2>
+				<div class="comparison">
+					<div>
+						<h3>Python</h3>
+						<pre><code class="language-python">for i in range(5):
+    if i == 2:
+        continue
+    if i == 4:
+        break
+    print(i)
+
+while x > 0:
+    x -= 1</code></pre>
+					</div>
+					<div>
+						<h3>Piyathon</h3>
+						<pre><code class="language-piyathon">สำหรับ i ใน ช่วง(5):
+    ถ้า i == 2:
+        ทำต่อ
+    ถ้า i == 4:
+        หยุด
+    พิมพ์(i)
+
+ขณะ x > 0:
+    x -= 1</code></pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- Control Flow - Exception Handling -->
+			<section>
+				<h2>Control Flow - Exception Handling</h2>
+				<div class="comparison">
+					<div>
+						<h3>Python</h3>
+						<pre><code class="language-python">try:
+    result = 10 / 0
+except ZeroDivisionError as e:
+    print(f"Error: {e}")
+finally:
+    print("Done")
+
+def check_value(x):
+    if x < 0:
+        raise ValueError("Negative")</code></pre>
+					</div>
+					<div>
+						<h3>Piyathon</h3>
+						<pre><code class="language-piyathon">ลอง:
+    ผลลัพธ์ = 10 / 0
+ยกเว้น ZeroDivisionError เป็น e:
+    พิมพ์(f"ข้อผิดพลาด: {e}")
+สุดท้าย:
+    พิมพ์("เสร็จสิ้น")
+
+นิยาม ตรวจสอบค่า(x):
+    ถ้า x < 0:
+        ยก ValueError("ติดลบ")</code></pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- Pattern Matching -->
+			<section>
+				<h2>Pattern Matching (Python 3.10+)</h2>
+				<div class="comparison">
+					<div>
+						<h3>Python</h3>
+						<pre><code class="language-python">match status:
+    case 200:
+        print("OK")
+    case 404:
+        print("Not Found")
+    case _:
+        print("Unknown")</code></pre>
+					</div>
+					<div>
+						<h3>Piyathon</h3>
+						<pre><code class="language-piyathon">เทียบ สถานะ:
+    เมื่อ 200:
+        พิมพ์("ตกลง")
+    เมื่อ 404:
+        พิมพ์("ไม่พบ")
+    เมื่อ _:
+        พิมพ์("ไม่รู้จัก")</code></pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- Logical Operators -->
+			<section>
+				<h2>Logical Operators</h2>
+				<div class="comparison">
+					<div>
+						<h3>Python</h3>
+						<pre><code class="language-python">if x > 0 and y > 0:
+    print("Both positive")
+
+if x is None or y is None:
+    print("One is None")
+
+if not ready:
+    print("Not ready")
+
+if x in [1, 2, 3]:
+    print("Found")</code></pre>
+					</div>
+					<div>
+						<h3>Piyathon</h3>
+						<pre><code class="language-piyathon">ถ้า x > 0 และ y > 0:
+    พิมพ์("ทั้งคู่เป็นบวก")
+
+ถ้า x คือ ไม่มีค่า หรือ y คือ ไม่มีค่า:
+    พิมพ์("หนึ่งในนั้นเป็นไม่มีค่า")
+
+ถ้า ไม่ พร้อม:
+    พิมพ์("ยังไม่พร้อม")
+
+ถ้า x ใน [1, 2, 3]:
+    พิมพ์("พบแล้ว")</code></pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- Variable and Module Handling -->
+			<section>
+				<h2>Variable and Module Handling</h2>
+				<div class="comparison">
+					<div>
+						<h3>Python</h3>
+						<pre><code class="language-python">global x
+nonlocal y
+
+import math
+from os import path
+import numpy as np
+
+del old_value</code></pre>
+					</div>
+					<div>
+						<h3>Piyathon</h3>
+						<pre><code class="language-piyathon">ทั่วไป x
+นอกเขต y
+
+นำเข้า math
+จาก os นำเข้า path
+นำเข้า numpy เป็น np
+
+ลบ ค่าเก่า</code></pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- Context Management -->
+			<section>
+				<h2>Context Management</h2>
+				<div class="comparison">
+					<div>
+						<h3>Python</h3>
+						<pre><code class="language-python">with open('file.txt') as f:
+    content = f.read()
+
+async def fetch_data():
+    async with session.get(url) as response:
+        await response.text()</code></pre>
+					</div>
+					<div>
+						<h3>Piyathon</h3>
+						<pre><code class="language-piyathon">ด้วย เปิด('file.txt') เป็น f:
+    เนื้อหา = f.อ่าน()
+
+ไม่ประสาน นิยาม ดึงข้อมูล():
+    ไม่ประสาน ด้วย session.get(url) เป็น response:
+        รอประสาน response.text()</code></pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- Type-Related -->
+			<section>
+				<h2>Type-Related Keywords</h2>
+				<div class="comparison">
+					<div>
+						<h3>Python</h3>
+						<pre><code class="language-python">assert x > 0, "Must be positive"
+
+t = type("MyType", (), {})
+isinstance(obj, t)</code></pre>
+					</div>
+					<div>
+						<h3>Piyathon</h3>
+						<pre><code class="language-piyathon">ยืนยัน x > 0, "ต้องเป็นบวก"
+
+t = ชนิด("ชนิดของฉัน", (), {})
+เป็นชนิด(obj, t)</code></pre>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<!-- Load scripts in correct order -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+	<script src="highlight.piyathon.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/highlight.js"></script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			console.log('DOMContentLoaded event fired');
+
+			// Debug: Check if hljs is available
+			console.log('hljs available:', !!window.hljs);
+			console.log('Registered languages:', hljs.listLanguages());
+
+			// Initialize Reveal.js with highlight plugin
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				plugins: [RevealHighlight],
+				highlight: {
+					highlightOnLoad: false,
+					escapeHTML: false
+				}
+			});
+
+			// Function to highlight code blocks
+			function highlightCode() {
+				document.querySelectorAll('pre code').forEach((block) => {
+					console.log('Processing block:', block.className);
+					// Clear previous highlighting
+					if (block.hasAttribute('data-highlighted')) {
+						block.removeAttribute('data-highlighted');
+					}
+					// Highlight the block
+					hljs.highlightElement(block);
+				});
+			}
+
+			// Initial highlighting
+			highlightCode();
+
+			// Re-run highlighting when slide changes
+			Reveal.on('slidechanged', function () {
+				console.log('Slide changed, re-highlighting code blocks');
+				highlightCode();
+			});
+		});
+	</script>
+</body>
+
+</html>
