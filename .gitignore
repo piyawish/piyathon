@@ -164,7 +164,3 @@ cython_debug/
 *.code-workspace
 tmp/
 .DS_Store
-c2p*
-!tests/piyathon/Lib/
-tests/translated/
-tests/cpython_file_list.txt
