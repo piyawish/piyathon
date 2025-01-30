@@ -2,25 +2,25 @@
 # Licensed under the MIT License
 
 """
-Unit Tests for Piyathon-Python Translation Tool
+ชุดทดสอบสำหรับเครื่องมือแปลภาษาระหว่าง Piyathon และ Python
 
-This module contains unit tests for the command-line tool that translates
-between Piyathon (.pi) and Python (.py) source files. It verifies file handling,
-error conditions, and bidirectional translation functionality.
+โมดูลนี้ประกอบด้วยชุดทดสอบสำหรับเครื่องมือคำสั่งที่ใช้แปลระหว่าง
+ไฟล์ต้นฉบับ Piyathon (.pi) และ Python (.py) โดยตรวจสอบการจัดการไฟล์
+เงื่อนไขข้อผิดพลาด และฟังก์ชันการแปลทั้งสองทิศทาง
 
-Test Coverage:
-    - Command-line argument validation
-    - File extension validation
-    - File existence and readability checks
-    - Error message formatting
-    - Bidirectional translation integrity
-    - File I/O operations
+ขอบเขตการทดสอบ:
+    - การตรวจสอบอาร์กิวเมนต์ของคำสั่ง
+    - การตรวจสอบนามสกุลไฟล์
+    - การตรวจสอบการมีอยู่และความสามารถในการอ่านไฟล์
+    - การจัดรูปแบบข้อความแสดงข้อผิดพลาด
+    - ความสมบูรณ์ของการแปลทั้งสองทิศทาง
+    - การดำเนินการกับไฟล์ I/O
 
-Dependencies:
-    - pytest: For test framework and fixtures
-    - unittest.mock: For mocking system calls and file operations
-    - sys: For command-line argument manipulation
-    - tmp_path: For temporary file creation and cleanup
+การพึ่งพา:
+    - pytest: สำหรับเฟรมเวิร์คและ fixtures การทดสอบ
+    - unittest.mock: สำหรับการจำลองการเรียกระบบและการดำเนินการกับไฟล์
+    - sys: สำหรับการจัดการอาร์กิวเมนต์ของคำสั่ง
+    - tmp_path: สำหรับการสร้างและล้างไฟล์ชั่วคราว
 """
 
 import sys
@@ -31,17 +31,17 @@ from piyathon.p2p import main
 
 def test_wrong_number_of_arguments(capsys):
     """
-    Test behavior when incorrect number of command-line arguments is provided.
+    ทดสอบพฤติกรรมเมื่อมีการระบุจำนวนอาร์กิวเมนต์ของคำสั่งไม่ถูกต้อง
 
-    This test verifies that the tool properly handles missing arguments,
-    ensuring it exits with the correct error code and message.
+    การทดสอบนี้ตรวจสอบว่าเครื่องมือจัดการกรณีที่ขาดอาร์กิวเมนต์อย่างถูกต้อง
+    โดยตรวจสอบว่ามีการออกจากโปรแกรมด้วยรหัสข้อผิดพลาดและข้อความที่ถูกต้อง
 
-    Args:
-        capsys: pytest fixture for capturing stdout/stderr
+    อาร์กิวเมนต์:
+        capsys: pytest fixture สำหรับการจับ stdout/stderr
 
-    Assertions:
-        - Exits with SystemExit code 2
-        - Error message indicates missing required argument
+    การตรวจสอบ:
+        - ออกจากโปรแกรมด้วย SystemExit รหัส 2
+        - ข้อความแสดงข้อผิดพลาดระบุว่าขาดอาร์กิวเมนต์ที่จำเป็น
     """
     test_args = ["p2p.py"]
     with patch.object(sys, "argv", test_args):
@@ -55,17 +55,17 @@ def test_wrong_number_of_arguments(capsys):
 
 def test_same_extension(capsys):
     """
-    Test behavior when source and destination files have the same extension.
+    ทดสอบพฤติกรรมเมื่อไฟล์ต้นฉบับและปลายทางมีนามสกุลเดียวกัน
 
-    This test ensures that the tool properly validates file extensions,
-    requiring different extensions for source and destination files.
+    การทดสอบนี้ตรวจสอบว่าเครื่องมือตรวจสอบนามสกุลไฟล์อย่างถูกต้อง
+    โดยต้องการให้ไฟล์ต้นฉบับและปลายทางมีนามสกุลที่แตกต่างกัน
 
-    Args:
-        capsys: pytest fixture for capturing stdout/stderr
+    อาร์กิวเมนต์:
+        capsys: pytest fixture สำหรับการจับ stdout/stderr
 
-    Assertions:
-        - Exits with SystemExit code 1
-        - Error message indicates invalid extension combination
+    การตรวจสอบ:
+        - ออกจากโปรแกรมด้วย SystemExit รหัส 1
+        - ข้อความแสดงข้อผิดพลาดระบุว่านามสกุลไฟล์ไม่ถูกต้อง
     """
     test_args = ["p2p.py", "source.py", "destination.py"]
     with patch.object(sys, "argv", test_args):
@@ -82,17 +82,17 @@ def test_same_extension(capsys):
 
 def test_invalid_extension(capsys):
     """
-    Test behavior when files have invalid extensions.
+    ทดสอบพฤติกรรมเมื่อไฟล์มีนามสกุลไม่ถูกต้อง
 
-    This test verifies that the tool properly validates file extensions,
-    requiring either .py or .pi extensions for both files.
+    การทดสอบนี้ตรวจสอบว่าเครื่องมือตรวจสอบนามสกุลไฟล์อย่างถูกต้อง
+    โดยต้องการให้ทั้งสองไฟล์มีนามสกุล .py หรือ .pi เท่านั้น
 
-    Args:
-        capsys: pytest fixture for capturing stdout/stderr
+    อาร์กิวเมนต์:
+        capsys: pytest fixture สำหรับการจับ stdout/stderr
 
-    Assertions:
-        - Exits with SystemExit code 1
-        - Error message indicates invalid file extensions
+    การตรวจสอบ:
+        - ออกจากโปรแกรมด้วย SystemExit รหัส 1
+        - ข้อความแสดงข้อผิดพลาดระบุว่านามสกุลไฟล์ไม่ถูกต้อง
     """
     test_args = ["p2p.py", "source.txt", "destination.pi"]
     with patch.object(sys, "argv", test_args):
@@ -108,17 +108,17 @@ def test_invalid_extension(capsys):
 
 def test_file_not_found(capsys):
     """
-    Test behavior when the source file does not exist.
+    ทดสอบพฤติกรรมเมื่อไม่พบไฟล์ต้นฉบับ
 
-    This test verifies that the tool properly handles non-existent input files,
-    providing appropriate error messages and exit codes.
+    การทดสอบนี้ตรวจสอบว่าเครื่องมือจัดการกรณีที่ไม่พบไฟล์อินพุตอย่างถูกต้อง
+    โดยแสดงข้อความแสดงข้อผิดพลาดและรหัสออกจากโปรแกรมที่เหมาะสม
 
-    Args:
-        capsys: pytest fixture for capturing stdout/stderr
+    อาร์กิวเมนต์:
+        capsys: pytest fixture สำหรับการจับ stdout/stderr
 
-    Assertions:
-        - Exits with SystemExit code 1
-        - Error message indicates file not found
+    การตรวจสอบ:
+        - ออกจากโปรแกรมด้วย SystemExit รหัส 1
+        - ข้อความแสดงข้อผิดพลาดระบุว่าไม่พบไฟล์
     """
     test_args = ["p2p.py", "nonexistent.pi", "destination.py"]
     with patch.object(sys, "argv", test_args):
@@ -132,17 +132,17 @@ def test_file_not_found(capsys):
 
 def test_file_read_error(capsys):
     """
-    Test behavior when the source file cannot be read.
+    ทดสอบพฤติกรรมเมื่อไม่สามารถอ่านไฟล์ต้นฉบับได้
 
-    This test ensures that the tool properly handles I/O errors when reading
-    the source file, providing appropriate error messages and exit codes.
+    การทดสอบนี้ตรวจสอบว่าเครื่องมือจัดการข้อผิดพลาด I/O เมื่ออ่านไฟล์ต้นฉบับอย่างถูกต้อง
+    โดยแสดงข้อความแสดงข้อผิดพลาดและรหัสออกจากโปรแกรมที่เหมาะสม
 
-    Args:
-        capsys: pytest fixture for capturing stdout/stderr
+    อาร์กิวเมนต์:
+        capsys: pytest fixture สำหรับการจับ stdout/stderr
 
-    Assertions:
-        - Exits with SystemExit code 1
-        - Error message indicates file read error
+    การตรวจสอบ:
+        - ออกจากโปรแกรมด้วย SystemExit รหัส 1
+        - ข้อความแสดงข้อผิดพลาดระบุว่าไม่สามารถอ่านไฟล์ได้
     """
     test_args = ["p2p.py", "source.pi", "destination.py"]
     with patch.object(sys, "argv", test_args):
@@ -158,25 +158,25 @@ def test_file_read_error(capsys):
 
 def test_bidirectional_translation(tmp_path, capsys):
     """
-    Test complete bidirectional translation workflow.
+    ทดสอบขั้นตอนการแปลทั้งสองทิศทางอย่างสมบูรณ์
 
-    This test verifies the full translation cycle:
-    1. Python -> Piyathon translation
-    2. Piyathon -> Python translation
-    3. Comparison of original and final Python code
+    การทดสอบนี้ตรวจสอบวงจรการแปลทั้งหมด:
+    1. การแปลจาก Python เป็น Piyathon
+    2. การแปลจาก Piyathon เป็น Python
+    3. การเปรียบเทียบโค้ด Python ต้นฉบับและสุดท้าย
 
-    The test uses temporary files to avoid affecting the actual filesystem
-    and ensures proper cleanup.
+    การทดสอบใช้ไฟล์ชั่วคราวเพื่อหลีกเลี่ยงผลกระทบต่อระบบไฟล์จริง
+    และรับประกันการล้างที่เหมาะสม
 
-    Args:
-        tmp_path: pytest fixture for temporary directory
-        capsys: pytest fixture for capturing stdout/stderr
+    อาร์กิวเมนต์:
+        tmp_path: pytest fixture สำหรับไดเรกทอรีชั่วคราว
+        capsys: pytest fixture สำหรับการจับ stdout/stderr
 
-    Assertions:
-        - Successful translation in both directions
-        - Content preservation through translation cycle
-        - Proper file creation and cleanup
-        - Correct success messages
+    การตรวจสอบ:
+        - การแปลสำเร็จในทั้งสองทิศทาง
+        - การรักษาเนื้อหาผ่านวงจรการแปล
+        - การสร้างและล้างไฟล์อย่างเหมาะสม
+        - ข้อความแสดงความสำเร็จที่ถูกต้อง
     """
     # Create temporary files
     source_py = tmp_path / "p2p.py"

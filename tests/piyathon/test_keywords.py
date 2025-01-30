@@ -2,18 +2,18 @@
 # Licensed under the MIT License
 
 """
-Unit Tests for Piyathon Keywords Module
+ชุดทดสอบสำหรับโมดูลคำสำคัญของ Piyathon
 
-This module contains unit tests for the Piyathon-Python keyword mapping functionality.
-It verifies the correctness and consistency of keyword translations between the two languages.
+โมดูลนี้ประกอบด้วยชุดทดสอบสำหรับฟังก์ชันการแปลคำสำคัญระหว่าง Piyathon และ Python
+เพื่อตรวจสอบความถูกต้องและความสอดคล้องของการแปลคำสำคัญระหว่างทั้งสองภาษา
 
-Test Coverage:
-    - Keyword mapping completeness
-    - Bidirectional translation consistency
-    - Special character handling
-    - Edge cases and invalid keywords
+ขอบเขตการทดสอบ:
+    - ความครบถ้วนของการแปลคำสำคัญ
+    - ความสอดคล้องของการแปลทั้งสองทิศทาง
+    - การจัดการอักขระพิเศษ
+    - กรณีพิเศษและคำสำคัญที่ไม่ถูกต้อง
 
-Dependencies:
-    - pytest: For test framework and fixtures
-    - piyathon.keywords: For keyword mapping dictionaries
+การพึ่งพา:
+    - pytest: สำหรับเฟรมเวิร์คและ fixtures การทดสอบ
+    - piyathon.keywords: สำหรับพจนานุกรมการแปลคำสำคัญ
 """

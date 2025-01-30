@@ -2,15 +2,15 @@
 # Licensed under the MIT License
 
 """
-Test configuration and shared fixtures for the Piyathon test suite.
+การกำหนดค่าการทดสอบและ fixtures ที่ใช้ร่วมกันสำหรับชุดทดสอบ Piyathon
 
-This module provides common logging functionality and fixtures that can be used
-across all test files in the project. It sets up a standardized logging
-configuration that can be reused by different test modules.
+โมดูลนี้จัดเตรียมฟังก์ชันการบันทึกข้อมูลและ fixtures ที่สามารถใช้ร่วมกัน
+ในไฟล์ทดสอบทั้งหมดของโครงการ โดยตั้งค่าการกำหนดค่าการบันทึกข้อมูลมาตรฐาน
+ที่สามารถนำกลับมาใช้ในโมดูลทดสอบต่างๆ
 
-Key Components:
-    - Logging setup with customizable log levels
-    - Session-scoped pytest fixture for accessing the logger
+ส่วนประกอบหลัก:
+    - การตั้งค่าการบันทึกข้อมูลที่สามารถปรับระดับได้
+    - pytest fixture ที่มีขอบเขตระดับเซสชันสำหรับการเข้าถึงตัวบันทึกข้อมูล
 """
 
 import logging
@@ -19,17 +19,17 @@ import pytest
 
 def setup_logger(level=logging.INFO):
     """
-    Configure and return a logger with the specified logging level.
+    กำหนดค่าและคืนค่าตัวบันทึกข้อมูลด้วยระดับการบันทึกที่ระบุ
 
-    Args:
-        level (int): The logging level to use (default: logging.INFO)
-                    Can be logging.DEBUG, logging.INFO, logging.WARNING, etc.
+    อาร์กิวเมนต์:
+        level (int): ระดับการบันทึกข้อมูลที่จะใช้ (ค่าเริ่มต้น: logging.INFO)
+                    สามารถเป็น logging.DEBUG, logging.INFO, logging.WARNING, ฯลฯ
 
-    Returns:
-        logging.Logger: A configured logger instance with console output handler
-                       and formatted output.
+    คืนค่า:
+        logging.Logger: อินสแตนซ์ของตัวบันทึกข้อมูลที่กำหนดค่าแล้ว พร้อมตัวจัดการ
+                       การแสดงผลทางคอนโซลและการจัดรูปแบบเอาต์พุต
 
-    Example:
+    ตัวอย่าง:
         >>> logger = setup_logger(logging.DEBUG)
         >>> logger.debug("Debug message")
         2024-01-26 12:34:56,789 - __main__ - DEBUG - Debug message
@@ -62,17 +62,17 @@ logger = setup_logger()
 @pytest.fixture(scope="session")
 def test_logger():
     """
-    Pytest fixture that provides a configured logger instance for the entire test session.
+    Pytest fixture ที่จัดเตรียมอินสแตนซ์ของตัวบันทึกข้อมูลที่กำหนดค่าแล้วสำหรับเซสชันการทดสอบทั้งหมด
 
-    This fixture is session-scoped, meaning the same logger instance is shared
-    across all tests in the session. This prevents duplicate log handlers and
-    ensures consistent logging behavior.
+    fixture นี้มีขอบเขตระดับเซสชัน หมายความว่าอินสแตนซ์ของตัวบันทึกข้อมูลเดียวกัน
+    จะถูกใช้ร่วมกันในการทดสอบทั้งหมดในเซสชัน ซึ่งป้องกันการสร้างตัวจัดการบันทึกข้อมูลซ้ำ
+    และรับประกันพฤติกรรมการบันทึกข้อมูลที่สอดคล้องกัน
 
-    Returns:
-        logging.Logger: A configured logger instance set up by setup_logger()
+    คืนค่า:
+        logging.Logger: อินสแตนซ์ของตัวบันทึกข้อมูลที่กำหนดค่าโดย setup_logger()
 
-    Example:
+    ตัวอย่าง:
         def test_something(test_logger):
-            test_logger.info("Starting test...")
+            test_logger.info("เริ่มการทดสอบ...")
     """
     return logger

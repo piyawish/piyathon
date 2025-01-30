@@ -2,24 +2,24 @@
 # Licensed under the MIT License
 
 """
-Unit Tests for Piyathon Translator Module
+ชุดทดสอบสำหรับโมดูลแปลภาษา Piyathon
 
-This module contains unit tests for the Piyathon-Python code translation functionality.
-It verifies the bidirectional translation capabilities, code formatting preservation,
-and handling of various language constructs.
+โมดูลนี้ประกอบด้วยชุดทดสอบสำหรับฟังก์ชันการแปลโค้ดระหว่าง Piyathon และ Python
+เพื่อตรวจสอบความสามารถในการแปลภาษาทั้งสองทิศทาง การรักษารูปแบบโค้ด
+และการจัดการโครงสร้างภาษาต่างๆ
 
-Test Coverage:
-    - Basic keyword translation
-    - Code formatting and comment preservation
-    - Bidirectional translation consistency
-    - Complex code structure handling
-    - Thai language function names
-    - Import statement translation
-    - Control flow constructs (if-elif-else, for-in)
+ขอบเขตการทดสอบ:
+    - การแปลคำสำคัญพื้นฐาน
+    - การรักษารูปแบบโค้ดและคอมเมนต์
+    - ความสอดคล้องในการแปลทั้งสองทิศทาง
+    - การจัดการโครงสร้างโค้ดที่ซับซ้อน
+    - ชื่อฟังก์ชันภาษาไทย
+    - การแปลคำสั่ง import
+    - โครงสร้างควบคุมการทำงาน (if-elif-else, for-in)
 
-Dependencies:
-    - pytest: For test framework and fixtures
-    - piyathon.piyathon_translator: For code translation functionality
+การพึ่งพา:
+    - pytest: สำหรับเฟรมเวิร์คและ fixtures การทดสอบ
+    - piyathon.piyathon_translator: สำหรับฟังก์ชันการแปลโค้ด
 """
 
 import pytest
@@ -29,26 +29,25 @@ from piyathon.piyathon_translator import PiyathonTranslator
 @pytest.fixture
 def translator():
     """
-    Pytest fixture that provides a PiyathonTranslator instance.
+    Pytest fixture ที่จัดเตรียม instance ของ PiyathonTranslator
 
-    Returns:
-        PiyathonTranslator: A fresh instance of the translator for each test
+    คืนค่า:
+        PiyathonTranslator: instance ใหม่ของตัวแปลภาษาสำหรับแต่ละการทดสอบ
     """
     return PiyathonTranslator()
 
 
 def test_keyword_translation(translator):
     """
-    Test basic keyword translation functionality.
+    ทดสอบฟังก์ชันการแปลคำสำคัญพื้นฐาน
 
-    Verifies that simple conditional statements are correctly translated
-    between Piyathon and Python.
+    ตรวจสอบว่าคำสั่งเงื่อนไขพื้นฐานถูกแปลระหว่าง Piyathon และ Python อย่างถูกต้อง
 
-    Args:
-        translator: PiyathonTranslator fixture
+    อาร์กิวเมนต์:
+        translator: fixture ของ PiyathonTranslator
 
-    Assertions:
-        - Piyathon code is correctly translated to equivalent Python code
+    การตรวจสอบ:
+        - โค้ด Piyathon ถูกแปลเป็นโค้ด Python ที่เทียบเท่ากันอย่างถูกต้อง
     """
     piyathon_code = "ถ้า x > 0:\n    คืนค่า True"
     expected_python = "if x > 0:\n    return True"
@@ -57,18 +56,18 @@ def test_keyword_translation(translator):
 
 def test_format_preservation(translator):
     """
-    Test preservation of code formatting and comments.
+    ทดสอบการรักษารูปแบบโค้ดและคอมเมนต์
 
-    Verifies that code structure, indentation, and comments are maintained
-    during translation between languages.
+    ตรวจสอบว่าโครงสร้างโค้ด การเยื้อง และคอมเมนต์ถูกรักษาไว้
+    ระหว่างการแปลภาษา
 
-    Args:
-        translator: PiyathonTranslator fixture
+    อาร์กิวเมนต์:
+        translator: fixture ของ PiyathonTranslator
 
-    Assertions:
-        - Code formatting is preserved
-        - Comments remain unchanged
-        - Indentation is maintained
+    การตรวจสอบ:
+        - รูปแบบโค้ดถูกรักษาไว้
+        - คอมเมนต์ไม่เปลี่ยนแปลง
+        - การเยื้องถูกรักษาไว้
     """
     piyathon_code = """
 # นี่คือคอมเมนต์
@@ -100,16 +99,16 @@ def test_func():
 
 def test_bidirectional_translation(translator):
     """
-    Test consistency of bidirectional translation.
+    ทดสอบความสอดคล้องของการแปลทั้งสองทิศทาง
 
-    Verifies that code translated from Piyathon to Python and back
-    matches the original Piyathon code.
+    ตรวจสอบว่าโค้ดที่ถูกแปลจาก Piyathon เป็น Python และกลับมา
+    ตรงกับโค้ด Piyathon ต้นฉบับ
 
-    Args:
-        translator: PiyathonTranslator fixture
+    อาร์กิวเมนต์:
+        translator: fixture ของ PiyathonTranslator
 
-    Assertions:
-        - Round-trip translation preserves code exactly
+    การตรวจสอบ:
+        - การแปลไป-กลับรักษาโค้ดได้อย่างสมบูรณ์
     """
     original_piyathon = "สำหรับ i ใน ช่วง(5):\n    พิมพ์(i)"
     python = translator.piyathon_to_python(original_piyathon)
@@ -119,17 +118,17 @@ def test_bidirectional_translation(translator):
 
 def test_function_name_in_thai(translator):
     """
-    Test handling of Thai language function names.
+    ทดสอบการจัดการชื่อฟังก์ชันภาษาไทย
 
-    Verifies that function names written in Thai are preserved
-    during translation between languages.
+    ตรวจสอบว่าชื่อฟังก์ชันที่เขียนเป็นภาษาไทยถูกรักษาไว้
+    ระหว่างการแปลภาษา
 
-    Args:
-        translator: PiyathonTranslator fixture
+    อาร์กิวเมนต์:
+        translator: fixture ของ PiyathonTranslator
 
-    Assertions:
-        - Thai function names remain unchanged
-        - Function definition syntax is correctly translated
+    การตรวจสอบ:
+        - ชื่อฟังก์ชันภาษาไทยไม่เปลี่ยนแปลง
+        - ไวยากรณ์การประกาศฟังก์ชันถูกแปลอย่างถูกต้อง
     """
     piyathon_code = "นิยาม ภาษาไทย():\n    คืนค่า 'This is a function named in Thai'"
     expected_python = "def ภาษาไทย():\n    return 'This is a function named in Thai'"
@@ -138,18 +137,18 @@ def test_function_name_in_thai(translator):
 
 def test_complex_code_translation(translator):
     """
-    Test translation of complex code structures.
+    ทดสอบการแปลโครงสร้างโค้ดที่ซับซ้อน
 
-    Verifies that the translator can handle more complex code patterns
-    like recursive functions and string formatting.
+    ตรวจสอบว่าตัวแปลสามารถจัดการรูปแบบโค้ดที่ซับซ้อนได้
+    เช่น ฟังก์ชันเรียกซ้ำและการจัดรูปแบบสตริง
 
-    Args:
-        translator: PiyathonTranslator fixture
+    อาร์กิวเมนต์:
+        translator: fixture ของ PiyathonTranslator
 
-    Assertions:
-        - Complex code structures are correctly translated
-        - String formatting is preserved
-        - Recursive function calls are handled correctly
+    การตรวจสอบ:
+        - โครงสร้างโค้ดที่ซับซ้อนถูกแปลอย่างถูกต้อง
+        - การจัดรูปแบบสตริงถูกรักษาไว้
+        - การเรียกฟังก์ชันซ้ำถูกจัดการอย่างถูกต้อง
     """
     piyathon_code = """
 นิยาม fibonacci(n):
@@ -176,18 +175,18 @@ def test_complex_code_translation(translator):
 
 def test_nested_structures(translator):
     """
-    Test translation of nested control structures.
+    ทดสอบการแปลโครงสร้างการควบคุมที่ซ้อนกัน
 
-    Verifies that the translator correctly handles nested if statements
-    and loops while maintaining proper indentation.
+    ตรวจสอบว่าตัวแปลจัดการคำสั่ง if และลูปที่ซ้อนกัน
+    พร้อมรักษาการเยื้องที่เหมาะสม
 
-    Args:
-        translator: PiyathonTranslator fixture
+    อาร์กิวเมนต์:
+        translator: fixture ของ PiyathonTranslator
 
-    Assertions:
-        - Nested structures are correctly translated
-        - Indentation levels are preserved
-        - Control flow logic remains intact
+    การตรวจสอบ:
+        - โครงสร้างที่ซ้อนกันถูกแปลอย่างถูกต้อง
+        - ระดับการเยื้องถูกรักษาไว้
+        - ตรรกะการควบคุมการทำงานยังคงสมบูรณ์
     """
     piyathon_code = """
 นิยาม nested_func(x):
@@ -210,18 +209,18 @@ def nested_func(x):
 
 def test_from_import_translation(translator, test_logger):
     """
-    Test translation of import statements.
+    ทดสอบการแปลคำสั่ง import
 
-    Verifies that 'from ... import ...' statements are correctly
-    translated between languages.
+    ตรวจสอบว่าคำสั่ง 'from ... import ...' ถูกแปล
+    ระหว่างภาษาอย่างถูกต้อง
 
-    Args:
-        translator: PiyathonTranslator fixture
-        test_logger: Logger fixture for debugging output
+    อาร์กิวเมนต์:
+        translator: fixture ของ PiyathonTranslator
+        test_logger: fixture สำหรับการบันทึกข้อมูลดีบัก
 
-    Assertions:
-        - Import statements are correctly translated in both directions
-        - Multiple imported items are handled correctly
+    การตรวจสอบ:
+        - คำสั่ง import ถูกแปลอย่างถูกต้องในทั้งสองทิศทาง
+        - รายการที่นำเข้าหลายรายการถูกจัดการอย่างถูกต้อง
     """
     piyathon_code = "จาก math นำเข้า sqrt, sin, cos, tan"
     python_code = "from math import sqrt, sin, cos, tan"
@@ -237,19 +236,17 @@ def test_from_import_translation(translator, test_logger):
 
 def test_if_elif_else_translation(translator, test_logger):
     """
-    Test translation of if-elif-else constructs.
+    ทดสอบการแปลโครงสร้าง if-elif-else
 
-    Verifies that complex conditional statements are correctly
-    translated between languages.
+    ตรวจสอบว่าคำสั่งเงื่อนไขที่ซับซ้อนถูกแปล
+    ระหว่างภาษาอย่างถูกต้อง
 
-    Args:
-        translator: PiyathonTranslator fixture
-        test_logger: Logger fixture for debugging output
+    อาร์กิวเมนต์:
+        translator: fixture ของ PiyathonTranslator
+        test_logger: fixture สำหรับการบันทึกข้อมูลดีบัก
 
-    Assertions:
-        - If-elif-else structures are correctly translated
-        - Conditional expressions are preserved
-        - Bidirectional translation is consistent
+    การตรวจสอบ:
+        - โครงสร้าง If-elif-else ถูกแปลอย่างถูกต้อง
     """
     piyathon_code = """
 ถ้า x < 0:

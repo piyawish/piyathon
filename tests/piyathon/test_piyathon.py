@@ -2,21 +2,21 @@
 # Licensed under the MIT License
 
 """
-Unit Tests for Piyathon CLI Module
+ชุดทดสอบสำหรับโมดูล CLI ของ Piyathon
 
-This module contains unit tests for the Piyathon command-line interface functionality.
-It tests various error conditions and edge cases for file handling and argument parsing.
+โมดูลนี้ประกอบด้วยชุดทดสอบสำหรับฟังก์ชันการทำงานของ Command-line interface ของ Piyathon
+ทดสอบเงื่อนไขข้อผิดพลาดต่างๆ และกรณีพิเศษสำหรับการจัดการไฟล์และการแยกวิเคราะห์อาร์กิวเมนต์
 
-Test Coverage:
-    - Command-line argument validation
-    - File extension validation
-    - File existence and readability checks
-    - Error message formatting and content
+ขอบเขตการทดสอบ:
+    - การตรวจสอบอาร์กิวเมนต์ของคำสั่ง
+    - การตรวจสอบนามสกุลไฟล์
+    - การตรวจสอบการมีอยู่และความสามารถในการอ่านไฟล์
+    - การจัดรูปแบบและเนื้อหาของข้อความแสดงข้อผิดพลาด
 
-Dependencies:
-    - pytest: For test framework and fixtures
-    - unittest.mock: For mocking system calls and file operations
-    - sys: For command-line argument manipulation
+การพึ่งพา:
+    - pytest: สำหรับเฟรมเวิร์คและ fixtures การทดสอบ
+    - unittest.mock: สำหรับการจำลองการเรียกระบบและการดำเนินการกับไฟล์
+    - sys: สำหรับการจัดการอาร์กิวเมนต์ของคำสั่ง
 """
 
 import sys
@@ -27,17 +27,17 @@ from piyathon.piyathon import main
 
 def test_no_arguments(capsys):
     """
-    Test behavior when no command-line arguments are provided.
+    ทดสอบพฤติกรรมเมื่อไม่มีการระบุอาร์กิวเมนต์ในคำสั่ง
 
-    This test verifies that the CLI properly handles the case when no source file
-    is specified, ensuring it exits with the correct error code and message.
+    การทดสอบนี้ตรวจสอบว่า CLI จัดการกรณีที่ไม่มีการระบุไฟล์ต้นฉบับอย่างถูกต้อง
+    โดยตรวจสอบว่ามีการออกจากโปรแกรมด้วยรหัสข้อผิดพลาดและข้อความที่ถูกต้อง
 
-    Args:
-        capsys: pytest fixture for capturing stdout/stderr
+    อาร์กิวเมนต์:
+        capsys: pytest fixture สำหรับการจับ stdout/stderr
 
-    Assertions:
-        - Exits with SystemExit code 2
-        - Error message indicates missing required argument
+    การตรวจสอบ:
+        - ออกจากโปรแกรมด้วย SystemExit รหัส 2
+        - ข้อความแสดงข้อผิดพลาดระบุว่าขาดอาร์กิวเมนต์ที่จำเป็น
     """
     test_args = ["piyathon.py"]
     with patch.object(sys, "argv", test_args):
@@ -51,17 +51,17 @@ def test_no_arguments(capsys):
 
 def test_invalid_extension(capsys):
     """
-    Test behavior when a file with an invalid extension is provided.
+    ทดสอบพฤติกรรมเมื่อมีการระบุไฟล์ที่มีนามสกุลไม่ถูกต้อง
 
-    This test ensures that the CLI properly validates file extensions,
-    requiring .pi files and rejecting other extensions.
+    การทดสอบนี้ตรวจสอบว่า CLI ตรวจสอบนามสกุลไฟล์อย่างถูกต้อง
+    โดยต้องการไฟล์นามสกุล .pi และปฏิเสธนามสกุลอื่น
 
-    Args:
-        capsys: pytest fixture for capturing stdout/stderr
+    อาร์กิวเมนต์:
+        capsys: pytest fixture สำหรับการจับ stdout/stderr
 
-    Assertions:
-        - Exits with SystemExit code 1
-        - Error message indicates invalid file extension
+    การตรวจสอบ:
+        - ออกจากโปรแกรมด้วย SystemExit รหัส 1
+        - ข้อความแสดงข้อผิดพลาดระบุว่านามสกุลไฟล์ไม่ถูกต้อง
     """
     test_args = ["piyathon.py", "source.txt"]
     with patch.object(sys, "argv", test_args):
@@ -75,17 +75,17 @@ def test_invalid_extension(capsys):
 
 def test_file_not_found(capsys):
     """
-    Test behavior when the specified source file does not exist.
+    ทดสอบพฤติกรรมเมื่อไม่พบไฟล์ที่ระบุ
 
-    This test verifies that the CLI properly handles non-existent input files,
-    providing appropriate error messages and exit codes.
+    การทดสอบนี้ตรวจสอบว่า CLI จัดการกรณีที่ไม่พบไฟล์อินพุตอย่างถูกต้อง
+    โดยแสดงข้อความแสดงข้อผิดพลาดและรหัสออกจากโปรแกรมที่เหมาะสม
 
-    Args:
-        capsys: pytest fixture for capturing stdout/stderr
+    อาร์กิวเมนต์:
+        capsys: pytest fixture สำหรับการจับ stdout/stderr
 
-    Assertions:
-        - Exits with SystemExit code 1
-        - Error message indicates file not found
+    การตรวจสอบ:
+        - ออกจากโปรแกรมด้วย SystemExit รหัส 1
+        - ข้อความแสดงข้อผิดพลาดระบุว่าไม่พบไฟล์
     """
     test_args = ["piyathon.py", "nonexistent.pi"]
     with patch.object(sys, "argv", test_args):
@@ -99,17 +99,17 @@ def test_file_not_found(capsys):
 
 def test_file_read_error(capsys):
     """
-    Test behavior when the source file cannot be read.
+    ทดสอบพฤติกรรมเมื่อไม่สามารถอ่านไฟล์ต้นฉบับได้
 
-    This test ensures that the CLI properly handles I/O errors when reading
-    the source file, providing appropriate error messages and exit codes.
+    การทดสอบนี้ตรวจสอบว่า CLI จัดการข้อผิดพลาด I/O เมื่ออ่านไฟล์ต้นฉบับอย่างถูกต้อง
+    โดยแสดงข้อความแสดงข้อผิดพลาดและรหัสออกจากโปรแกรมที่เหมาะสม
 
-    Args:
-        capsys: pytest fixture for capturing stdout/stderr
+    อาร์กิวเมนต์:
+        capsys: pytest fixture สำหรับการจับ stdout/stderr
 
-    Assertions:
-        - Exits with SystemExit code 1
-        - Error message indicates file read error
+    การตรวจสอบ:
+        - ออกจากโปรแกรมด้วย SystemExit รหัส 1
+        - ข้อความแสดงข้อผิดพลาดระบุว่าไม่สามารถอ่านไฟล์ได้
     """
     test_args = ["piyathon.py", "source.pi"]
     with patch.object(sys, "argv", test_args):

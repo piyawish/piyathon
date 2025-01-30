@@ -2,33 +2,32 @@
 # Licensed under the MIT License
 
 """
-Piyathon-Python Keyword Mapping Module
+โมดูลการแปลคำสำคัญระหว่าง Piyathon และ Python
 
-This module defines the bidirectional mapping between Python and Piyathon keywords,
-built-in functions, and special variables. It serves as the foundation for the
-translation system between the two languages.
+โมดูลนี้กำหนดการแปลสองทิศทางระหว่างคำสำคัญ ฟังก์ชันในตัว และตัวแปรพิเศษ
+ของ Python และ Piyathon โดยทำหน้าที่เป็นพื้นฐานสำหรับระบบการแปลระหว่างทั้งสองภาษา
 
-Core Components:
-    - PYTHON_KEYWORDS: Maps Python keywords to their Piyathon equivalents
-    - PYTHON_BUILTIN_FUNCTIONS: Maps Python built-in functions to Piyathon names
-    - PYTHON_SPECIAL_BUILTIN_VARIABLES: Maps Python special variables to Piyathon names
-    - PY_TO_PI: Combined dictionary for Python to Piyathon translation
-    - PI_TO_PY: Inverse mapping for Piyathon to Python translation
+ส่วนประกอบหลัก:
+    - PYTHON_KEYWORDS: แปลคำสำคัญของ Python เป็น Piyathon
+    - PYTHON_BUILTIN_FUNCTIONS: แปลฟังก์ชันในตัวของ Python เป็นชื่อ Piyathon
+    - PYTHON_SPECIAL_BUILTIN_VARIABLES: แปลตัวแปรพิเศษของ Python เป็นชื่อ Piyathon
+    - PY_TO_PI: พจนานุกรมรวมสำหรับการแปลจาก Python เป็น Piyathon
+    - PI_TO_PY: การแปลย้อนกลับสำหรับการแปลจาก Piyathon เป็น Python
 
-Data Structure Relationships:
-    - All mappings are one-to-one between Python and Piyathon identifiers
-    - PY_TO_PI combines all three mapping dictionaries
-    - PI_TO_PY is the inverse of PY_TO_PI for reverse translation
+ความสัมพันธ์ของโครงสร้างข้อมูล:
+    - การแปลทั้งหมดเป็นแบบหนึ่งต่อหนึ่งระหว่างตัวระบุ Python และ Piyathon
+    - PY_TO_PI รวมพจนานุกรมการแปลทั้งสามเข้าด้วยกัน
+    - PI_TO_PY เป็นการแปลย้อนกลับของ PY_TO_PI สำหรับการแปลกลับ
 
-Integration Points:
-    - Used by PiyathonTranslator for code translation
-    - Referenced during tokenization and untokenization processes
-    - Supports both standard keywords and special method names
+จุดเชื่อมต่อ:
+    - ใช้โดย PiyathonTranslator สำหรับการแปลโค้ด
+    - อ้างอิงระหว่างกระบวนการแปลงเป็นโทเค็นและการแปลงกลับจากโทเค็น
+    - รองรับทั้งคำสำคัญมาตรฐานและชื่อเมธอดพิเศษ
 
-Known Limitations:
-    - Only covers Python's built-in keywords and functions
-    - Does not include standard library function mappings
-    - Assumes one-to-one mapping between languages
+ข้อจำกัดที่ทราบ:
+    - ครอบคลุมเฉพาะคำสำคัญและฟังก์ชันในตัวของ Python
+    - ไม่รวมการแปลฟังก์ชันจากไลบรารีมาตรฐาน
+    - สันนิษฐานว่ามีการแปลแบบหนึ่งต่อหนึ่งระหว่างภาษา
 """
 
 PYTHON_KEYWORDS = {
