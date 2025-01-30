@@ -1,21 +1,21 @@
 # Copyright (c) 2024 Piyawish Piyawat
 # Licensed under the MIT License
 
-"""Utility script for exporting Piyathon-Python keyword mappings.
+"""สคริปต์ยูทิลิตี้สำหรับส่งออกการแมปคำสำคัญระหว่าง Piyathon และ Python
 
-This script exports the bidirectional mappings between Piyathon and Python keywords
-to a JSON file for use in documentation, tooling, and other integrations.
+สคริปต์นี้ส่งออกการแมปสองทิศทางระหว่างคำสำคัญของ Piyathon และ Python
+ไปยังไฟล์ JSON เพื่อใช้ในเอกสาร เครื่องมือ และการทำงานร่วมกับระบบอื่น
 
 Dependencies:
-    - json: For JSON file operations
-    - sys: For path manipulation
-    - pathlib: For cross-platform path handling
-    - piyathon.keywords: Source of keyword mapping dictionaries
+    - json: สำหรับการทำงานกับไฟล์ JSON
+    - sys: สำหรับการจัดการพาธ
+    - pathlib: สำหรับการจัดการพาธที่ทำงานข้ามแพลตฟอร์ม
+    - piyathon.keywords: แหล่งของพจนานุกรมแมปคำสำคัญ
 
-Output:
-    Creates 'python_mappings.json' containing two mapping dictionaries:
-    - PI_TO_PY: Maps Piyathon keywords to Python keywords
-    - PY_TO_PI: Maps Python keywords to Piyathon keywords
+ผลลัพธ์:
+    สร้างไฟล์ 'python_mappings.json' ที่มีพจนานุกรมแมปสองตัว:
+    - PI_TO_PY: แมปคำสำคัญ Piyathon ไปยังคำสำคัญ Python
+    - PY_TO_PI: แมปคำสำคัญ Python ไปยังคำสำคัญ Piyathon
 """
 
 import json
@@ -29,18 +29,14 @@ from piyathon.keywords import PI_TO_PY, PY_TO_PI
 
 
 def export_mappings():
-    """Export keyword mappings to a JSON file.
+    """ส่งออกการแมปคำสำคัญไปยังไฟล์ JSON
 
-    Exports both Piyathon-to-Python and Python-to-Piyathon keyword mappings
-    to a JSON file named 'python_mappings.json' in the current directory.
+    ส่งออกการแมปคำสำคัญทั้งจาก Piyathon ไป Python และจาก Python ไป Piyathon
+    ไปยังไฟล์ JSON ชื่อ 'python_mappings.json' ในไดเรกทอรีปัจจุบัน
 
-    Side Effects:
-        - Creates or overwrites 'python_mappings.json' in the current directory
-        - File is written with UTF-8 encoding to support Thai characters
-
-    Example:
-        >>> export_mappings()
-        # Creates python_mappings.json with mapping dictionaries
+    ผลกระทบข้างเคียง:
+        - สร้างหรือเขียนทับไฟล์ 'python_mappings.json' ในไดเรกทอรีปัจจุบัน
+        - ไฟล์ถูกเขียนด้วยการเข้ารหัส UTF-8 เพื่อรองรับตัวอักษรภาษาไทย
     """
     mappings = {"PI_TO_PY": PI_TO_PY, "PY_TO_PI": PY_TO_PI}
 

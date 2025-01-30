@@ -1,15 +1,15 @@
 # Copyright (c) 2024 Piyawish Piyawat
 # Licensed under the MIT License
 
-"""Script for adding copyright notices to Python files.
+"""สคริปต์สำหรับเพิ่มประกาศลิขสิทธิ์ในไฟล์ Python
 
-This utility script automatically adds copyright and license information to Python files
-in a specified directory and its subdirectories. It ensures that each Python file
-contains the standard copyright notice if it's not already present.
+สคริปต์ยูทิลิตี้นี้เพิ่มข้อมูลลิขสิทธิ์และใบอนุญาตในไฟล์ Python
+ในไดเรกทอรีที่ระบุและไดเรกทอรีย่อยโดยอัตโนมัติ เพื่อให้มั่นใจว่าแต่ละไฟล์ Python
+มีประกาศลิขสิทธิ์มาตรฐานถ้ายังไม่มี
 
 Dependencies:
-    - os: For file system operations
-    - sys: For command line arguments
+    - os: สำหรับการทำงานกับระบบไฟล์
+    - sys: สำหรับอาร์กิวเมนต์คำสั่ง
 """
 
 import os
@@ -21,14 +21,14 @@ COPYRIGHT_NOTE = """# Copyright (c) 2024 Piyawish Piyawat
 
 
 def add_copyright_note_to_file(file_path):
-    """Add copyright notice to a Python file if it doesn't already exist.
+    """เพิ่มประกาศลิขสิทธิ์ในไฟล์ Python ถ้ายังไม่มี
 
     Args:
-        file_path (str): Path to the Python file to process
+        file_path (str): พาธของไฟล์ Python ที่ต้องการประมวลผล
 
-    Side Effects:
-        - Modifies the target file by adding copyright notice at the beginning
-        - Preserves existing file content after the copyright notice
+    ผลกระทบข้างเคียง:
+        - แก้ไขไฟล์เป้าหมายโดยเพิ่มประกาศลิขสิทธิ์ที่จุดเริ่มต้น
+        - รักษาเนื้อหาไฟล์เดิมหลังประกาศลิขสิทธิ์
 
     Example:
         >>> add_copyright_note_to_file("example.py")
@@ -41,13 +41,13 @@ def add_copyright_note_to_file(file_path):
 
 
 def process_directory(directory):
-    """Recursively process all Python files in a directory.
+    """ประมวลผลไฟล์ Python ทั้งหมดในไดเรกทอรีแบบเรียกซ้ำ
 
-    Walks through the directory tree and adds copyright notices to all Python files
-    that don't already have them.
+    เดินผ่านโครงสร้างไดเรกทอรีและเพิ่มประกาศลิขสิทธิ์ในไฟล์ Python ทั้งหมด
+    ที่ยังไม่มีประกาศลิขสิทธิ์
 
     Args:
-        directory (str): Root directory path to start processing from
+        directory (str): พาธของไดเรกทอรีรากที่จะเริ่มประมวลผล
 
     Side Effects:
         - Modifies Python files in the directory tree by adding copyright notices

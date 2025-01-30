@@ -2,30 +2,29 @@
 # Licensed under the MIT License
 
 """
-Test suite for verifying Piyathon translation using example files.
+ชุดทดสอบสำหรับตรวจสอบการแปลภาษา Piyathon โดยใช้ไฟล์ตัวอย่าง
 
-This module tests the bidirectional translation capabilities of the Piyathon
-translator using paired example files (.py and .pi) from the examples directory.
-It ensures that translations are consistent in both directions and that the
-semantic meaning of the code is preserved.
+โมดูลนี้ทดสอบความสามารถในการแปลภาษาสองทิศทางของตัวแปลภาษา Piyathon
+โดยใช้คู่ไฟล์ตัวอย่าง (.py และ .pi) จากไดเรกทอรี examples
+เพื่อให้มั่นใจว่าการแปลมีความสอดคล้องกันทั้งสองทิศทางและความหมายของโค้ดยังคงอยู่
 
-Key Components:
-    - Example file pair discovery
-    - Bidirectional translation verification
-    - Round-trip translation testing
+ส่วนประกอบหลัก:
+    - การค้นหาคู่ไฟล์ตัวอย่าง
+    - การตรวจสอบการแปลสองทิศทาง
+    - การทดสอบการแปลแบบวนรอบ
 
 Dependencies:
-    - pytest: For test parameterization
-    - glob: For file pattern matching
-    - PiyathonTranslator: Core translation functionality
+    - pytest: สำหรับการพาราเมเตอร์ไรซ์การทดสอบ
+    - glob: สำหรับการจับคู่รูปแบบไฟล์
+    - PiyathonTranslator: ฟังก์ชันหลักในการแปลภาษา
 
-Data Structures:
-    - Example pairs: Tuples of (pi_file, py_file) paths representing
-      corresponding Piyathon and Python implementations
+โครงสร้างข้อมูล:
+    - คู่ตัวอย่าง: ทูเพิลของพาธ (pi_file, py_file) ที่แทน
+      การใช้งานที่สอดคล้องกันระหว่าง Piyathon และ Python
 
-Integration Points:
-    - Reads from examples/*.pi and examples/*.py
-    - Verifies consistency between paired implementations
+จุดเชื่อมต่อ:
+    - อ่านจาก examples/*.pi และ examples/*.py
+    - ตรวจสอบความสอดคล้องระหว่างการใช้งานที่จับคู่กัน
 """
 
 import glob
@@ -36,20 +35,14 @@ from piyathon.piyathon_translator import PiyathonTranslator
 
 def get_example_pairs():
     """
-    Discover and pair corresponding .pi and .py files from the examples directory.
+    ค้นหาและจับคู่ไฟล์ .pi และ .py ที่สอดคล้องกันจากไดเรกทอรี examples
 
-    Searches for .pi files and attempts to find matching .py files with the same
-    base name. Only pairs where both files exist are included in the results.
+    ค้นหาไฟล์ .pi และพยายามหาไฟล์ .py ที่ตรงกันโดยใช้ชื่อฐานเดียวกัน
+    เฉพาะคู่ที่มีไฟล์ทั้งสองอยู่จริงจะถูกรวมในผลลัพธ์
 
     Returns:
-        list[tuple[str, str]]: List of tuples containing paths to matching
-                              (.pi, .py) file pairs.
-
-    Example:
-        >>> pairs = get_example_pairs()
-        >>> print(pairs)
-        [('examples/hello.pi', 'examples/hello.py'),
-         ('examples/math.pi', 'examples/math.py')]
+        list[tuple[str, str]]: รายการของทูเพิลที่มีพาธไปยังคู่ไฟล์
+                              (.pi, .py) ที่ตรงกัน
     """
     pi_files = glob.glob("examples/*.pi")
     example_pairs = []

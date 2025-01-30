@@ -4,34 +4,34 @@
 # Generated module file. Do not edit directly.
 
 """
-Piyathon Random Number Generation Module (สุ่ม)
+โมดูลสร้างตัวเลขสุ่มของ Piyathon (สุ่ม)
 
-This module provides Thai language bindings for Python's random module,
-offering a complete suite of random number generation tools and utilities.
+โมดูลนี้ให้การเชื่อมต่อภาษาไทยสำหรับโมดูลสุ่มของ Python
+โดยมีเครื่องมือและยูทิลิตี้สำหรับการสร้างตัวเลขสุ่มครบถ้วน
 
-Core Components:
-    - สุ่ม: Main random number generator class (maps to random.Random)
-    - สุ่มระบบ: System random number generator (maps to random.SystemRandom)
-    - Various distribution functions (normal, beta, gamma, etc.)
-    - Utility functions for sampling and shuffling
-    - Mathematical constants used in distributions
+ส่วนประกอบหลัก:
+    - สุ่ม: คลาสตัวสร้างตัวเลขสุ่มหลัก (แมปไปยัง random.Random)
+    - สุ่มระบบ: ตัวสร้างตัวเลขสุ่มของระบบ (แมปไปยัง random.SystemRandom)
+    - ฟังก์ชันการแจกแจงต่างๆ (ปกติ, เบต้า, แกมมา, ฯลฯ)
+    - ฟังก์ชันยูทิลิตี้สำหรับการสุ่มตัวอย่างและการสับเปลี่ยน
+    - ค่าคงที่ทางคณิตศาสตร์ที่ใช้ในการแจกแจง
 
-Key Features:
-    - Full support for all random module functionality
-    - Thai language function and class names
-    - Maintains all original Python random module behaviors
-    - Thread-safe random number generation options
+คุณสมบัติหลัก:
+    - รองรับฟังก์ชันการทำงานของโมดูลสุ่มทั้งหมด
+    - ชื่อฟังก์ชันและคลาสเป็นภาษาไทย
+    - คงพฤติกรรมเดิมของโมดูลสุ่มของ Python ทั้งหมด
+    - ตัวเลือกการสร้างตัวเลขสุ่มที่ปลอดภัยต่อการทำงานพร้อมกัน
 
-Integration Points:
-    - Compatible with all standard Python random module use cases
-    - Can be used interchangeably with the original random module
-    - Supports both pure Python and system random number generation
+จุดเชื่อมต่อ:
+    - ใช้งานได้กับทุกกรณีการใช้งานของโมดูลสุ่มมาตรฐาน
+    - สามารถใช้สลับกับโมดูลสุ่มต้นฉบับได้
+    - รองรับการสร้างตัวเลขสุ่มทั้งแบบ Python ล้วนและแบบระบบ
 
-Usage Examples:
+ตัวอย่างการใช้งาน:
     >>> from piyathon.Lib.สุ่ม import สุ่มจำนวนเต็ม
-    >>> สุ่มจำนวนเต็ม(1, 10)  # Random integer between 1 and 10
+    >>> สุ่มจำนวนเต็ม(1, 10)  # สุ่มจำนวนเต็มระหว่าง 1 ถึง 10
     >>> from piyathon.Lib.สุ่ม import สุ่ม
-    >>> gen = สุ่ม()  # Create a random number generator instance
+    >>> gen = สุ่ม()  # สร้างอินสแตนซ์ตัวสร้างตัวเลขสุ่ม
 """
 
 import random

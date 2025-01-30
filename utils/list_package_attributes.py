@@ -1,31 +1,30 @@
 # Copyright (c) 2024 Piyawish Piyawat
 # Licensed under the MIT License
 
-"""Utility for extracting and formatting Python package attributes.
+"""ยูทิลิตี้สำหรับดึงและจัดรูปแบบแอตทริบิวต์ของแพ็คเกจ Python
 
-This script analyzes Python packages to extract their public attributes (classes,
-methods, functions, and constants) and formats them into a dictionary structure
-suitable for translation mapping. The output is both printed and copied to the
-clipboard.
+สคริปต์นี้วิเคราะห์แพ็คเกจ Python เพื่อดึงแอตทริบิวต์สาธารณะ (คลาส,
+เมธอด, ฟังก์ชัน, และค่าคงที่) และจัดรูปแบบให้เป็นโครงสร้างพจนานุกรม
+ที่เหมาะสมสำหรับการแมปการแปลภาษา ผลลัพธ์จะถูกพิมพ์และคัดลอกไปยังคลิปบอร์ด
 
 Dependencies:
-    - sys: For command line arguments
-    - inspect: For introspecting Python objects
-    - importlib: For dynamic module importing
-    - pyperclip: For clipboard operations
+    - sys: สำหรับอาร์กิวเมนต์คำสั่ง
+    - inspect: สำหรับตรวจสอบออบเจกต์ Python
+    - importlib: สำหรับการนำเข้าโมดูลแบบไดนามิก
+    - pyperclip: สำหรับการทำงานกับคลิปบอร์ด
 
-Output Format:
-    Generates a dictionary with the following structure:
+รูปแบบผลลัพธ์:
+    สร้างพจนานุกรมที่มีโครงสร้างดังนี้:
     {
         "__name__": "",
-        "classes": {class_name: "" for each class},
-        "methods": {method_name: "" for each method},
-        "functions": {function_name: "" for each function},
-        "constants": {constant_name: "" for each constant}
+        "classes": {class_name: "" สำหรับแต่ละคลาส},
+        "methods": {method_name: "" สำหรับแต่ละเมธอด},
+        "functions": {function_name: "" สำหรับแต่ละฟังก์ชัน},
+        "constants": {constant_name: "" สำหรับแต่ละค่าคงที่}
     }
 
-Version History:
-    - 1.0: Initial implementation with basic attribute extraction
+ประวัติเวอร์ชัน:
+    - 1.0: การใช้งานเริ่มต้นพร้อมการดึงแอตทริบิวต์พื้นฐาน
 """
 
 import sys
@@ -35,28 +34,18 @@ import pyperclip
 
 
 def list_package_attributes(package_name):
-    """Extract and format attributes from a Python package.
+    """ดึงและจัดรูปแบบแอตทริบิวต์จากแพ็คเกจ Python
 
-    Analyzes a Python package to extract its public attributes and formats them
-    into a dictionary structure suitable for translation mapping. The output is
-    both printed and copied to the clipboard.
+    วิเคราะห์แพ็คเกจ Python เพื่อดึงแอตทริบิวต์สาธารณะและจัดรูปแบบ
+    ให้เป็นโครงสร้างพจนานุกรมที่เหมาะสมสำหรับการแมปการแปลภาษา
+    ผลลัพธ์จะถูกพิมพ์และคัดลอกไปยังคลิปบอร์ด
 
     Args:
-        package_name (str): Name of the Python package to analyze
+        package_name (str): ชื่อของแพ็คเกจ Python ที่ต้องการวิเคราะห์
 
-    Side Effects:
-        - Prints the formatted dictionary to stdout
-        - Copies the formatted dictionary to the system clipboard
-
-    Example:
-        >>> list_package_attributes("random")
-        random = {"__name__": "", "classes": {"Random": ""}, ...}
-        The output has been copied to the clipboard.
-
-    Note:
-        - Constants are identified by uppercase names
-        - Private attributes (starting with '_') are excluded
-        - The empty strings in the output are placeholders for translations
+    ผลกระทบข้างเคียง:
+        - พิมพ์พจนานุกรมที่จัดรูปแบบแล้วไปยัง stdout
+        - คัดลอกพจนานุกรมที่จัดรูปแบบแล้วไปยังคลิปบอร์ดของระบบ
     """
     try:
         package = importlib.import_module(package_name)

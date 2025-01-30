@@ -1,22 +1,22 @@
 # Copyright (c) 2024 Piyawish Piyawat
 # Licensed under the MIT License
 
-"""Script for generating translated Python module wrappers.
+"""สคริปต์สำหรับสร้างโมดูล Python ที่แปลภาษาแล้ว
 
-This utility generates Python module wrappers that provide Thai language bindings
-for standard Python modules. It uses translation mappings to create modules that
-expose both Thai and English names for classes, methods, functions, and constants.
+ยูทิลิตี้นี้สร้างโมดูลห่อหุ้ม Python ที่ให้การเชื่อมต่อภาษาไทย
+สำหรับโมดูลมาตรฐานของ Python โดยใช้การแมปการแปลภาษาเพื่อสร้างโมดูล
+ที่เปิดเผยทั้งชื่อภาษาไทยและภาษาอังกฤษสำหรับคลาส เมธอด ฟังก์ชัน และค่าคงที่
 
 Dependencies:
-    - os: For directory operations
-    - translated_list: Contains the Thai-English translation mappings
+    - os: สำหรับการทำงานกับไดเรกทอรี
+    - translated_list: มีการแมปการแปลภาษาไทย-อังกฤษ
 
-Output Structure:
-    Creates Python modules in the piyathon/Lib directory with:
-    - Thai translations of all public module attributes
-    - Original English names preserved
-    - Generated __all__ list combining both Thai and English names
-    - Copyright and license information
+โครงสร้างผลลัพธ์:
+    สร้างโมดูล Python ในไดเรกทอรี piyathon/Lib ที่มี:
+    - การแปลภาษาไทยของแอตทริบิวต์สาธารณะทั้งหมดของโมดูล
+    - รักษาชื่อภาษาอังกฤษเดิมไว้
+    - สร้างรายการ __all__ ที่รวมทั้งชื่อภาษาไทยและภาษาอังกฤษ
+    - ข้อมูลลิขสิทธิ์และใบอนุญาต
 """
 
 import os

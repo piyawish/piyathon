@@ -4,48 +4,48 @@
 # Generated module file. Do not edit directly.
 
 """
-Piyathon Turtle Graphics Module (เต่า)
+โมดูลกราฟิกเต่าของ Piyathon (เต่า)
 
-This module provides Thai language bindings for Python's turtle graphics module,
-offering a complete set of turtle graphics functionality for educational and
-creative programming.
+โมดูลนี้ให้การเชื่อมต่อภาษาไทยสำหรับโมดูลกราฟิกเต่าของ Python
+โดยมีฟังก์ชันการทำงานกราฟิกเต่าครบถ้วนสำหรับการเรียนรู้และ
+การเขียนโปรแกรมเชิงสร้างสรรค์
 
-Core Components:
-    Classes:
-        - เต่า: Main turtle graphics class (maps to turtle.Turtle)
-        - หน้าจอเต่า: Turtle screen management (maps to turtle.TurtleScreen)
-        - ผ้าใบ: Drawing canvas (maps to turtle.Canvas)
-        - ปากกา: Drawing pen (maps to turtle.Pen)
-        - Various supporting classes for shapes, navigation, and error handling
+ส่วนประกอบหลัก:
+    คลาส:
+        - เต่า: คลาสกราฟิกเต่าหลัก (แมปไปยัง turtle.Turtle)
+        - หน้าจอเต่า: การจัดการหน้าจอเต่า (แมปไปยัง turtle.TurtleScreen)
+        - ผ้าใบ: ผ้าใบวาด (แมปไปยัง turtle.Canvas)
+        - ปากกา: ปากกาวาด (แมปไปยัง turtle.Pen)
+        - คลาสสนับสนุนต่างๆ สำหรับรูปร่าง การนำทาง และการจัดการข้อผิดพลาด
 
-    Functions:
-        - Movement: เดินหน้า, ถอยหลัง, ซ้าย, ขวา, etc.
-        - Drawing: วงกลม, จุด, เขียน, etc.
-        - Pen control: ลงปากกา, ยกปากกา, สีปากกา, etc.
-        - Screen management: หน้าจอ, ล้างหน้าจอ, อัปเดต, etc.
+    ฟังก์ชัน:
+        - การเคลื่อนที่: เดินหน้า, ถอยหลัง, ซ้าย, ขวา, ฯลฯ
+        - การวาด: วงกลม, จุด, เขียน, ฯลฯ
+        - การควบคุมปากกา: ลงปากกา, ยกปากกา, สีปากกา, ฯลฯ
+        - การจัดการหน้าจอ: หน้าจอ, ล้างหน้าจอ, อัปเดต, ฯลฯ
 
-Key Features:
-    - Complete turtle graphics functionality in Thai
-    - Support for both simple and complex drawing operations
-    - Event handling and animation capabilities
-    - Screen and window management utilities
+คุณสมบัติหลัก:
+    - ฟังก์ชันการทำงานกราฟิกเต่าครบถ้วนในภาษาไทย
+    - รองรับทั้งการวาดแบบง่ายและซับซ้อน
+    - ความสามารถในการจัดการเหตุการณ์และแอนิเมชัน
+    - ยูทิลิตี้จัดการหน้าจอและหน้าต่าง
 
-Integration Points:
-    - Compatible with all standard turtle module features
-    - Can be used for educational programming
-    - Supports interactive graphics applications
+จุดเชื่อมต่อ:
+    - ใช้งานได้กับคุณสมบัติทั้งหมดของโมดูลเต่ามาตรฐาน
+    - สามารถใช้สำหรับการเรียนการสอนโปรแกรมมิ่ง
+    - รองรับแอปพลิเคชันกราฟิกแบบโต้ตอบ
 
-Usage Examples:
+ตัวอย่างการใช้งาน:
     >>> from piyathon.Lib.เต่า import เต่า
     >>> t = เต่า()
     >>> t.เดินหน้า(100)
     >>> t.ขวา(90)
     >>> t.วงกลม(50)
 
-Known Limitations:
-    - Performance depends on the underlying Tkinter implementation
-    - Some complex animations may require manual screen updates
-    - Limited to 2D graphics operations
+ข้อจำกัดที่ทราบ:
+    - ประสิทธิภาพขึ้นอยู่กับการใช้งาน Tkinter
+    - แอนิเมชันที่ซับซ้อนบางอย่างอาจต้องอัปเดตหน้าจอด้วยตนเอง
+    - จำกัดเฉพาะการทำงานกราฟิก 2 มิติ
 """
 
 import turtle

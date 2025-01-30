@@ -2,31 +2,31 @@
 # Licensed under the MIT License
 
 """
-Piyathon Code Translation Module
+โมดูลแปลงโค้ด Piyathon
 
-This module provides the core translation functionality between Piyathon and Python code.
-It handles the bidirectional translation of keywords and maintains proper code structure
-while dealing with special cases like string literals and whitespace.
+โมดูลนี้ให้ฟังก์ชันหลักในการแปลงระหว่างโค้ด Piyathon และ Python
+มีความสามารถในการแปลงคำสำคัญไปมาทั้งสองทิศทาง และรักษาโครงสร้างโค้ดที่ถูกต้อง
+พร้อมจัดการกรณีพิเศษเช่น string literals และช่องว่าง
 
-Core Functionality:
-    - Bidirectional translation between Piyathon and Python code
-    - Token-based code processing and generation
-    - Special handling for adjacent string literals
-    - Whitespace preservation and cleanup
+ฟังก์ชันหลัก:
+    - แปลงโค้ดระหว่าง Piyathon และ Python ได้ทั้งสองทิศทาง
+    - ประมวลผลและสร้างโค้ดโดยใช้ token
+    - จัดการกรณีพิเศษสำหรับ string literals ที่อยู่ติดกัน
+    - รักษาและทำความสะอาดช่องว่างในโค้ด
 
 Dependencies:
-    - tokenize: For Python code tokenization and untokenization
-    - io.StringIO: For string-based token generation
-    - keywords: For Piyathon-Python keyword mappings
+    - tokenize: สำหรับแยก token และรวม token ของโค้ด Python
+    - io.StringIO: สำหรับสร้าง token จากสตริง
+    - keywords: สำหรับการแปลงคำสำคัญระหว่าง Piyathon-Python
 
-Data Structures:
-    - Token objects from the tokenize module representing code elements
-    - Translation dictionaries (PY_TO_PI, PI_TO_PY) for keyword mapping
+โครงสร้างข้อมูล:
+    - Token objects จากโมดูล tokenize ที่แทนส่วนประกอบของโค้ด
+    - พจนานุกรมแปลคำ (PY_TO_PI, PI_TO_PY) สำหรับการแปลงคำสำคัญ
 
-Known Limitations:
-    - Handles only direct keyword translations
-    - May require special handling for complex string patterns
-    - Limited to Python's tokenization capabilities
+ข้อจำกัดที่ทราบ:
+    - รองรับเฉพาะการแปลคำสำคัญโดยตรง
+    - อาจต้องมีการจัดการพิเศษสำหรับรูปแบบสตริงที่ซับซ้อน
+    - จำกัดตามความสามารถในการแยก token ของ Python
 """
 
 import tokenize
@@ -36,19 +36,18 @@ from .keywords import PY_TO_PI, PI_TO_PY
 
 class PiyathonTranslator:
     """
-    A translator class that converts between Piyathon and Python code.
+    คลาสสำหรับแปลงระหว่างโค้ด Piyathon และ Python
 
-    This class provides methods for bidirectional translation between Piyathon and Python
-    code using Python's tokenize module. It handles special cases like adjacent string
-    literals and maintains proper code formatting.
+    คลาสนี้ให้เมธอดสำหรับการแปลงโค้ดระหว่าง Piyathon และ Python ในทั้งสองทิศทาง
+    โดยใช้โมดูล tokenize ของ Python มีการจัดการกรณีพิเศษเช่น string literals ที่อยู่ติดกัน
+    และรักษารูปแบบการจัดวางโค้ดที่เหมาะสม
 
-    Methods:
-        is_string_like(token): Check if a token is a string-like token
-        custom_untokenize(tokens): Untokenize with special handling for adjacent strings
-        clean_whitespaces(code): Clean and normalize code whitespace
-        translate(code, translation_dict): Perform the actual translation
-        python_to_piyathon(code): Convert Python code to Piyathon
-        piyathon_to_python(code): Convert Piyathon code to Python
+    เมธอด:
+        is_string_like(token): ตรวจสอบว่า token เป็นประเภทสตริงหรือไม่
+        custom_untokenize(tokens): รวม token กลับเป็นโค้ดพร้อมจัดการกรณีพิเศษสำหรับสตริงที่อยู่ติดกัน
+        clean_whitespaces(code): ทำความสะอาดและปรับช่องว่างในโค้ดให้เป็นมาตรฐาน
+        translate(code, translation_dict): ดำเนินการแปลโค้ด
+        python_to_piyathon(code): แปลงโค้ด Python เป็น Piyathon
     """
 
     @staticmethod

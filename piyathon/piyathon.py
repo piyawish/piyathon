@@ -2,34 +2,33 @@
 # Licensed under the MIT License
 
 """
-Piyathon Command Line Interface and Runtime Environment
+อินเตอร์เฟซคำสั่งและสภาพแวดล้อมการรันของ Piyathon
 
-This module serves as the main entry point for the Piyathon programming language,
-providing command-line interface functionality and runtime execution environment
-for Piyathon (.pi) source files.
+โมดูลนี้เป็นจุดเริ่มต้นหลักของภาษาโปรแกรม Piyathon โดยให้ฟังก์ชันการทำงาน
+ของอินเตอร์เฟซคำสั่งและสภาพแวดล้อมการรันสำหรับไฟล์ซอร์สโค้ด Piyathon (.pi)
 
-Core Functionality:
-    - Parses command line arguments for Piyathon source files
-    - Reads and validates Piyathon source code
-    - Translates Piyathon code to Python using PiyathonTranslator
-    - Sets up runtime environment with custom library path
-    - Executes translated Python code in an isolated namespace
+ฟังก์ชันหลัก:
+    - แยกวิเคราะห์อาร์กิวเมนต์คำสั่งสำหรับไฟล์ซอร์สโค้ด Piyathon
+    - อ่านและตรวจสอบซอร์สโค้ด Piyathon
+    - แปลงโค้ด Piyathon เป็น Python โดยใช้ PiyathonTranslator
+    - ตั้งค่าสภาพแวดล้อมการรันพร้อมพาธไลบรารีที่กำหนดเอง
+    - รันโค้ด Python ที่แปลงแล้วในเนมสเปซแยก
 
 Dependencies:
-    - sys: For system-level operations and exit handling
-    - os: For path manipulation and file operations
-    - argparse: For command-line argument parsing
-    - piyathon_translator: For Piyathon to Python code translation
+    - sys: สำหรับการทำงานระดับระบบและการจัดการการออก
+    - os: สำหรับการจัดการพาธและการทำงานกับไฟล์
+    - argparse: สำหรับแยกวิเคราะห์อาร์กิวเมนต์คำสั่ง
+    - piyathon_translator: สำหรับการแปลงโค้ดจาก Piyathon เป็น Python
 
-Integration Points:
-    - Integrates with PiyathonTranslator for code translation
-    - Interfaces with custom Piyathon standard library in the Lib directory
-    - Works with the command line for file input and execution
+จุดเชื่อมต่อ:
+    - ทำงานร่วมกับ PiyathonTranslator สำหรับการแปลงโค้ด
+    - เชื่อมต่อกับไลบรารีมาตรฐาน Piyathon ในไดเรกทอรี Lib
+    - ทำงานกับคำสั่งสำหรับการรับไฟล์และการรันโค้ด
 
-Known Limitations:
-    - Only processes single .pi files (no module imports yet)
-    - Executes in an isolated namespace with limited global scope
-    - Error handling is basic with general exception catching
+ข้อจำกัดที่ทราบ:
+    - ประมวลผลเฉพาะไฟล์ .pi เดี่ยว (ยังไม่รองรับการนำเข้าโมดูล)
+    - รันในเนมสเปซแยกที่มีขอบเขตโกลบอลจำกัด
+    - การจัดการข้อผิดพลาดแบบพื้นฐานด้วยการจับข้อผิดพลาดทั่วไป
 """
 
 import sys
@@ -41,17 +40,12 @@ from . import __version__
 
 def parse_arguments():
     """
-    Parse and validate command-line arguments for Piyathon execution.
+    แยกวิเคราะห์และตรวจสอบอาร์กิวเมนต์คำสั่งสำหรับการรัน Piyathon
 
     Returns:
-        argparse.Namespace: Parsed command-line arguments containing:
-            - source_file (str): Path to the Piyathon source file (.pi)
-            - version (bool): Flag for version information display
-
-    Example:
-        >>> args = parse_arguments()
-        >>> print(args.source_file)
-        'example.pi'
+        argparse.Namespace: อาร์กิวเมนต์คำสั่งที่แยกวิเคราะห์แล้วซึ่งประกอบด้วย:
+            - source_file (str): พาธของไฟล์ซอร์สโค้ด Piyathon (.pi)
+            - version (bool): แฟล็กสำหรับแสดงข้อมูลเวอร์ชัน
     """
     parser = argparse.ArgumentParser(
         description=f"Piyathon {__version__}\n"
@@ -68,27 +62,24 @@ def parse_arguments():
 
 def main():
     """
-    Main entry point for the Piyathon interpreter.
+    จุดเริ่มต้นหลักของตัวแปลภาษา Piyathon
 
-    This function orchestrates the entire Piyathon execution process:
-    1. Parses command-line arguments
-    2. Validates the source file extension
-    3. Reads and processes the source file
-    4. Translates Piyathon code to Python
-    5. Sets up the runtime environment
-    6. Executes the translated code
+    ฟังก์ชันนี้จัดการกระบวนการรัน Piyathon ทั้งหมด:
+    1. แยกวิเคราะห์อาร์กิวเมนต์คำสั่ง
+    2. ตรวจสอบนามสกุลไฟล์ซอร์สโค้ด
+    3. อ่านและประมวลผลไฟล์ซอร์สโค้ด
+    4. แปลงโค้ด Piyathon เป็น Python
+    5. ตั้งค่าสภาพแวดล้อมการรัน
+    6. รันโค้ดที่แปลงแล้ว
 
-    Side Effects:
-        - Modifies sys.path to include Piyathon standard library
-        - Creates and populates a new execution namespace
-        - Writes to stdout/stderr for error reporting
+    ผลกระทบข้างเคียง:
+        - แก้ไข sys.path เพื่อรวมไลบรารีมาตรฐาน Piyathon
+        - สร้างและเติมเนมสเปซใหม่สำหรับการรัน
+        - เขียนไปยัง stdout/stderr สำหรับการรายงานข้อผิดพลาด
 
-    Exit Codes:
-        - 0: Successful execution
-        - 1: Various error conditions (file not found, invalid extension, etc.)
-
-    Example:
-        $ python -m piyathon example.pi
+    รหัสออก:
+        - 0: การรันสำเร็จ
+        - 1: สภาวะข้อผิดพลาดต่างๆ (ไม่พบไฟล์, นามสกุลไม่ถูกต้อง, ฯลฯ)
     """
     args = parse_arguments()
     source_file = args.source_file

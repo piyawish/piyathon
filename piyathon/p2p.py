@@ -2,40 +2,40 @@
 # Licensed under the MIT License
 
 """
-Piyathon Code Translation Command Line Tool
+เครื่องมือแปลงโค้ด Piyathon ผ่านคำสั่งในเทอร์มินัล
 
-This module provides a command-line interface for bidirectional translation
-between Python (.py) and Piyathon (.pi) source files. It serves as a standalone
-tool for code conversion without execution.
+โมดูลนี้ให้อินเตอร์เฟซแบบคำสั่งในเทอร์มินัลสำหรับการแปลงโค้ดสองทิศทาง
+ระหว่างไฟล์ซอร์สโค้ด Python (.py) และ Piyathon (.pi) ทำหน้าที่เป็นเครื่องมือแปลงโค้ด
+แบบสแตนด์อโลนโดยไม่มีการรันโค้ด
 
-Core Functionality:
-    - Converts Python source files to Piyathon format
-    - Converts Piyathon source files to Python format
-    - Validates file extensions and handles errors
-    - Preserves code structure and formatting during translation
+ฟังก์ชันหลัก:
+    - แปลงไฟล์ซอร์สโค้ด Python เป็นรูปแบบ Piyathon
+    - แปลงไฟล์ซอร์สโค้ด Piyathon เป็นรูปแบบ Python
+    - ตรวจสอบนามสกุลไฟล์และจัดการข้อผิดพลาด
+    - รักษาโครงสร้างและการจัดรูปแบบโค้ดระหว่างการแปล
 
 Dependencies:
-    - sys: For system-level operations and exit handling
-    - os: For path manipulation and file operations
-    - argparse: For command-line argument parsing
-    - piyathon_translator: For bidirectional code translation
+    - sys: สำหรับการทำงานระดับระบบและการจัดการการออก
+    - os: สำหรับการจัดการพาธและการทำงานกับไฟล์
+    - argparse: สำหรับแยกวิเคราะห์อาร์กิวเมนต์คำสั่ง
+    - piyathon_translator: สำหรับการแปลงโค้ดสองทิศทาง
 
-Integration Points:
-    - Works with PiyathonTranslator for code conversion
-    - Interfaces with the file system for reading/writing code
-    - Can be used as part of a build/translation pipeline
+จุดเชื่อมต่อ:
+    - ทำงานร่วมกับ PiyathonTranslator สำหรับการแปลงโค้ด
+    - เชื่อมต่อกับระบบไฟล์สำหรับการอ่าน/เขียนโค้ด
+    - สามารถใช้เป็นส่วนหนึ่งของไปป์ไลน์การสร้าง/แปลโค้ด
 
-Usage Examples:
-    # Convert Python to Piyathon
+ตัวอย่างการใช้งาน:
+    # แปลง Python เป็น Piyathon
     $ python -m piyathon.p2p input.py output.pi
 
-    # Convert Piyathon to Python
+    # แปลง Piyathon เป็น Python
     $ python -m piyathon.p2p input.pi output.py
 
-Known Limitations:
-    - Processes one file at a time
-    - No support for directory-wide translation
-    - Basic error handling for file operations
+ข้อจำกัดที่ทราบ:
+    - ประมวลผลทีละหนึ่งไฟล์
+    - ไม่รองรับการแปลทั้งไดเรกทอรี
+    - การจัดการข้อผิดพลาดแบบพื้นฐานสำหรับการทำงานกับไฟล์
 """
 
 import sys
@@ -46,7 +46,7 @@ from .piyathon_translator import PiyathonTranslator
 
 def parse_arguments():
     """
-    Parse and validate command-line arguments for file translation.
+    แยกวิเคราะห์และตรวจสอบอาร์กิวเมนต์คำสั่งสำหรับการแปลงไฟล์
 
     Returns:
         argparse.Namespace: Parsed command-line arguments containing:
@@ -69,24 +69,20 @@ def parse_arguments():
 
 def validate_extensions(source_file, destination_file):
     """
-    Validate file extensions for source and destination files.
+    ตรวจสอบความถูกต้องของนามสกุลไฟล์ต้นทางและปลายทาง
 
-    Ensures that:
-    1. Source and destination have different extensions
-    2. Both files use either .py or .pi extensions
-    3. The extension combination is valid for translation
+    ตรวจสอบว่านามสกุลไฟล์ต้นทางและปลายทางถูกต้องตามที่กำหนด (.py หรือ .pi)
+    และตรวจสอบว่าการแปลงระหว่างนามสกุลเป็นไปตามที่อนุญาต
 
     Args:
-        source_file (str): Path to the source file
-        destination_file (str): Path to the destination file
+        source_file: พาธของไฟล์ต้นทาง
+        destination_file: พาธของไฟล์ปลายทาง
 
-    Side Effects:
-        - Exits with status code 1 if validation fails
-        - Prints error message to stderr
+    Returns:
+        tuple: (นามสกุลไฟล์ต้นทาง, นามสกุลไฟล์ปลายทาง)
 
-    Example:
-        >>> validate_extensions("test.py", "test.pi")  # Valid
-        >>> validate_extensions("test.py", "test.py")  # Invalid, exits
+    Raises:
+        ValueError: เมื่อนามสกุลไฟล์ไม่ถูกต้องหรือการแปลงไม่ได้รับอนุญาต
     """
     source_ext = os.path.splitext(source_file)[1]
     dest_ext = os.path.splitext(destination_file)[1]
@@ -104,20 +100,17 @@ def validate_extensions(source_file, destination_file):
 
 def read_source_file(source_file):
     """
-    Read and return the contents of the source file.
+    อ่านเนื้อหาจากไฟล์ต้นทาง
 
     Args:
-        source_file (str): Path to the source file
+        source_file: พาธของไฟล์ที่ต้องการอ่าน
 
     Returns:
-        str: Contents of the source file
+        str: เนื้อหาของไฟล์ต้นทาง
 
     Raises:
-        SystemExit: If file cannot be read or doesn't exist
-
-    Example:
-        >>> code = read_source_file("example.py")
-        >>> print(len(code))  # Number of characters read
+        FileNotFoundError: เมื่อไม่พบไฟล์ต้นทาง
+        IOError: เมื่อเกิดข้อผิดพลาดในการอ่านไฟล์
     """
     try:
         with open(source_file, "r", encoding="utf-8") as file:
@@ -132,26 +125,18 @@ def read_source_file(source_file):
 
 def translate_code(source_code, source_ext, dest_ext):
     """
-    Translate code between Python and Piyathon formats.
+    แปลงโค้ดระหว่าง Python และ Piyathon
 
     Args:
-        source_code (str): The source code to translate
-        source_ext (str): Source file extension (".py" or ".pi")
-        dest_ext (str): Destination file extension (".pi" or ".py")
+        source_code: โค้ดต้นทางที่ต้องการแปล
+        source_ext: นามสกุลไฟล์ต้นทาง
+        dest_ext: นามสกุลไฟล์ปลายทาง
 
     Returns:
-        tuple: (translated_code: str, translation_type: str)
-            - translated_code: The translated source code
-            - translation_type: Description of the translation direction
+        tuple: (โค้ดที่แปลแล้ว, ประเภทการแปล)
 
-    Side Effects:
-        - Exits with status code 1 if translation fails
-        - Prints error message to stderr
-
-    Example:
-        >>> code, type = translate_code("def main():", ".py", ".pi")
-        >>> print(type)
-        'Python to Piyathon'
+    Raises:
+        ValueError: เมื่อนามสกุลไฟล์ไม่ถูกต้องหรือการแปลงไม่ได้รับอนุญาต
     """
     translator = PiyathonTranslator()
 
@@ -177,22 +162,15 @@ def translate_code(source_code, source_ext, dest_ext):
 
 def write_translated_code(destination_file, translated_code, translation_type):
     """
-    Write translated code to the destination file.
+    เขียนโค้ดที่แปลแล้วลงในไฟล์ปลายทาง
 
     Args:
-        destination_file (str): Path to the output file
-        translated_code (str): The translated source code
-        translation_type (str): Description of the translation performed
+        destination_file: พาธของไฟล์ปลายทาง
+        translated_code: โค้ดที่แปลแล้ว
+        translation_type: ประเภทการแปล (py2pi หรือ pi2py)
 
-    Side Effects:
-        - Creates or overwrites the destination file
-        - Prints success message to stdout
-        - Exits with status code 1 if write fails
-
-    Example:
-        >>> write_translated_code("output.pi", "คำสั่ง หลัก():", "Python to Piyathon")
-        Piyathon to Python translation completed.
-        Translated code has been written to 'output.pi'.
+    Raises:
+        IOError: เมื่อเกิดข้อผิดพลาดในการเขียนไฟล์
     """
     try:
         with open(destination_file, "w", encoding="utf-8") as file:
