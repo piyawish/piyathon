@@ -45,11 +45,23 @@ testpaths = ["tests"]
 
 [tool.uv]
 dev-dependencies = [
+    # Testing
     "pytest>=6.0",
-    "twine",
+    
+    # Code formatting and linting
+    "black",
+    
+    # Documentation
     "sphinx",
     "sphinx-autobuild",
+    "sphinx-sitemap",
+    "sphinxext-opengraph", 
+    "myst-parser",
+    "furo",
     "html5validator",
+    
+    # Publishing
+    "twine",
 ]
 
 [tool.uv.sources]
