@@ -20,7 +20,7 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 livehtml:
-	sphinx-autobuild source/ build/html \
+	uv run sphinx-autobuild source/ build/html \
 		--host localhost \
 		--watch source/ \
 		--port 8000
@@ -29,4 +29,4 @@ upload_all:
 	gsutil -m -o "GSUtil:parallel_process_count=1" -o "Boto:parallel_thread_count=4" cp -r build/html/* gs://www.piyathon.org
 
 validate:
-	html5validator build/html/**/*.html
+	uv run html5validator build/html/**/*.html

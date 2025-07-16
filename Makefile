@@ -3,12 +3,12 @@ default:
 
 test:
 	find ../cpython -name "*.py" > tests/cpython_file_list.txt
-	pytest tests
+	uv run pytest tests
 	@rm tests/cpython_file_list.txt
 	@rm -rf tests/translated
 
 build:
-	hatch build
+	uv build
 
 clean:
 	rm -rf build/
@@ -22,9 +22,9 @@ clean:
 	find . -type f -name ".pytest_cache" -delete
 
 upload: clean build
-	twine check dist/*
-	twine upload dist/*
+	uv run twine check dist/*
+	uv run twine upload dist/*
 
 test-upload: clean build
-	twine check dist/*
-	twine upload --repository testpypi dist/*
+	uv run twine check dist/*
+	uv run twine upload --repository testpypi dist/*

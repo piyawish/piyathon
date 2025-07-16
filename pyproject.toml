@@ -42,3 +42,14 @@ minversion = "6.0"
 addopts = "-ra"
 testpaths = ["tests"]
 # log_cli = true
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=6.0",
+    "twine",
+    "sphinx",
+    "sphinx-autobuild",
+    "html5validator",
+]
+
+[tool.uv.sources]
