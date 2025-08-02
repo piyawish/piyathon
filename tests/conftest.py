@@ -15,6 +15,7 @@ Key Components:
 
 import logging
 import pytest
+from tests.stats_collector import get_global_collector, reset_global_collector
 
 
 def setup_logger(level=logging.INFO):
@@ -76,3 +77,47 @@ def test_logger():
             test_logger.info("Starting test...")
     """
     return logger
+
+
+@pytest.fixture(scope="session", autouse=True)
+def setup_statistics_collection():
+    """
+    Session-wide fixture that manages statistics collection for the test session.
+    
+    This fixture automatically runs for the entire test session and:
+    1. Resets the global statistics collector at the start
+    2. Starts timing collection
+    3. Stops timing and prints statistics summary at the end
+    
+    The autouse=True means this fixture runs automatically without being
+    explicitly requested by test functions.
+    """
+    # Setup: Reset collector and start timing
+    reset_global_collector()
+    collector = get_global_collector()
+    collector.start_collection()
+    
+    yield  # This is where all the tests run
+    
+    # Teardown: Stop timing and display statistics
+    collector.stop_collection()
+    print(collector.format_summary())
+
+
+@pytest.fixture(scope="session")
+def stats_collector():
+    """
+    Pytest fixture that provides access to the global statistics collector.
+    
+    This fixture can be used by tests that need direct access to the statistics
+    collector, though most tests should rely on the automatic collection
+    in test_cpython_files.py.
+    
+    Returns:
+        StatisticsCollector: The global statistics collector instance
+    
+    Example:
+        def test_something(stats_collector):
+            stats_collector.record_file_success("test.py", 100, 10)
+    """
+    return get_global_collector()

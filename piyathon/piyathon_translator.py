@@ -134,23 +134,39 @@ class PiyathonTranslator:
         tokens = list(tokenize.generate_tokens(StringIO(code).readline))
         return cls.custom_untokenize(tokens)
 
-    def translate(self, code, translation_dict):
+    def translate(self, code, translation_dict, collect_stats=False):
         """
         Translate code using the provided translation dictionary.
 
         Args:
             code (str): The source code to translate
             translation_dict (dict): Dictionary mapping source to target keywords
+            collect_stats (bool): Whether to collect token statistics during translation
 
         Returns:
-            str: The translated code
+            str | tuple: The translated code, or tuple of (translated_code, total_tokens, name_tokens) 
+                        if collect_stats is True
 
         Example:
             >>> translator = PiyathonTranslator()
             >>> translator.translate("def main():", PY_TO_PI)
             'คำสั่ง หลัก():'
+            >>> translator.translate("def main():", PY_TO_PI, collect_stats=True)
+            ('คำสั่ง หลัก():', 4, 1)
         """
         tokens = list(tokenize.generate_tokens(StringIO(code).readline))
+        
+        # Count tokens if statistics collection is requested
+        total_tokens = 0
+        name_tokens = 0
+        
+        if collect_stats:
+            for tok in tokens:
+                if tok.type not in (tokenize.ENDMARKER, tokenize.ENCODING, tokenize.NEWLINE, tokenize.NL):
+                    total_tokens += 1
+                    if tok.type == tokenize.NAME:
+                        name_tokens += 1
+        
         result = [
             (
                 tok._replace(string=translation_dict.get(tok.string, tok.string))
@@ -159,38 +175,52 @@ class PiyathonTranslator:
             )
             for tok in tokens
         ]
-        return self.custom_untokenize(result)
+        
+        translated_code = self.custom_untokenize(result)
+        
+        if collect_stats:
+            return translated_code, total_tokens, name_tokens
+        else:
+            return translated_code
 
-    def python_to_piyathon(self, code):
+    def python_to_piyathon(self, code, collect_stats=False):
         """
         Convert Python code to Piyathon code.
 
         Args:
             code (str): Python source code
+            collect_stats (bool): Whether to collect token statistics during translation
 
         Returns:
-            str: Equivalent Piyathon code
+            str | tuple: Equivalent Piyathon code, or tuple of (piyathon_code, total_tokens, name_tokens) 
+                        if collect_stats is True
 
         Example:
             >>> translator = PiyathonTranslator()
             >>> translator.python_to_piyathon("def main():\\n    print('Hello')")
             'คำสั่ง หลัก():\\n    พิมพ์("Hello")'
+            >>> translator.python_to_piyathon("def main():", collect_stats=True)
+            ('คำสั่ง หลัก():', 4, 1)
         """
-        return self.translate(code, PY_TO_PI)
+        return self.translate(code, PY_TO_PI, collect_stats)
 
-    def piyathon_to_python(self, code):
+    def piyathon_to_python(self, code, collect_stats=False):
         """
         Convert Piyathon code to Python code.
 
         Args:
             code (str): Piyathon source code
+            collect_stats (bool): Whether to collect token statistics during translation
 
         Returns:
-            str: Equivalent Python code
+            str | tuple: Equivalent Python code, or tuple of (python_code, total_tokens, name_tokens) 
+                        if collect_stats is True
 
         Example:
             >>> translator = PiyathonTranslator()
             >>> translator.piyathon_to_python('คำสั่ง หลัก():\\n    พิมพ์("Hello")')
             'def main():\\n    print("Hello")'
+            >>> translator.piyathon_to_python('คำสั่ง หลัก():', collect_stats=True)
+            ('def main():', 4, 1)
         """
-        return self.translate(code, PI_TO_PY)
+        return self.translate(code, PI_TO_PY, collect_stats)

@@ -26,10 +26,10 @@ Integration Points:
     - Uses shared test_logger fixture from conftest.py
 """
 
-
 from pathlib import Path
 import pytest
 from piyathon.piyathon_translator import PiyathonTranslator
+from tests.stats_collector import get_global_collector
 
 
 def read_cpython_file_list():
@@ -95,40 +95,55 @@ def test_translation_consistency(py_file, test_logger):
         - Whitespace differences may affect comparison
         - May skip files with encoding issues
     """
+    # Get the global statistics collector
+    stats_collector = get_global_collector()
+
     # Read the original .py file
     try:
         with open(py_file, "r", encoding="utf-8") as file:
             original_py_code = file.read()
     except UnicodeDecodeError:
         test_logger.error(f"Error: Unable to decode {py_file} using UTF-8 encoding.")
+        stats_collector.record_file_error(py_file, "UTF-8 decoding error")
         return  # Skip this file and continue with the next one
 
-    original_py_code = PiyathonTranslator.clean_whitespaces(original_py_code)
+    try:
+        original_py_code = PiyathonTranslator.clean_whitespaces(original_py_code)
 
-    translator = PiyathonTranslator()
+        translator = PiyathonTranslator()
 
-    # Translate .py to .pi
-    translated_pi_code = translator.python_to_piyathon(original_py_code)
+        # Translate .py to .pi with statistics collection
+        pi_result = translator.python_to_piyathon(original_py_code, collect_stats=True)
+        translated_pi_code, total_tokens, name_tokens = pi_result
 
-    # Create the target directory structure
-    translated_dir = Path("tests") / "translated"
-    # Remove "../" from the path and get just the cpython part onwards
-    clean_path = Path(py_file.replace("../", ""))
-    target_pi_file = translated_dir / clean_path.with_suffix(".pi")
-    target_pi_file.parent.mkdir(parents=True, exist_ok=True)
+        # Create the target directory structure
+        translated_dir = Path("tests") / "translated"
+        # Remove "../" from the path and get just the cpython part onwards
+        clean_path = Path(py_file.replace("../", ""))
+        target_pi_file = translated_dir / clean_path.with_suffix(".pi")
+        target_pi_file.parent.mkdir(parents=True, exist_ok=True)
 
-    # Save the translated Piyathon code
-    target_pi_file.write_text(translated_pi_code, encoding="utf-8")
+        # Save the translated Piyathon code
+        target_pi_file.write_text(translated_pi_code, encoding="utf-8")
 
-    # Translate .pi to .py
-    translated_py_code = translator.piyathon_to_python(translated_pi_code)
+        # Translate .pi to .py (no need for stats on reverse translation)
+        translated_py_code = translator.piyathon_to_python(translated_pi_code)
 
-    translated_py_code = PiyathonTranslator.clean_whitespaces(translated_py_code)
+        translated_py_code = PiyathonTranslator.clean_whitespaces(translated_py_code)
 
-    test_logger.debug("Original Python code:\n%s", original_py_code)
-    test_logger.debug("Translated Python code:\n%s", translated_py_code)
+        test_logger.debug("Original Python code:\n%s", original_py_code)
+        test_logger.debug("Translated Python code:\n%s", translated_py_code)
 
-    # Assert that the translated .py code matches the original .py code
-    assert (
-        original_py_code == translated_py_code
-    ), f"The Python code translation is not consistent for {py_file}."
+        # Assert that the translated .py code matches the original .py code
+        assert original_py_code == translated_py_code, (
+            f"The Python code translation is not consistent for {py_file}."
+        )
+
+        # Record successful file processing with statistics
+        stats_collector.record_file_success(py_file, total_tokens, name_tokens)
+
+    except Exception as e:
+        # Record any other errors that occur during processing
+        test_logger.error(f"Error processing {py_file}: {str(e)}")
+        stats_collector.record_file_error(py_file, str(e))
+        raise  # Re-raise the exception to maintain test failure behavior
