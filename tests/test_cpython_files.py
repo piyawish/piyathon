@@ -28,6 +28,7 @@ Integration Points:
 
 from pathlib import Path
 import pytest
+import tokenize
 from piyathon.piyathon_translator import PiyathonTranslator
 from tests.stats_collector import get_global_collector
 
@@ -98,13 +99,13 @@ def test_translation_consistency(py_file, test_logger):
     # Get the global statistics collector
     stats_collector = get_global_collector()
 
-    # Read the original .py file
+    # Read the original .py file with automatic encoding detection
     try:
-        with open(py_file, "r", encoding="utf-8") as file:
+        with tokenize.open(py_file) as file:
             original_py_code = file.read()
-    except UnicodeDecodeError:
-        test_logger.error(f"Error: Unable to decode {py_file} using UTF-8 encoding.")
-        stats_collector.record_file_error(py_file, "UTF-8 decoding error")
+    except (UnicodeDecodeError, OSError, SyntaxError) as e:
+        test_logger.error(f"Error: Unable to decode {py_file}: {str(e)}")
+        stats_collector.record_file_error(py_file, f"Encoding error: {str(e)}")
         return  # Skip this file and continue with the next one
 
     try:

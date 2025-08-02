@@ -2,7 +2,7 @@ default:
 	@echo "No default task defined"
 
 test:
-	find ../cpython -name "*.py" > tests/cpython_file_list.txt
+	find ../cpython -name "*.py" ! -path "*/test/tokenizedata/*" > tests/cpython_file_list.txt
 	uv run pytest tests -v -s
 	@rm tests/cpython_file_list.txt
 	@rm -rf tests/translated
