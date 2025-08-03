@@ -87,12 +87,11 @@ class StatisticsCollector:
         if self.start_time is not None:
             self.stats.processing_time = time.time() - self.start_time
 
-    def record_file_success(self, file_path: str, total_tokens: int, name_tokens: int):
+    def record_file_success(self, total_tokens: int, name_tokens: int):
         """
         Record statistics for a successfully processed file.
 
         Args:
-            file_path (str): Path to the file that was processed
             total_tokens (int): Total number of tokens in the file
             name_tokens (int): Number of NAME tokens in the file
         """
@@ -109,7 +108,12 @@ class StatisticsCollector:
             error_message (str): Optional error message description
         """
         self.stats.files_with_errors += 1
-        self.stats.error_files.append(file_path)
+        # Include error message in the file path for better debugging
+        if error_message:
+            error_entry = f"{file_path} ({error_message})"
+        else:
+            error_entry = file_path
+        self.stats.error_files.append(error_entry)
 
     def get_statistics(self) -> TestStatistics:
         """
@@ -138,12 +142,12 @@ class StatisticsCollector:
             "=" * 50,
             "🔍 PIYATHON TRANSLATION TEST STATISTICS",
             "=" * 50,
-            f"📁 Files processed:",
+            "📁 Files processed:",
             f"   ✅ Successfully tested: {format_number(stats.files_tested)}",
             f"   ❌ Files with errors:   {format_number(stats.files_with_errors)}",
             f"   📊 Success rate:        {stats.success_rate:.1f}%",
             "",
-            f"🔤 Token analysis:",
+            "🔤 Token analysis:",
             f"   🔢 Total tokens:        {format_number(stats.total_tokens)}",
             f"   🏷️  NAME tokens:         {format_number(stats.name_tokens)}",
             f"   📈 Translatable token ratio: {stats.translatable_token_ratio:.2f}%",
@@ -167,10 +171,40 @@ class StatisticsCollector:
         return "\n".join(summary_lines)
 
 
-# Global statistics collector instance for the test session
-_global_collector: Optional[StatisticsCollector] = None
+class GlobalCollectorManager:
+    """
+    Singleton manager for the global statistics collector.
+
+    This class manages a single instance of StatisticsCollector that can be
+    accessed throughout the test session without using global statements.
+    """
+
+    _instance: Optional["GlobalCollectorManager"] = None
+    _collector: Optional[StatisticsCollector] = None
+
+    def __new__(cls) -> "GlobalCollectorManager":
+        """Create or return the singleton instance."""
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+    def get_collector(self) -> StatisticsCollector:
+        """
+        Get or create the statistics collector instance.
+
+        Returns:
+            StatisticsCollector: The collector instance
+        """
+        if self._collector is None:
+            self._collector = StatisticsCollector()
+        return self._collector
+
+    def reset_collector(self):
+        """Reset the statistics collector to start fresh."""
+        self._collector = StatisticsCollector()
 
 
+# Module-level convenience functions
 def get_global_collector() -> StatisticsCollector:
     """
     Get or create the global statistics collector instance.
@@ -178,13 +212,11 @@ def get_global_collector() -> StatisticsCollector:
     Returns:
         StatisticsCollector: The global collector instance
     """
-    global _global_collector
-    if _global_collector is None:
-        _global_collector = StatisticsCollector()
-    return _global_collector
+    manager = GlobalCollectorManager()
+    return manager.get_collector()
 
 
 def reset_global_collector():
     """Reset the global statistics collector to start fresh."""
-    global _global_collector
-    _global_collector = StatisticsCollector()
+    manager = GlobalCollectorManager()
+    manager.reset_collector()

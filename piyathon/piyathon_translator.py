@@ -144,8 +144,9 @@ class PiyathonTranslator:
             collect_stats (bool): Whether to collect token statistics during translation
 
         Returns:
-            str | tuple: The translated code, or tuple of (translated_code, total_tokens, name_tokens) 
-                        if collect_stats is True
+            str | tuple: The translated code, or tuple of
+                         (translated_code, total_tokens, name_tokens)
+                         if collect_stats is True
 
         Example:
             >>> translator = PiyathonTranslator()
@@ -155,18 +156,23 @@ class PiyathonTranslator:
             ('คำสั่ง หลัก():', 4, 1)
         """
         tokens = list(tokenize.generate_tokens(StringIO(code).readline))
-        
+
         # Count tokens if statistics collection is requested
         total_tokens = 0
         name_tokens = 0
-        
+
         if collect_stats:
             for tok in tokens:
-                if tok.type not in (tokenize.ENDMARKER, tokenize.ENCODING, tokenize.NEWLINE, tokenize.NL):
+                if tok.type not in (
+                    tokenize.ENDMARKER,
+                    tokenize.ENCODING,
+                    tokenize.NEWLINE,
+                    tokenize.NL,
+                ):
                     total_tokens += 1
                     if tok.type == tokenize.NAME:
                         name_tokens += 1
-        
+
         result = [
             (
                 tok._replace(string=translation_dict.get(tok.string, tok.string))
@@ -175,13 +181,12 @@ class PiyathonTranslator:
             )
             for tok in tokens
         ]
-        
+
         translated_code = self.custom_untokenize(result)
-        
+
         if collect_stats:
             return translated_code, total_tokens, name_tokens
-        else:
-            return translated_code
+        return translated_code
 
     def python_to_piyathon(self, code, collect_stats=False):
         """
@@ -192,8 +197,9 @@ class PiyathonTranslator:
             collect_stats (bool): Whether to collect token statistics during translation
 
         Returns:
-            str | tuple: Equivalent Piyathon code, or tuple of (piyathon_code, total_tokens, name_tokens) 
-                        if collect_stats is True
+            str | tuple: Equivalent Piyathon code, or tuple of
+                         (piyathon_code, total_tokens, name_tokens)
+                         if collect_stats is True
 
         Example:
             >>> translator = PiyathonTranslator()
@@ -213,8 +219,9 @@ class PiyathonTranslator:
             collect_stats (bool): Whether to collect token statistics during translation
 
         Returns:
-            str | tuple: Equivalent Python code, or tuple of (python_code, total_tokens, name_tokens) 
-                        if collect_stats is True
+            str | tuple: Equivalent Python code, or tuple of
+                         (python_code, total_tokens, name_tokens)
+                         if collect_stats is True
 
         Example:
             >>> translator = PiyathonTranslator()

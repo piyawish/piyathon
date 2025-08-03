@@ -141,7 +141,7 @@ def test_translation_consistency(py_file, test_logger):
         )
 
         # Record successful file processing with statistics
-        stats_collector.record_file_success(py_file, total_tokens, name_tokens)
+        stats_collector.record_file_success(total_tokens, name_tokens)
 
     except Exception as e:
         # Record any other errors that occur during processing

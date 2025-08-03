@@ -118,6 +118,6 @@ def stats_collector():
     
     Example:
         def test_something(stats_collector):
-            stats_collector.record_file_success("test.py", 100, 10)
+            stats_collector.record_file_success(100, 10)
     """
     return get_global_collector()
