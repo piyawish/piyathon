@@ -18,7 +18,7 @@ import piyathon_lexer  # pylint: disable=unused-import
 
 project = "ภาษาปิยะธอน (Piyathon)"
 # pylint: disable=redefined-builtin
-copyright = f"{datetime.now().year}, ปิยะวิชญ์ ปิยะวัฒน์"
+copyright = f"2023-{datetime.now().year}, Piyawish Piyawat (ปิยะวิชญ์ ปิยะวัฒน์)"
 # pylint: enable=redefined-builtin
 
 author = "ปิยะวิชญ์ ปิยะวัฒน์"
